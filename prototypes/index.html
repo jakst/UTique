@@ -81,23 +81,63 @@
 			<!-- Example row of columns -->
 			<div class="row">
 				<div class="col-md-3">
-					<div class="filterbar">
-						<div>
+					<div class="filterbar" style="background: #EEE; padding: 5px;">
+						<div id="modelbox" style="background: white; padding: 10px; margin: 10px;">
 						<h4>Modell</h4>
+							<div class="btn-group">
+							<button type="button" class="btn btn-default">Alla</button>
+							<button type="button" class="btn btn-default">Dam</button>
+							<button type="button" class="btn btn-default">Herr</button>
+							</div>		
 						</div>
 						
-						<div>
+						<div id="colorbox" style="background: white; padding: 10px; margin: 10px;";>
 						<h4>Färg</h4>
+						<ul style="list-style-type: none; padding-left:0;">
+						<li><label class="checkbox-inline">
+							<input type="checkbox" id="colorCheckBox1" value="black"> Svart
+						</label></li>
+						<li><label class="checkbox-inline">
+						 <input type="checkbox" id="colorCheckBox2" value="red">Röd
+						</label></li>
+						<li><label class="checkbox-inline">
+						  <input type="checkbox" id="colorCheckBox3" value="green">Grön
+						</label></li>
+						</ul>
 						</div>
 						
-						<div>
+						<div id="pricebox" style="background: white; padding: 10px; margin: 10px;">
 						<h4>Pris</h4>
+						<ul style="list-style-type: none; padding-left:0;">
+						<li><label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox1" value="small">0-99kr
+						</label></li>
+						<li><label class="checkbox-inline">
+						  <input type="checkbox" id="inlineCheckbox2" value="medium">100-199kr
+						</label></li>
+						<li><label class="checkbox-inline">
+						  <input type="checkbox" id="inlineCheckbox3" value="large">200-299kr
+						</label></li>
+						<li><label class="checkbox-inline">
+						  <input type="checkbox" id="inlineCheckbox3" value="large">>299kr
+						</label></li>
+						</ul>
 						</div>
 						
-						<div>
+						<div id="sizebox" style="background: white; padding: 10px; margin: 10px;">
 						<h4>Storlek</h4>
+						<ul style="list-style-type: none; padding-left:0;">
+						<li><label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox1" value="small"> Small
+						</label></li>
+						<li><label class="checkbox-inline">
+						  <input type="checkbox" id="inlineCheckbox2" value="medium">Medium
+						</label></li>
+						<li><label class="checkbox-inline">
+						  <input type="checkbox" id="inlineCheckbox3" value="large">Large
+						</label></li>
+						</ul>
 						</div>
-					
 					</div>
 				</div>
 
