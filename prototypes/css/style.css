@@ -1,0 +1,25 @@
+footer {
+	margin-bottom: 50px;
+}
+
+#putinbasket {
+	margin-top: 20px; 
+	padding-left: 0px;
+}
+
+#priceproduct {
+	font-size: 90px;
+}
+
+.cartbutton {
+	padding: 10px 30px; 
+	font-size: 20px;
+}
+
+.checkout-product-img {
+	display: inline;
+}
+
+.table-centered > tbody > tr > td {
+	vertical-align: middle;
+}
