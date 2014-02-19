@@ -20,6 +20,6 @@ footer {
 	display: inline;
 }
 
-.table-centered > tfoot > td {
-	vertical-align: top;
+.table-centered > tbody > tr > td {
+	vertical-align: middle;
 }
