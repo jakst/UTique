@@ -15,10 +15,10 @@
 	</head>
 
 	<body>
-		<div class="navbar navbar-inverse navbar-top" role="navigation" style="margin-top: 65px;">
+		<div class="navbar navbar-inverse navbar-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="index.html" alt="UTique - Home"><img src="img/logo.png" width="160" height="160" style="display:block; position: absolute; left: 50%; margin-left: -80px; margin-top: -55px;"></a>
+					<a href="index.html" alt="UTique - Home"><img src="img/logo.png" id="logo" width="160" height="160"></a>
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
@@ -32,14 +32,14 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Logga in<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<form class="navbar-form navbar-right" role="form" style="margin-right:0;">
+								<form class="navbar-form" role="form">
 									<div class="form-group">
-										<input type="text" placeholder="Email" class="form-control" style="margin: 3px;">
+										<input type="text" placeholder="Email" class="form-control nav-dropdown-form">
 									</div>
 									<div class="form-group">								
-										<input type="password" placeholder="Password" class="form-control" style="margin: 3px;">
+										<input type="password" placeholder="Password" class="form-control nav-dropdown-form">
 									</div>
-									<button type="submit" class="btn btn-success" style="margin: 3px;">Logga in</button>
+									<button type="submit" class="btn btn-success nav-dropdown-form">Logga in</button>
 								</form>
 							</ul>
 						</li>
@@ -50,14 +50,14 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">2 artiklar <strong>318 kr</strong> <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li>
-									<ul class="list-inline" style="width: 300px; margin-bottom: 5px;">
+									<ul class="list-inline cart-item">
 										<li style="width: 64px;"><img src="img/tees/vintage_rosie_the_riveter_shirt_shirts-r6d2bdd245eac482eb41921c292c73107_8naxt_512.jpg" width="64" height="64"></li>
 										<li style="width: 170px;"><a href="product.html">We can do it - Svart</a></li>
 										<li><strong><small>139 kr</small></strong></li>
 									</ul>
 								</li>
 								<li>
-									<ul class="list-inline" style="width: 300px; margin-bottom: 5px;">
+									<ul class="list-inline cart-item">
 										<li style="width: 64px;"><img src="img/tees/hello_yes_this_is_dog_telephone_phone_tee_shirt-rc58577efc0ca409581c13109868d8880_804gy_512.jpg" width="64" height="64"></li>
 										<li style="width: 170px;"><a href="product.html">This is dog - Vit</a></li>
 										<li><strong><small>179 kr</small></strong></li>
@@ -78,15 +78,15 @@
 				<h1>UTique!</h1>
 				<div class="row">
 					<div class="col-md-4">
-						<a href="product.html"><img src="img/tees/vintage_rosie_the_riveter_shirt_shirts-r6d2bdd245eac482eb41921c292c73107_8naxt_512.jpg" style="max-width: 100%;"></a>
+						<a href="product.html"><img src="img/tees/vintage_rosie_the_riveter_shirt_shirts-r6d2bdd245eac482eb41921c292c73107_8naxt_512.jpg" class="img-responsive"></a>
 					</div>
 					
 					<div class="col-md-4">
-						<a href="product.html"><img src="img/tees/hello_yes_this_is_dog_telephone_phone_tee_shirt-rc58577efc0ca409581c13109868d8880_804gy_512.jpg" style="max-width: 100%;"></a>
+						<a href="product.html"><img src="img/tees/hello_yes_this_is_dog_telephone_phone_tee_shirt-rc58577efc0ca409581c13109868d8880_804gy_512.jpg" class="img-responsive"></a>
 					</div>
 					
 					<div class="col-md-4">
-						<a href="product.html"><img src="img/tees/im_only_here_because_the_server_is_down_t_shirt-r6e9acab91d0e4d1c9e3141c9d6b35984_vx9e5_512.jpg" style="max-width: 100%;"></a>
+						<a href="product.html"><img src="img/tees/im_only_here_because_the_server_is_down_t_shirt-r6e9acab91d0e4d1c9e3141c9d6b35984_vx9e5_512.jpg" class="img-responsive"></a>
 					</div>
 				</div>
 			</div>
@@ -96,8 +96,8 @@
 			<!-- Example row of columns -->
 			<div class="row">
 				<div class="col-md-3">
-					<div class="filterbar" style="background: #eee; padding: 5px;">
-						<div id="modelbox" style="background: white; padding: 10px; margin: 10px; box-shadow: 0 2px 2px rgba(0,0,0,.05);">
+					<div id="filter-wrapper">
+						<div class="filter-box">
 							<h4>Modell</h4>
 							<div class="btn-group">
 								<button type="button" class="btn btn-default">Alla</button>
@@ -106,7 +106,7 @@
 							</div>		
 						</div>
 						
-						<div id="colorbox" style="background: white; padding: 10px; margin: 10px; box-shadow: 0 2px 2px rgba(0,0,0,.05);">
+						<div class="filter-box">
 							<h4>Färg</h4>
 							<ul class="list-unstyled">
 								<li>
@@ -127,7 +127,7 @@
 							</ul>
 						</div>
 						
-						<div id="pricebox" style="background: white; padding: 10px; margin: 10px; box-shadow: 0 2px 2px rgba(0,0,0,.05);">
+						<div class="filter-box">
 							<h4>Pris</h4>
 							<ul class="list-unstyled">
 								<li>
@@ -153,7 +153,7 @@
 							</ul>
 						</div>
 						
-						<div id="sizebox" style="background: white; padding: 10px; margin: 10px; box-shadow: 0 2px 2px rgba(0,0,0,.05);">
+						<div class="filter-box">
 							<h4>Storlek</h4>
 							<ul class="list-unstyled">
 								<li>
@@ -181,58 +181,58 @@
 					</div>
 				</div>
 
-				<div id="produktbox" class="col-md-9">
-					<div class="row" style="margin:15px;">
+				<div id="product-grid" class="col-md-9">
+					<div class="row">
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/durian_den_stinka_frukten_fran_south_east_asia_t_troja-r1780f59cead14daf8e6d907c35148c05_8naxt_512.jpg" style="max-width: 100%;"></a>Durian the smelly fruit <br>199 kr
+							<a href="product.html"><img src="img/tees/durian_den_stinka_frukten_fran_south_east_asia_t_troja-r1780f59cead14daf8e6d907c35148c05_8naxt_512.jpg" class="img-responsive"></a>Durian the smelly fruit <br>199 kr
 						</div>
 						
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/merica_shirts-ra1a98e30c87a49fdad1d975bc6c4e3f3_vf3nl_512.jpg" style="max-width: 100%;"></a>´Merica <br>99 kr
+							<a href="product.html"><img src="img/tees/merica_shirts-ra1a98e30c87a49fdad1d975bc6c4e3f3_vf3nl_512.jpg" class="img-responsive"></a>´Merica <br>99 kr
 						</div>
 				
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/sharkcat_gatos_shirts-r4dcb88bf303643c899cf1f9e548bf664_804gy_512.jpg" style="max-width: 100%;"></a>Gatos <br>299 kr
+							<a href="product.html"><img src="img/tees/sharkcat_gatos_shirts-r4dcb88bf303643c899cf1f9e548bf664_804gy_512.jpg" class="img-responsive"></a>Gatos <br>299 kr
 						</div>
 						
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/t_rex_applad_ii_t_shirts-rb98cc015cb0a4a599d6a84457faa7454_8n2h7_512.jpg" style="max-width: 100%;"></a>Clap your... <br>199 kr
+							<a href="product.html"><img src="img/tees/t_rex_applad_ii_t_shirts-rb98cc015cb0a4a599d6a84457faa7454_8n2h7_512.jpg" class="img-responsive"></a>Clap your... <br>199 kr
 						</div>
 					</div>
 					
-					<div class="row" style="margin:15px;">
+					<div class="row">
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/talk_nerdy_to_me_tee_shirt-rc96878f304fe42fc8004cc2ddda240ee_8nal2_512.jpg" style="max-width: 100%;"></a>Talk nerdy to me <br>399 kr
+							<a href="product.html"><img src="img/tees/talk_nerdy_to_me_tee_shirt-rc96878f304fe42fc8004cc2ddda240ee_8nal2_512.jpg" class="img-responsive"></a>Talk nerdy to me <br>399 kr
 						</div>
 						
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/there_is_a_name_for_people_without_beards_women_tshirt-r0303d4445aa64270b3da38f37cff5cd0_804gd_512.jpg" style="max-width: 100%;"></a>People without beards <br>199 kr
+							<a href="product.html"><img src="img/tees/there_is_a_name_for_people_without_beards_women_tshirt-r0303d4445aa64270b3da38f37cff5cd0_804gd_512.jpg" class="img-responsive"></a>People without beards <br>199 kr
 						</div>
 				
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/vintage_lucky_charm_tee_shirts-rcd239067e7c046dfb51d95458a939fa3_8n2rc_512.jpg" style="max-width: 100%;"></a>Lucky charm <br>99 kr
+							<a href="product.html"><img src="img/tees/vintage_lucky_charm_tee_shirts-rcd239067e7c046dfb51d95458a939fa3_8n2rc_512.jpg" class="img-responsive"></a>Lucky charm <br>99 kr
 						</div>
 						
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/very_gradual_change_we_can_believe_in_tees-r3a90f91e98494308a5029d5ac23b09a9_804gs_512.jpg" style="max-width: 100%;"></a>Very gradual change <br>299 kr
+							<a href="product.html"><img src="img/tees/very_gradual_change_we_can_believe_in_tees-r3a90f91e98494308a5029d5ac23b09a9_804gs_512.jpg" class="img-responsive"></a>Very gradual change <br>299 kr
 						</div>
 					</div>
 
-					<div class="row" style="margin:15px;">
+					<div class="row">
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/will_code_for_food_mens_shirt-rd677c4a4cdf04f8f8cf87ae33693a1d7_804g9_512.jpg" style="max-width: 100%;"></a>Will code for food <br>99 kr
+							<a href="product.html"><img src="img/tees/will_code_for_food_mens_shirt-rd677c4a4cdf04f8f8cf87ae33693a1d7_804g9_512.jpg" class="img-responsive"></a>Will code for food <br>99 kr
 						</div>
 						
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/wassup_skoldpadda_t_shirt-rc60c69c2102e472e93ee0981e88c7eb5_8naz3_512.jpg" style="max-width: 100%;"></a>Wassup sköldpadda <br>299 kr
+							<a href="product.html"><img src="img/tees/wassup_skoldpadda_t_shirt-rc60c69c2102e472e93ee0981e88c7eb5_8naz3_512.jpg" class="img-responsive"></a>Wassup sköldpadda <br>299 kr
 						</div>
 				
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/rosie_the_riveter_we_can_do_it_vintage_shirt-ra6c87543788b4ea28d35c0d937b3ce9b_8naxt_512.jpg" style="max-width: 100%;"></a>We can do it <br>199 kr
+							<a href="product.html"><img src="img/tees/rosie_the_riveter_we_can_do_it_vintage_shirt-ra6c87543788b4ea28d35c0d937b3ce9b_8naxt_512.jpg" class="img-responsive"></a>We can do it <br>199 kr
 						</div>
 						
 						<div class="col-md-3">
-							<a href="product.html"><img src="img/tees/thanks_for_the_complement_tshirts-r91d5d84bc39c48509a9c87a486487d9d_804gs_512.jpg" style="max-width: 100%;"></a>Thanks for the complement <br>299 kr
+							<a href="product.html"><img src="img/tees/thanks_for_the_complement_tshirts-r91d5d84bc39c48509a9c87a486487d9d_804gs_512.jpg" class="img-responsive"></a>Thanks for the complement <br>299 kr
 						</div>
 					</div>
 				</div>
@@ -240,7 +240,7 @@
 
 			<hr>
 
-			<footer style="margin-bottom: 50px;">
+			<footer>
 				<div class="row">
 					<div class="col-md-4"><h4>Kundtjänst</h4>
 						<ul class="list-unstyled">
