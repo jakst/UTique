@@ -1,0 +1,16 @@
+footer {
+	margin-bottom: 50px;
+}
+
+#putinbasket {
+	margin-top: 20px; 
+	padding-left: 0px;
+}
+
+#priceproduct {
+	font-size: 90px;
+}
+
+.img-responrive {
+	max-width: 100%;
+}
