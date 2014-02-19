@@ -8,19 +8,10 @@
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="/ico/favicon.ico">
 
-	<title>UTique - Din t-shirtbutik p� n�tet!</title>
+	<title>UTique - Din t-shirtbutik på nätet!</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-
-	<!-- Just for debugging purposes. Don't actually copy this line! -->
-	<!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
 	</head>
 
 	<body>
@@ -82,15 +73,52 @@
 
 
 		<div class="container">
+		<h1>Kundvagn</h1>
 			<!-- Example row of columns -->
+			<div class="shoppingcart">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Artikel</th>
+						<th>Antal</th>
+						<th>Á-pris</th>
+						<th>Summa</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>  
+						<td>[BILD] Durian</td>  
+						<td><input type="text" name="number1" value="1" size="1" maxlength="2"></td>  
+						<td>199 kr</td>  
+						<td>199 kr</td>  
+					</tr>
+					<tr>  
+						<td>[BILD] Durian</td>  
+						<td><input type="text" name="number2" value="1" size="1" maxlength="2"></td>  
+						<td>199 kr</td>  
+						<td>199 kr</td>  
+					</tr>					
+				</tbody>
+			</table>
 			<div class="row">
-	Hej!
-			<hr>
+				<div class="col-md-4">
+					<div id="putinbasket" style="margin-top: 20px; padding-left: 0px;">
+						<button type="button" class="btn btn-warning" style="padding: 10px 30px; font-size: 20px;">Uppdatera</button>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div id="putinbasket" style="margin-top: 20px; padding-left: 0px;">
+						<button type="button" class="btn btn-danger" style="padding: 10px 30px; font-size: 20px;">Töm kundvagn</button>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+				Summera
+				</div>
 			</div>
-			
-	
-			
-
+			<hr>
+			</div>	
 			<footer style="margin-bottom: 50px;">
 				<div class="row">
 					<div class="col-md-4"><h4>Kundtjänst</h4>
