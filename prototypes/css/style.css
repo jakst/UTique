@@ -11,6 +11,15 @@ footer {
 	font-size: 90px;
 }
 
-.img-responrive {
-	max-width: 100%;
+.cartbutton {
+	padding: 10px 30px; 
+	font-size: 20px;
+}
+
+.checkout-product-img {
+	display: inline;
+}
+
+.table-centered > tfoot > td {
+	vertical-align: top;
 }
