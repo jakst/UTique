@@ -32,7 +32,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			echo $this->fetch('meta');
 
 			echo $this->Html->css('bootstrap');
-			echo $this->Html->css('main');
+			echo $this->Html->css('style');
 
 			echo $this->fetch('css');
 			
