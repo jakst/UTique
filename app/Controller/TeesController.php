@@ -19,5 +19,10 @@ class TeesController extends AppController {
 		
 		$this->set('tees', $this->Tee->find('all'));
     }
+	
+	public function view($id) {
+		$tee = $this->Tee->findByProductid($id);
+		$this->set('tee', $tee);
+	}	
 }
 ?>
