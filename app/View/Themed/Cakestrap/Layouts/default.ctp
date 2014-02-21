@@ -16,15 +16,15 @@
 		<div class="navbar navbar-inverse navbar-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="index.html" alt="UTique - Home">
-						<?php echo $this->Html->image('logo.png', array(
-							'alt' => 'UTique', 
+					<?php
+						echo $this->Html->image('logo.png', array(
+							'alt' => 'UTique - Home', 
 							'id' => 'logo', 
 							'width' => 160, 
 							'height' => 160,
-							'url' => array('controller' => 'tees', 'action' => 'index')
-							)); ?>
-					</a>
+							'url' => array('controller' => 'tees', 'action' => 'index', 'full_base' => true)
+						));
+					?>
 					
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
@@ -90,14 +90,19 @@
 				</div><!--/.navbar-collapse -->
 			</div>
 		</div>
+			
+		<?php echo $this->fetch('content'); ?>
 		
-		<div class="container">
-			
-			<?php echo $this->fetch('content'); ?>
-			
-			<hr>
-			
-			<footer>
+		<hr>
+		
+		<!--<div class="well well-sm">
+			<small>
+				<?php //echo $this->element('sql_dump'); ?>
+			</small>
+		</div><!-- /.well well-sm -->
+		
+		<footer>
+			<div class="container">
 				<div class="row">
 					<div class="col-md-4"><h4>Kundtjänst</h4>
 						<ul class="list-unstyled">
@@ -125,14 +130,9 @@
 						</ul>
 					</div>
 				</div>
-			</footer>
-			
-			<!--<div class="well well-sm">
-				<small>
-					<?php //echo $this->element('sql_dump'); ?>
-				</small>
-			</div><!-- /.well well-sm -->
-		</div><!-- /.container -->
+			</div>
+		</footer>
+		
 		<?php	
 			echo $this->Html->script(array('libs/jquery-1.10.2.min', 'libs/bootstrap.min'));
 			echo $this->fetch('script');
