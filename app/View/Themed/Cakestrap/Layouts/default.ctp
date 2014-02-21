@@ -22,7 +22,7 @@
 							'id' => 'logo', 
 							'width' => 160, 
 							'height' => 160,
-							'url' => array('controller' => 'tees', 'action' => 'index', 6)
+							'url' => array('controller' => 'tees', 'action' => 'index')
 							)); ?>
 					</a>
 					
