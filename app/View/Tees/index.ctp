@@ -88,38 +88,41 @@
 		</div>
 
 		<div id="product-grid" class="col-md-9">
-			<div class="row">
-			
-			<?php foreach ($tees as $tee): ?>
+			<div class="row">		
+			<?php
+				$count = 0;
+				foreach ($tees as $tee):
+					if ($count % 4 == 0 && $count > 0):
+						echo '</div><div class="row">';
+					endif;
+			?>
 				<div class="col-md-3">
-				<?php
-					echo $this->Html->image('tees/durian_den_stinka_frukten_fran_south_east_asia_t_troja-r1780f59cead14daf8e6d907c35148c05_8naxt_512.jpg', 
-						array(
-							'alt' => $tee['Tee']['name'], 
-							'class' => 'img-responsive',
-							'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['productid']
-					)));
-					
-					echo $this->Html->link(
-						$tee['Tee']['name'],
-						array('controller' => 'tees', 'action' => 'view', $tee['Tee']['productid']
-					));
-				?>
-				<br><?php echo $tee['Tee']['price']; ?> kr
+					<?php
+						echo $this->Html->image('tees/durian_den_stinka_frukten_fran_south_east_asia_t_troja-r1780f59cead14daf8e6d907c35148c05_8naxt_512.jpg', 
+							array(
+								'alt' => $tee['Tee']['name'], 
+								'class' => 'img-responsive',
+								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['productid']
+						)));
+						
+						echo $this->Html->link(
+							$tee['Tee']['name'],
+							array('controller' => 'tees', 'action' => 'view', $tee['Tee']['productid']
+						));
+					?>
+					<br><?php echo $tee['Tee']['price']; ?> kr
 				</div>
-			<?php endforeach; ?>
-			
-			</div>
 				
-				
+			<?php
+				$count++;
+				endforeach; 
+			?>
+			</div>				
 		</div>
 	</div>
 
 
 <?php
-
-
-
 /*foreach ($tees as $tee): 
 
 	echo $tee['Tee']['name'] . '<br>';
