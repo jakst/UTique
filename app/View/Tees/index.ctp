@@ -1,5 +1,5 @@
 <!-- File: /app/View/Posts/index.ctp -->
-
+<div class="container">
 	<div class="row">
 		<div class="col-md-3">
 			<div id="filter-wrapper">
@@ -115,18 +115,10 @@
 				
 			<?php
 				$count++;
-				endforeach; 
+				endforeach;
+				unset($tee);
 			?>
 			</div>				
 		</div>
 	</div>
-
-
-<?php
-/*foreach ($tees as $tee): 
-
-	echo $tee['Tee']['name'] . '<br>';
-endforeach;*/
-
-unset($tee);
-?>
+</div>
