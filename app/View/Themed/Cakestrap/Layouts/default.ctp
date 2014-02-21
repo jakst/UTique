@@ -16,15 +16,15 @@
 		<div class="navbar navbar-inverse navbar-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="index.html" alt="UTique - Home">
-						<?php echo $this->Html->image('logo.png', array(
-							'alt' => 'UTique', 
+					<?php
+						echo $this->Html->image('logo.png', array(
+							'alt' => 'UTique - Home', 
 							'id' => 'logo', 
 							'width' => 160, 
 							'height' => 160,
-							'url' => array('controller' => 'tees', 'action' => 'index')
-							)); ?>
-					</a>
+							'url' => array('controller' => 'tees', 'action' => 'index', 'full_base' => true)
+						));
+					?>
 					
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
