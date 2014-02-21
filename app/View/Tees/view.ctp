@@ -7,7 +7,7 @@
 			</h1>
 			<div class="row">
 					<div class="col-md-6" id="pictureproduct">
-					<?php echo $this->Html->image('tees/durian_den_stinka_frukten_fran_south_east_asia_t_troja-r1780f59cead14daf8e6d907c35148c05_8naxt_512.jpg', 
+					<?php echo $this->Html->image('tees/'.$tee['Tee']['productid'].'.jpg', 
 							array(
 								'alt' => $tee['Tee']['name'], 
 								'class' => 'img-responsive'
