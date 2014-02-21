@@ -20,8 +20,17 @@ class TeesController extends AppController {
 		$this->set('tees', $this->Tee->find('all'));
     }
 	
-	public function view($id) {
+	public function view($id = null) {
+	    if (!$id) {
+            throw new NotFoundException(__('Gå och dö'));
+        }
+		
 		$tee = $this->Tee->findByProductid($id);
+        
+		if (!$tee) {
+            throw new NotFoundException(__('Gå och dö'));
+        }
+		
 		$this->set('tee', $tee);
 	}	
 }
