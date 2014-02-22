@@ -91,6 +91,7 @@
 			<div class="row">		
 			<?php
 				$count = 0;
+				shuffle($tees);
 				foreach ($tees as $tee):
 					if ($count % 4 == 0 && $count > 0):
 						echo '</div><div class="row">';
