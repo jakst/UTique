@@ -5,9 +5,10 @@ class CartsController extends AppController {
 	
 	$this->Session->write('User.item', $id);
 	
-		$product = $this->Session->read('User.item');
-		echo $product; 
+	$product = $this->Session->read('User.item');
+	echo $product; 
 		
-
+	$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
 	}
+}
 ?>
