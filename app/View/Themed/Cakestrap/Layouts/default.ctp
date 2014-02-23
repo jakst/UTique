@@ -4,8 +4,11 @@
 		<?php echo $this->Html->charset(); ?>
 		<title><?php echo $title_for_layout; ?></title>
 		<?php
-			echo $this->Html->meta('icon');
+			echo $this->Html->meta('icon','img/favicon.png',
+				array('type' => 'icon'));
 			echo $this->fetch('meta');
+
+			
 
 			echo $this->Html->css(array('bootstrap', 'style'));
 			echo $this->fetch('css');
@@ -13,6 +16,7 @@
 	</head>
 	
 	<body>
+
 		<div class="navbar navbar-inverse navbar-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
