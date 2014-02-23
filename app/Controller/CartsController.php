@@ -4,16 +4,9 @@ class CartsController extends AppController {
 	public function add_to_cart($id = null){
 		if (!$id) {
             throw new NotFoundException(__('Hej'));
-        }
-		
-		$tee = $this->Tee->findByProductid($id);
-        
-		if (!$tee) {
-            throw new NotFoundException(__('Finns ingen sådan t-shirt'));
-        }
-		unset($tee);
+		}
 	
-		if ($this->Session->check('Cart'.$id)) {
+		if ($this->Session->check('Cart.'.$id)) {
 			$amount = $this->Session->read('Cart.'.$id);
 			$amount++;
 			$this->Session->write('Cart.'.$id, $amount);
