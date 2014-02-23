@@ -28,9 +28,14 @@ class CartsController extends AppController {
 			
 			
 		$tees = array(
-
-		
 			 'Tee' => array(
+				'id' => $id,
+				'name' => $name,
+				'price' => $price,
+				'amount' => $amount,
+				'size' => $size
+			),
+			 'Teem' => array(
 				'id' => $id,
 				'name' => $name,
 				'price' => $price,

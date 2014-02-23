@@ -25,26 +25,32 @@
 				</tr>
 				</tfoot>
 				<tbody>
-					<tr> 
-						<td><?php
-							echo $this->Html->image('tees/'.$tees['Tee']['id'].'.jpg', 
-								array(
-									'alt' => $tees['Tee']['name'], 
-									'class' => 'img-responsive checkout-product-img', 
-									'width' => 55,
-									'height' => 55,
-									'url' => array('controller' => 'tees', 'action' => 'view', $tees['Tee']['id']
-							)));
-							echo $this->Html->link(
-							' '.$tees['Tee']['name'],
-							array('controller' => 'tees', 'action' => 'view', $tees['Tee']['id']
-							));
-						?></td>
-						<td><?php echo $tees['Tee']['size']?></td>
-						<td><input type="text" name="number1" value="<?php echo $tees['Tee']['amount']?>" size="1" maxlength="2"></td> 
-						<td><?php echo $tees['Tee']['price']?> kr</td>  
-						<td align="right"><?php echo $tees['Tee']['price']*$tees['Tee']['amount']?> kr</td>  
-					</tr>
+					<?php 
+					$sum = 0; 					
+					foreach ($tees as $tee):?>
+						<tr> 
+							<td><?php
+								echo $this->Html->image('tees/'.$tee['id'].'.jpg', 
+									array(
+										'alt' => $tees['Tee']['name'], 
+										'class' => 'img-responsive checkout-product-img', 
+										'width' => 55,
+										'height' => 55,
+										'url' => array('controller' => 'tees', 'action' => 'view', $tee['id']
+								)));
+								echo $this->Html->link(
+								' '.$tee['name'],
+								array('controller' => 'tees', 'action' => 'view', $tee['id']
+								));
+							?></td>
+							<td><?php echo $tee['size']?></td>
+							<td><input type="text" name="number1" value="<?php echo $tees['Tee']['amount']?>" size="1" maxlength="2"></td> 
+							<td><?php echo $tee['price']?> kr</td>  
+							<td align="right"><?php echo $tee['price']*$tee['amount']?> kr</td>  
+						</tr>
+					<?php 
+					$sum = $sum+$tee['price'];
+					endforeach; ?>
 				</tbody>
 			</table>
 	
