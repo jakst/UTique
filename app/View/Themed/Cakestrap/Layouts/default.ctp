@@ -54,39 +54,7 @@
 						</li>
 					</ul>
 					
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">2 artiklar <strong>318 kr</strong> <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li>
-									<ul class="list-inline cart-item">
-										<li id="cart-item-image">
-										<?php echo $this->Html->image('tees/vintage_rosie_the_riveter_shirt_shirts-r6d2bdd245eac482eb41921c292c73107_8naxt_512.jpg', array(
-											'width' => 64,
-											'height' => 64)); ?>
-										</li>
-										<li id="cart-item-title"><a href="product.html">We can do it - Svart</a></li>
-										<li><strong><small>139 kr</small></strong></li>
-									</ul>
-								</li>
-								
-								<li>
-									<ul class="list-inline cart-item">
-										<li id="cart-item-image">
-										<?php echo $this->Html->image('tees/hello_yes_this_is_dog_telephone_phone_tee_shirt-rc58577efc0ca409581c13109868d8880_804gy_512.jpg', array(
-											'width' => 64,
-											'height' => 64)); ?>
-										</li>
-										<li id="cart-item-title"><a href="product.html">This is dog - Vit</a></li>
-										<li><strong><small>179 kr</small></strong></li>
-									</ul>
-								</li>
-								
-								<li role="presentation" class="divider"></li>
-								<li><a href="shoppingcart.html" alt="Till kassan"><strong>Till kassan</strong></a>
-							</ul>
-						</li>
-					</ul>
+					<?php echo $this->element('cart'); ?>
 				</div><!--/.navbar-collapse -->
 			</div>
 		</div>
@@ -100,7 +68,6 @@
 				<?php //echo $this->element('sql_dump'); ?>
 			</small>
 		</div><!-- /.well well-sm -->
-		<?php print_r($this->Session->read('Cart')); ?>
 		<footer>
 			<div class="container">
 				<div class="row">
