@@ -60,7 +60,7 @@
 			
 			<h3>Beskrivning:</h3>
 			<p><?php echo $tee['Tee']['description']; ?></p>
-			<button type="button" class="btn btn-success btn-block btn-lg">Lägg i varukorg</button>
+			<?php echo $this->Html->link('Lägg i varukorg', array('controller' => 'carts', 'action' => 'add_to_cart', $tee['Tee']['productid']), array('class' => 'btn btn-success btn-lg btn-block')); ?>
 		</div>
 	</div>
 </div>
