@@ -5,9 +5,9 @@
 				<div class="row">
 					<?php
 					$tmp = $tees;
-					for ($x=0; $x<=2; $x++):
+					for ($x = 0; $x <= 2; $x++):
 						mt_srand(date("Ymd")*3 + $x);
-						$r = mt_rand(0, count($tees));
+						$r = mt_rand(0, count($tmp)-1);
 						$tee = $tmp[$r];
 
 						unset($tmp[$r]);
