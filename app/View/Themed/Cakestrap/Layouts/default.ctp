@@ -100,7 +100,7 @@
 				<?php //echo $this->element('sql_dump'); ?>
 			</small>
 		</div><!-- /.well well-sm -->
-		<?php print_r($this->Session->read('User')); ?>
+		<?php print_r($this->Session->read('Cart')); ?>
 		<footer>
 			<div class="container">
 				<div class="row">
