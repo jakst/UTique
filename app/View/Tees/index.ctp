@@ -1,3 +1,35 @@
+<div class="jumbotron">
+			<div class="container">
+				<h1>UTique!</h1>
+				<h2>Dagens T-shirts</h2>
+				<div class="row">
+					<?php
+					$tmp = $tees;
+					for ($x=0; $x<=2; $x++):
+						mt_srand(date("Ymd")*3 + $x);
+						$r = mt_rand(0, count($tees));
+						$tee = $tmp[$r];
+
+						unset($tmp[$r]);
+						$tmp = array_values($tmp);
+  					?>
+  					<div class="col-md-4">
+  						<?php
+  						echo $this->Html->image('tees/'.$tee['Tee']['productid'].'.jpg', 
+							array(
+								'alt' => $tee['Tee']['name'], 
+								'class' => 'img-responsive',
+								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['productid']
+						)));
+						?>
+					</div>
+  					<?php
+ 					 endfor;
+					?>
+				</div>
+			</div>
+		</div>
+
 <!-- File: /app/View/Posts/index.ctp -->
 <div class="container">
 	<div class="row">
