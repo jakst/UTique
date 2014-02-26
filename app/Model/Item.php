@@ -1,5 +1,5 @@
 <?php
-class Tee extends AppModel {
+class Item extends AppModel {
 	public $hasAndBelongsToMany = 'Cart';
 	
 
