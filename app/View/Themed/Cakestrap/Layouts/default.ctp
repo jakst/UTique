@@ -65,8 +65,6 @@
 			
 		<?php echo $this->fetch('content'); ?>
 		
-		<hr>
-		
 		<!--<div class="well well-sm">
 			<small>
 				<?php //echo $this->element('sql_dump'); ?>

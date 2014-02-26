@@ -1,5 +1,9 @@
 footer {
-	margin-bottom: 50px;
+	margin-top: 30px;
+	padding: 30px 0;
+	color: #fff;
+	background-color: #222;
+	border-top: 1px solid #090909;
 }
 
 #putinbasket {
@@ -37,6 +41,15 @@ footer {
 	margin-top: -55px;
 }
 
+.jumbotron {
+	margin-top: -50px;
+	padding-top: 0;
+	background-color: #fafafa;
+	box-shadow: 0 2px 4px rgba(0,0,0,.25);
+}
+
+.jumbotron img {border: 5px solid #eaeaea;}
+
 .nav-dropdown-form{
 	margin: 3px 0;
 }
@@ -46,16 +59,11 @@ footer {
 	margin-bottom: 5px;
 }
 
-#filter-wrapper{
-	background: #eee; 
-	padding: 5px;
-}
-
 .filter-box{
-	background: white; 
-	padding: 10px; 
-	margin: 10px; 
-	box-shadow: 0 2px 2px rgba(0,0,0,.05);
+	background: #fafafa; 
+	padding: 2px 20px 15px; 
+	margin: 0 0 20px; 
+	box-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
 #product-grid > .row{
