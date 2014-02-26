@@ -4,6 +4,7 @@
 		<ul class="dropdown-menu">
 			<?php
 				$cart = $this->Session->read('Cart');
+				print_r($cart);
 				
 				foreach ($cart as $productid => $amount):
 			?>
@@ -21,7 +22,11 @@
 			<?php endforeach; ?>
 			
 			<li role="presentation" class="divider"></li>
-			<li><a href="shoppingcart.html" alt="Till kassan"><strong>Till kassan</strong></a>
+			<li><strong>
+			<?php
+			echo $this->Html->link('Till kassan', array('controller' => 'carts', 'action' => 'view'));
+			?>
+			</strong></a>
 		</ul>
 	</li>
 </ul>
