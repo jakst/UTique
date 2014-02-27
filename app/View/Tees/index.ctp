@@ -15,11 +15,11 @@
   					?>
   					<div class="col-md-4">
   						<?php
-  						echo $this->Html->image('tees/'.$tee['Tee']['productid'].'.jpg', 
+  						echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
 							array(
 								'alt' => $tee['Tee']['name'], 
 								'class' => 'img-responsive',
-								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['productid']
+								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
 						)));
 						?>
 					</div>
@@ -129,16 +129,16 @@
 			?>
 				<div class="col-md-3">
 					<?php
-						echo $this->Html->image('tees/'.$tee['Tee']['productid'].'.jpg', 
+						echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
 							array(
 								'alt' => $tee['Tee']['name'], 
 								'class' => 'img-responsive',
-								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['productid']
+								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
 						)));
 						
 						echo $this->Html->link(
 							$tee['Tee']['name'],
-							array('controller' => 'tees', 'action' => 'view', $tee['Tee']['productid']
+							array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
 						));
 					?>
 					<br><?php echo $tee['Tee']['price']; ?> kr

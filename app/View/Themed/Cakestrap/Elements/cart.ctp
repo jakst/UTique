@@ -6,12 +6,12 @@
 				$cart = $this->Session->read('Cart');
 				print_r($cart);
 				
-				foreach ($cart as $productid => $amount):
+				foreach ($cart as $id => $amount):
 			?>
 			<li>
 				<ul class="list-inline cart-item">
 					<li id="cart-item-image">
-					<?php echo $this->Html->image('tees/'.$productid.'.jpg', array(
+					<?php echo $this->Html->image('tees/'.$id.'.jpg', array(
 						'width' => 64,
 						'height' => 64)); ?>
 					</li>
