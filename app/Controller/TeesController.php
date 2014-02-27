@@ -25,7 +25,7 @@ class TeesController extends AppController {
             throw new NotFoundException(__('Gå och dö'));
         }
 		
-		$tee = $this->Tee->findByProductid($id);
+		$tee = $this->Tee->findById($id);
         
 		if (!$tee) {
             throw new NotFoundException(__('Gå och dö'));
