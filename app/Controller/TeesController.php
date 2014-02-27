@@ -47,14 +47,14 @@ class TeesController extends AppController {
 
 		$amount = 0;
 		if ($this->Session->check('Cart.'.$id)){
-			if ($this->Session->check('Cart.'.$id.'.'.$size)){
-				$amount = $this->Session->read('Cart.'.$id.'.'.$size);
+			if ($this->Session->check('Cart.'.$id.'.sizes.'.$size)){
+				$amount = $this->Session->read('Cart.'.$id.'.sizes.'.$size);
 			}
 		} else {
 			$this->Session->write('Cart.'.$id, $tee);
 		}
 
-		$this->Session->write('Cart.'.$id.'.'.$size, $amount+1);
+		$this->Session->write('Cart.'.$id.'.sizes.'.$size, $amount+1);
 		
 		$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
 	}
