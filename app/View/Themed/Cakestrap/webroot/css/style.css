@@ -66,11 +66,8 @@ footer {
 	box-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
-#product-grid > .row{
-	margin:15px 0;
-
-footer {
-	margin-bottom: 50px;
+#product-grid > .row {
+	margin: 15px 0;
 }
 
 #putinbasket {
@@ -80,11 +77,6 @@ footer {
 
 #priceproduct {
 	font-size: 90px;
-}
-
-.cartbutton {
-	padding: 10px 30px; 
-	font-size: 20px;
 }
 
 .checkout-product-img {

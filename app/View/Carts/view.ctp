@@ -16,8 +16,8 @@
 				<tfoot>
 				<tr>
 					<td colspan="4">
-						<button type="button" class="btn btn-warning cartbutton">Uppdatera</button>
-						<button type="button" class="btn btn-danger cartbutton">Töm kundvagn</button>		
+						<button type="button" class="btn btn-default">Uppdatera kundvagn</button>
+						<?php echo $this->Html->link('Töm kundvagn', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
 					</td>
 					<td align="right">Varuvärde: 199 kr<br>
 					Fraktkostnad: 100 kr<br>
@@ -55,7 +55,7 @@
 			</table>
 	
 				<div align="right">
-				<button type="button" class="btn btn-success cartbutton">Checka ut</button>
+				<button type="button" class="btn btn-success btn-lg">Checka ut</button>
 				</div> 
 		
 			</div>

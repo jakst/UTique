@@ -13,16 +13,20 @@
 				echo '</li><li>';
 				//end debug
 				
-				foreach ($cart as $id => $amount):
+				foreach ($cart as $id => $tee):
 			?>
 				<ul class="list-inline cart-item text-left">
 					<li id="cart-item-image">
-					<?php echo $this->Html->image('tees/'.$id.'.jpg', array(
+					<?php 
+					echo $this->Html->image('tees/'.$id.'.jpg', array(
 						'width' => 64,
-						'height' => 64)); ?>
+						'height' => 64,
+						'alt' => $tee['Tee']['name'],
+						'url' => array('controller' => 'tees', 'action' => 'view', $id)
+					)); ?>
 					</li>
-					<li id="cart-item-title"><a href="product.html">We can do it - Svart</a></li>
-					<li><strong><small>139 kr</small></strong></li>
+					<li id="cart-item-title"><?php echo $this->Html->Link($tee['Tee']['name'].', '.$tee['Tee']['color'].', S', array('controller' => 'tees', 'action' => 'view', $id)); ?></li>
+					<li><strong><small><?php echo $tee['Tee']['price']; ?> kr</small></strong></li>
 				</ul>
 			<?php 
 				endforeach; 
