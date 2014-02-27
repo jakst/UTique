@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-6" id="pictureproduct">
 			<?php
-				echo $this->Html->image('tees/'.$tee['Tee']['productid'].'.jpg', 
+				echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
 					array(
 						'alt' => $tee['Tee']['name'], 
 						'class' => 'img-responsive'
@@ -60,7 +60,7 @@
 			
 			<h3>Beskrivning:</h3>
 			<p><?php echo $tee['Tee']['description']; ?></p>
-			<?php echo $this->Html->link('Lägg i varukorg', array('controller' => 'carts', 'action' => 'add_to_cart', $tee['Tee']['productid'], 'S'), array('class' => 'btn btn-success btn-lg btn-block')); ?>
+			<?php echo $this->Html->link('Lägg i varukorg', array('controller' => 'carts', 'action' => 'add_to_cart', $tee['Tee']['id'], 'S'), array('class' => 'btn btn-success btn-lg btn-block')); ?>
 		</div>
 	</div>
 </div>
