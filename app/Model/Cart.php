@@ -1,5 +1,5 @@
 <?php
 class Cart extends AppModel {
-	public $hasOne = 'Tee';
+	public $hasMany = 'Item';
 }
 ?>
