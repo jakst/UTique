@@ -35,7 +35,10 @@ class TeesController extends AppController {
 	}	
 
 
-	public function add_to_cart($id = null, $size = null){
+	public function add_to_cart(){
+		$id = $this->request->data['id'];
+		$size = $this->request->data['size'];
+		
 		if (!$id || !$size) {
             throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
 		}
