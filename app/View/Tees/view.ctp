@@ -48,19 +48,28 @@
 
 		<div class="col-md-6">
 			<div id="priceproduct"><?php echo $tee['Tee']['price'];	?> kr</div>
-			<div id="size">
-			<h3>Välj storlek</h3>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default">S</button>
-					<button type="button" class="btn btn-default">M</button>
-					<button type="button" class="btn btn-default">L</button>
-					<button type="button" class="btn btn-default">XL</button>
+			
+			
+
+			<form role="form" id="AddItemInCartForm" method="post" action="/utique/tees/add_to_cart">
+				<input type="hidden" name="id" value="<?php echo $tee['Tee']['id']; ?>">
+				<div class="form-group">
+					<label for="size"><h3>Välj storlek</h3></label>
+					<select class="form-control" id="size" name="size">
+						<option>S</option>
+						<option>M</option>
+						<option>L</option>
+						<option>XL</option>
+					</select>
 				</div>
-			</div>
 			
 			<h3>Beskrivning:</h3>
 			<p><?php echo $tee['Tee']['description']; ?></p>
-			<?php echo $this->Html->link('Lägg i varukorg', array('controller' => 'tees', 'action' => 'add_to_cart', $tee['Tee']['id'], 'S'), array('class' => 'btn btn-success btn-lg btn-block')); ?>
+			<button type="submit" class="btn btn-success btn-lg btn-block">Lägg till i varukorg</button>
+			
+			<?php /* echo $this->Html->link('Lägg i varukorg', array('controller' => 'tees', 'action' => 'add_to_cart', $tee['Tee']['id'], 'S'), array('class' => 'btn btn-success btn-lg btn-block')); */ ?>
+
+			</form>
 		</div>
 	</div>
 </div>
