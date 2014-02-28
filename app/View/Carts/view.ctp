@@ -1,5 +1,5 @@
 <div class="container">
-		<h1>Kundvagn</h1>
+		<h1>Varukorg</h1>
 		
 		<!-- Example row of columns -->
 			<div class="shoppingcart">
@@ -16,8 +16,8 @@
 				<tfoot>
 				<tr>
 					<td colspan="4">
-						<button type="button" class="btn btn-default">Uppdatera kundvagn</button>
-						<?php echo $this->Html->link('Töm kundvagn', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
+						<button type="button" class="btn btn-default">Uppdatera varukorg</button>
+						<?php echo $this->Html->link('Töm varukorg', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
 					</td>
 					<td align="right">Varuvärde: 199 kr<br>
 					Fraktkostnad: 100 kr<br>

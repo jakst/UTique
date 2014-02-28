@@ -1,22 +1,24 @@
 <ul class="nav navbar-nav navbar-right">
+	<?php 
+	if ($this->Session->check('Cart')): 
+		$cart = $this->Session->read('Cart');
+	?>
 	<li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">2 artiklar <strong>318 kr</strong> <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b></a>
+		
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo count($cart) == 1 ? '1 artikel' : count($cart).' artiklar' ; ?><strong> 318 kr</strong> <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b></a>
 		<ul class="dropdown-menu text-center">
 			<li>
 			<?php
-			if ($this->Session->check('Cart')):
-				$cart = $this->Session->read('Cart');
-				
-				
 				//debug
 				print_r($cart);
 				echo '</li><li>';
 				//end debug
 				
 				foreach ($cart as $id => $tee):
+					foreach ($tee['sizes'] as $size => $quantity):
 			?>
 				<ul class="list-inline cart-item text-left">
-					<li id="cart-item-image">
+					<li>
 					<?php 
 					echo $this->Html->image('tees/'.$id.'.jpg', array(
 						'width' => 64,
@@ -25,14 +27,14 @@
 						'url' => array('controller' => 'tees', 'action' => 'view', $id)
 					)); ?>
 					</li>
-					<li id="cart-item-title"><?php echo $this->Html->Link($tee['Tee']['name'].', '.$tee['Tee']['color'].', S', array('controller' => 'tees', 'action' => 'view', $id)); ?></li>
-					<li><strong><small><?php echo $tee['Tee']['price']; ?> kr</small></strong></li>
+					<li>
+						<?php echo $this->Html->Link($tee['Tee']['name'], array('controller' => 'tees', 'action' => 'view', $id)); ?><br>
+						<?php echo $size.', '.$quantity; ?> st, <strong><small><?php echo $tee['Tee']['price']; ?> kr</small></strong>
+					</li>
 				</ul>
 			<?php 
-				endforeach; 
-			else:
-				echo 'Varukorgen är tom';
-			endif;
+					endforeach; 
+				endforeach;
 			?>
 			</li>
 			<li role="presentation" class="divider"></li>
@@ -43,4 +45,7 @@
 			</strong></a>
 		</ul>
 	</li>
+	<?php else: ?>
+	<p class="navbar-text">Varukorgen är tom <span class="glyphicon glyphicon-shopping-cart"></span></p>
+	<?php endif; ?>
 </ul>
