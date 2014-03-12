@@ -15,21 +15,14 @@
 						<th>Summa</th>
 					</tr>
 				</thead>
-				<tfoot>
-				<tr>
-					<td colspan="4">
-						<button type="button" class="btn btn-default">Uppdatera varukorg</button>
-						<?php echo $this->Html->link('Töm varukorg', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
-					</td>
-					<td align="right">Varuvärde: 199 kr<br>
-					Fraktkostnad: 100 kr<br>
-					Totalkostnad: 299 kr</td>
-				</tr>
-				</tfoot>
+		
 				<tbody>
-									
 					<?php 
+					$totalshopvalue = 0;
+					if ($this->Session->check('Cart')): 
 					$cart = $this->Session->read('Cart');
+				
+					
 					foreach ($cart as $id => $tee):
 					foreach ($tee['sizes'] as $size => $quantity): ?>
 						<tr>
@@ -52,14 +45,32 @@
 							<td align="right"><?php echo $cart[$id]['Tee']['price']*$quantity?> kr</td>  
 
 						</tr>
-
 					<?php
+						$totalshopvalue = $totalshopvalue + $cart[$id]['Tee']['price']*$quantity;
+						
+
 						endforeach; 
 					endforeach;
-					?>
+					
+					else: ?>
+						
+							<p><h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4></p>	
 
+				<?php endif; ?>
 					
 				</tbody>
+				<tfoot>
+				<tr>
+					<td colspan="4">
+						<button type="button" class="btn btn-default">Uppdatera varukorg</button>
+						<?php echo $this->Html->link('Töm varukorg', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
+					</td>
+					<td align="right">Varuvärde: <?php echo $totalshopvalue ?> kr<br>
+					Fraktkostnad: 100 kr<br>
+					Totalkostnad: <?php echo $totalshopvalue+100 ?> kr</td>
+				</tr>
+				</tfoot>
+
 			</table>
 	
 				<div align="right">
