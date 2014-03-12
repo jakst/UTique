@@ -19,6 +19,7 @@
 				<tbody>
 					<?php 
 					$totalshopvalue = 0;
+					$shippingcost = 0;
 					if ($this->Session->check('Cart')): 
 					$cart = $this->Session->read('Cart');
 				
@@ -52,6 +53,8 @@
 						endforeach; 
 					endforeach;
 					
+						$shippingcost = 100;
+
 					else: ?>
 						
 							<p><h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4></p>	
@@ -66,8 +69,8 @@
 						<?php echo $this->Html->link('Töm varukorg', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
 					</td>
 					<td align="right">Varuvärde: <?php echo $totalshopvalue ?> kr<br>
-					Fraktkostnad: 100 kr<br>
-					Totalkostnad: <?php echo $totalshopvalue+100 ?> kr</td>
+					Fraktkostnad: <?php echo $shippingcost ?> kr<br>
+					Totalkostnad: <?php echo $totalshopvalue+$shippingcost ?> kr</td>
 				</tr>
 				</tfoot>
 
