@@ -1,5 +1,7 @@
+
 <div class="container">
 		<h1>Varukorg</h1>
+		
 		
 		<!-- Example row of columns -->
 			<div class="shoppingcart">
@@ -25,32 +27,38 @@
 				</tr>
 				</tfoot>
 				<tbody>
+									
 					<?php 
-					$sum = 0; 					
-					foreach ($tees as $tee):?>
-						<tr> 
+					$cart = $this->Session->read('Cart');
+					foreach ($cart as $id => $tee):
+					foreach ($tee['sizes'] as $size => $quantity): ?>
+						<tr>
 							<td><?php
-								echo $this->Html->image('tees/'.$tee['id'].'.jpg', 
-									array(
-										'alt' => $tees['Tee']['name'], 
-										'class' => 'img-responsive checkout-product-img', 
-										'width' => 55,
-										'height' => 55,
-										'url' => array('controller' => 'tees', 'action' => 'view', $tee['id']
-								)));
-								echo $this->Html->link(
-								' '.$tee['name'],
-								array('controller' => 'tees', 'action' => 'view', $tee['id']
+
+							echo $this->Html->image('tees/'.$id.'.jpg', array(
+							'width' => 55,
+							'height' => 55,
+							'alt' => $tee['Tee']['name'],
+							'url' => array('controller' => 'tees', 'action' => 'view', $id)
+							));
+							echo $this->Html->link(' '.$cart[$id]['Tee']['name'],
+								array('controller' => 'tees', 'action' => 'view', $id
 								));
+
 							?></td>
-							<td><?php echo $tee['size']?></td>
-							<td><input type="text" name="number1" value="<?php echo $tees['Tee']['amount']?>" size="1" maxlength="2"></td> 
-							<td><?php echo $tee['price']?> kr</td>  
-							<td align="right"><?php echo $tee['price']*$tee['amount']?> kr</td>  
+							<td><?php print_r($size)?></td>
+							<td><input type="text" name="number1" value="<?php echo $quantity?>" size="1" maxlength="2"></td>
+							<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
+							<td align="right"><?php echo $cart[$id]['Tee']['price']*$quantity?> kr</td>  
+
 						</tr>
-					<?php 
-					$sum = $sum+$tee['price'];
-					endforeach; ?>
+
+					<?php
+						endforeach; 
+					endforeach;
+					?>
+
+					
 				</tbody>
 			</table>
 	
