@@ -10,7 +10,7 @@
 			<li>
 			<?php
 				//debug
-				print_r($cart);
+				
 				echo '</li><li>';
 				//end debug
 				
