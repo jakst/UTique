@@ -2,16 +2,25 @@
 	<?php 
 	if ($this->Session->check('Cart')): 
 		$cart = $this->Session->read('Cart');
+		
+		$count = 0;
+		$total = 0;
+		
+		foreach ($cart as $id => $tee):
+			foreach ($tee['sizes'] as $size => $quantity):
+				$count += $quantity;
+				$total += $quantity * $tee['Tee']['price'];
+			endforeach;
+		endforeach;
 	?>
 	<li class="dropdown">
-		
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo count($cart) == 1 ? '1 artikel' : count($cart).' artiklar' ; ?><strong> 318 kr</strong> <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b></a>
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $count == 1 ? '1 artikel' : $count.' artiklar' ; ?><strong> <?php echo $total; ?> kr</strong> <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b></a>
 		<ul class="dropdown-menu text-center">
 			<li>
 			<?php
 				//debug
-				
-				echo '</li><li>';
+				/*print_r($cart);
+				echo '</li><li>';*/
 				//end debug
 				
 				foreach ($cart as $id => $tee):
@@ -29,8 +38,9 @@
 					</li>
 					<li>
 						<?php echo $this->Html->Link($tee['Tee']['name'], array('controller' => 'tees', 'action' => 'view', $id)); ?><br>
-						<?php echo $size.', '.$quantity; ?> st, <strong><small><?php echo $tee['Tee']['price']; ?> kr</small></strong>
+						<?php echo $size.', '.$quantity; ?> st á <?php echo $tee['Tee']['price']; ?> kr
 					</li>
+					<li class="cart-item-total"><?php echo $quantity * $tee['Tee']['price']; ?> kr</li>
 				</ul>
 			<?php 
 					endforeach; 

@@ -55,8 +55,13 @@ footer {
 }
 
 .cart-item{
-	width: 300px;
+	width: 350px;
 	margin-bottom: 5px;
+}
+
+.cart-item-total {
+	float: right;
+	font-weight: bold;
 }
 
 .filter-box{
