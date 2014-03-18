@@ -36,5 +36,14 @@ class CartsController extends AppController {
 		$this->Session->delete('Cart');
 		$this->redirect(array('controller' => 'carts', 'action' => 'view'));
 	}
+
+	public function delete_cart_item($id, $size){
+		$this->Session->delete('Cart.'.$id.'.sizes.'.$size);
+		if (count($this->Session->read('Cart.'.$id.'.sizes')) < 1) {$this->Session->delete('Cart.'.$id);}
+		if (count($this->Session->read('Cart')) < 1) {$this->Session->delete('Cart');}
+			
+		
+		$this->redirect(array('controller' => 'carts', 'action' => 'view'));
+	}
 }
 ?>
