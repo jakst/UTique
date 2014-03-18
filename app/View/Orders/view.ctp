@@ -1,6 +1,5 @@
-
 <div class="container">
-		<h1>Varukorg</h1>
+		<h1>Uppgifter</h1>
 			<?php if ($this->Session->check('Cart')): ?>
 			<table class="table table-striped table-centered">
 				<thead>
@@ -70,7 +69,7 @@
 			</table>
 	
 				<div align="right">
-					<?php echo $this->Html->link('Checka ut', array('controller' => 'orders', 'action' => 'view'), array('class' => 'btn btn-success btn-lg')); ?>
+				<button type="button" class="btn btn-success btn-lg">Checka ut</button>
 				</div> 
 
 					<?php else: ?>
