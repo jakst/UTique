@@ -1,85 +1,46 @@
 <div class="container">
-		<h1>Uppgifter</h1>
-			<?php if ($this->Session->check('Cart')): ?>
-			<table class="table table-striped table-centered">
-				<thead>
-					<tr>
-						<th>Artikel</th>
-						<th>Storlek</th>
-						<th>Antal</th>
-						<th>Á-pris</th>
-						<th class="text-right">Summa</th>
-					</tr>
-				</thead>
-		
-				<tbody>
-					<?php 
-					$totalshopvalue = 0;
-					$shippingcost = 0;
-						$cart = $this->Session->read('Cart');
-					
-						foreach ($cart as $id => $tee):
-							foreach ($tee['sizes'] as $size => $quantity): ?>
-								<tr>
-									<td><?php
-
-									echo $this->Html->image('tees/'.$id.'.jpg', array(
-									'width' => 55,
-									'height' => 55,
-									'alt' => $tee['Tee']['name'],
-									'url' => array('controller' => 'tees', 'action' => 'view', $id)
-									));
-									echo $this->Html->link(' '.$cart[$id]['Tee']['name'],
-										array('controller' => 'tees', 'action' => 'view', $id
-										));
-
-									?></td>
-									<td><?php print_r($size)?></td>
-									<td><input type="text" name="number1" value="<?php echo $quantity?>" size="1" maxlength="2"></td>
-									<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
-									<td align="right"><?php echo $cart[$id]['Tee']['price']*$quantity?> kr</td>
-									<td style="width: 50px">
-										<a href="delete_cart_item/<?php echo $id.'/'.$size;?>">
-											<span class="glyphicon glyphicon-remove"></span>
-										</a>
-									</td>
-								</tr>
-							<?php
-							$totalshopvalue = $totalshopvalue + $cart[$id]['Tee']['price']*$quantity;
-							
-
-							endforeach; 
-						endforeach;
-						
-						$shippingcost = 100; ?>
-
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="4">
-							<button type="button" class="btn btn-default">Uppdatera varukorg</button>
-							<?php echo $this->Html->link('Töm varukorg', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
-						</td>
-						<td colspan="2" align="right">Varuvärde: <?php echo $totalshopvalue ?> kr<br>
-						Fraktkostnad: <?php echo $shippingcost ?> kr<br>
-						Totalkostnad: <?php echo $totalshopvalue+$shippingcost ?> kr
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-	
-				<div align="right">
-				<button type="button" class="btn btn-success btn-lg">Checka ut</button>
-				</div> 
-
-					<?php else: ?>
-					
-						<p><h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4></p>	
-
-				<?php endif; ?>
-					
-		
-		
+		<h1>Mina uppgifter</h1><br>
+		<form role="form" id="AddInformation" method="post">
+		<div class="row">
 			
+			<div class="col-md-5">
+				<div class="form-group">
+					<label for="InputName">För- och efternamn</label>
+				    <input type="name" class="form-control" id="InputName" placeholder="För- och efternamn">
+				</div>
+				  
+				<div class="form-group">
+					<label for="InputEmail">Email</label>
+				    <input type="Email" class="form-control" id="InputEmail" placeholder="Email">
+				</div>
+				 
+				<div class="form-group">
+				    <label for="InputAddress">Adress</label>
+				    <input type="Address" class="form-control" id="InputAddress" placeholder="Adress">
+				</div>
+
+			</div>
+			<div class="col-md-5">
+				<div class="form-group">
+				    <label for="InputZipcode">Postnummer</label>
+				    <input type="Zipcode" class="form-control" id="InputZipcode" placeholder="Postnummer">
+				</div>
+
+				<div class="form-group">
+				    <label for="InputCity">Stad</label>
+				    <input type="City" class="form-control" id="InputCity" placeholder="Stad">
+				</div>
+
+				<div class="form-group">
+				    <label for="InputCountry">Land</label>
+				    <input type="Country" class="form-control" id="InputCountry" placeholder="Land">
+				</div>	
+			</div>
+			
+		</div>			
+		
+		<?php echo $this->Html->link('Gå tillbaka', array('controller' => 'carts', 'action' => 'view'), array('class' => 'btn btn-default btn-lg')); ?>
+			<button type="submit" class="btn btn-success btn-lg">Skicka order</button>
+		</form>	
 
 </div>
