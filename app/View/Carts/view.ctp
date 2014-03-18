@@ -36,13 +36,17 @@
 
 									?></td>
 									<td><?php print_r($size)?></td>
-									<td><input type="text" name="number1" value="<?php echo $quantity?>" size="1" maxlength="2"></td>
+									<td>
+										<div class="btn-group">
+											<?php echo $this->Html->link('-', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $quantity-1), array('class' => 'btn btn-default')); ?>
+											<a href="#" class="btn btn-default disabled"><?php echo $quantity; ?></a>
+											<?php echo $this->Html->link('+', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $quantity+1), array('class' => 'btn btn-default')); ?>
+										</div>
+									</td>
 									<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
 									<td align="right"><?php echo $cart[$id]['Tee']['price']*$quantity?> kr</td>
 									<td style="width: 50px">
-										<a href="delete_cart_item/<?php echo $id.'/'.$size;?>">
-											<span class="glyphicon glyphicon-remove"></span>
-										</a>
+										<?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
 									</td>
 								</tr>
 							<?php
@@ -58,7 +62,6 @@
 				<tfoot>
 					<tr>
 						<td colspan="4">
-							<button type="button" class="btn btn-default">Uppdatera varukorg</button>
 							<?php echo $this->Html->link('Töm varukorg', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
 						</td>
 						<td colspan="2" align="right">Varuvärde: <?php echo $totalshopvalue ?> kr<br>
@@ -74,8 +77,7 @@
 				</div> 
 
 					<?php else: ?>
-					
-						<p><h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4></p>	
+					<h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4>	
 
 				<?php endif; ?>
 					
