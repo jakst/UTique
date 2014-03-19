@@ -17,46 +17,46 @@
 					<?php 
 					$totalshopvalue = 0;
 					$shippingcost = 0;
-						$cart = $this->Session->read('Cart');
+					$cart = $this->Session->read('Cart');
 					
-						foreach ($cart as $id => $tee):
-							foreach ($tee['sizes'] as $size => $quantity): ?>
-								<tr>
-									<td><?php
+					foreach ($cart as $id => $tee):
+						foreach ($tee['sizes'] as $size => $quantity): ?>
+							<tr>
+								<td><?php
 
-									echo $this->Html->image('tees/'.$id.'.jpg', array(
-									'width' => 55,
-									'height' => 55,
-									'alt' => $tee['Tee']['name'],
-									'url' => array('controller' => 'tees', 'action' => 'view', $id)
+								echo $this->Html->image('tees/'.$id.'.jpg', array(
+								'width' => 55,
+								'height' => 55,
+								'alt' => $tee['Tee']['name'],
+								'url' => array('controller' => 'tees', 'action' => 'view', $id)
+								));
+								echo $this->Html->link(' '.$cart[$id]['Tee']['name'],
+									array('controller' => 'tees', 'action' => 'view', $id
 									));
-									echo $this->Html->link(' '.$cart[$id]['Tee']['name'],
-										array('controller' => 'tees', 'action' => 'view', $id
-										));
 
-									?></td>
-									<td><?php print_r($size)?></td>
-									<td>
-										<div class="btn-group">
-											<?php echo $this->Html->link('-', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $quantity-1), array('class' => 'btn btn-default')); ?>
-											<a href="#" class="btn btn-default disabled"><?php echo $quantity; ?></a>
-											<?php echo $this->Html->link('+', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $quantity+1), array('class' => 'btn btn-default')); ?>
-										</div>
-									</td>
-									<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
-									<td align="right"><?php echo $cart[$id]['Tee']['price']*$quantity?> kr</td>
-									<td style="width: 50px">
-										<?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
-									</td>
-								</tr>
-							<?php
-							$totalshopvalue = $totalshopvalue + $cart[$id]['Tee']['price']*$quantity;
-							
-
-							endforeach; 
-						endforeach;
+								?></td>
+								<td><?php print_r($size)?></td>
+								<td>
+									<div class="btn-group">
+										<?php echo $this->Html->link('-', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $quantity-1), array('class' => 'btn btn-default')); ?>
+										<a href="#" class="btn btn-default disabled"><?php echo $quantity; ?></a>
+										<?php echo $this->Html->link('+', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $quantity+1), array('class' => 'btn btn-default')); ?>
+									</div>
+								</td>
+								<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
+								<td align="right"><?php echo $cart[$id]['Tee']['price']*$quantity?> kr</td>
+								<td style="width: 50px">
+									<?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
+								</td>
+							</tr>
+						<?php
+						$totalshopvalue = $totalshopvalue + $cart[$id]['Tee']['price']*$quantity;
 						
-						$shippingcost = 100; ?>
+
+						endforeach; 
+					endforeach;
+						
+					$shippingcost = 100; ?>
 
 				</tbody>
 				<tfoot>
@@ -72,8 +72,9 @@
 				</tfoot>
 			</table>
 	
+				
 				<div align="right">
-					<?php echo $this->Html->link('Checka ut', array('controller' => 'orders', 'action' => 'view'), array('class' => 'btn btn-success btn-lg')); ?>
+					<?php echo $this->Html->link('Checka ut', array('controller' => 'orders', 'action' => 'create_order'), array('class' => 'btn btn-success btn-lg')); ?>
 				</div> 
 
 					<?php else: ?>

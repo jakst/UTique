@@ -40,7 +40,9 @@
 		</div>			
 		
 		<?php echo $this->Html->link('Gå tillbaka', array('controller' => 'carts', 'action' => 'view'), array('class' => 'btn btn-default btn-lg')); ?>
-			<button type="submit" class="btn btn-success btn-lg">Skicka order</button>
+			
+		<?php echo $this->Html->link('Skicka order', array('controller' => 'confirmations', 'action' => 'view'), array('class' => 'btn btn-success btn-lg')); ?>
+
 		</form>	
 
 </div>
