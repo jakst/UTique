@@ -1,12 +1,23 @@
 <div class="container">
 		<h1>Mina uppgifter</h1><br>
-		<form role="form" id="AddInformation" method="post">
+
+		<?php echo $this->Form->create();
+
+		echo $this->Form->input('Customer.name');   
+		echo $this->Form->input('Customer.email');   
+		echo $this->Form->input('Customer.address');                             
+		echo $this->Form->input('Customer.zipcode');      
+		echo $this->Form->input('Customer.city');                             
+		echo $this->Form->input('Customer.country'); 
+		echo $this->Form->end('Add');?>
+
+		<form role="form" id="AddInformation" method="post" action="/utique/orders/create_order">
 		<div class="row">
 			
 			<div class="col-md-5">
 				<div class="form-group">
 					<label for="InputName">För- och efternamn</label>
-				    <input type="name" class="form-control" id="InputName" placeholder="För- och efternamn">
+				    <input name="data[Customer][name]" type="name" class="form-control" id="InputName" placeholder="För- och efternamn">
 				</div>
 				  
 				<div class="form-group">
