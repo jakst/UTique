@@ -11,29 +11,29 @@
 				  
 				<div class="form-group">
 					<label for="InputEmail">Email</label>
-				    <input type="Email" class="form-control" id="InputEmail" placeholder="Email">
+				    <input type="email" class="form-control" id="InputEmail" placeholder="Email">
 				</div>
 				 
 				<div class="form-group">
 				    <label for="InputAddress">Adress</label>
-				    <input type="Address" class="form-control" id="InputAddress" placeholder="Adress">
+				    <input type="address" class="form-control" id="InputAddress" placeholder="Adress">
 				</div>
 
 			</div>
 			<div class="col-md-5">
 				<div class="form-group">
 				    <label for="InputZipcode">Postnummer</label>
-				    <input type="Zipcode" class="form-control" id="InputZipcode" placeholder="Postnummer">
+				    <input type="zipcode" class="form-control" id="InputZipcode" placeholder="Postnummer">
 				</div>
 
 				<div class="form-group">
 				    <label for="InputCity">Stad</label>
-				    <input type="City" class="form-control" id="InputCity" placeholder="Stad">
+				    <input type="city" class="form-control" id="InputCity" placeholder="Stad">
 				</div>
 
 				<div class="form-group">
 				    <label for="InputCountry">Land</label>
-				    <input type="Country" class="form-control" id="InputCountry" placeholder="Land">
+				    <input type="country" class="form-control" id="InputCountry" placeholder="Land">
 				</div>	
 			</div>
 			
