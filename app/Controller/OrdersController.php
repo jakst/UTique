@@ -2,11 +2,11 @@
 class OrdersController extends AppController {
 
 	public function view($id = null) {
-	   
+
 	}
 
 	public function add_information(){
-		
+
 	}
 
 	public function create_order(){	
@@ -22,26 +22,20 @@ class OrdersController extends AppController {
 				)
 		);
 
-		$customerdata = array(
-			'Customer' => array(
-				'name' => '',
-				'email' => 'ylva_cool_90@hotmai.com',
-				'address'=> 'Karamellvägen 4',
-				'zipcode' => '44155',
-				'city' =>'Alingsås',
-				'country' => 'Sweden'
-				)
 
-		);
 
 		$this->Order->create();
 		$this->Order->save($data);
 		$this->Order->Customer->save($this->request->data);
+		$this->Payment = ClassRegistry::init('Payment');
+		$this->Payment->set('order_id', $this->Order->id);
+		$this->Payment->save($this->request->data);
+
 
 
 		/*$h = $this->Item->find('list');
 		print_r($h);*/
-		
+
 	}
 }
 ?>

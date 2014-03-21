@@ -1,8 +1,8 @@
 <?php
 class Item extends AppModel {
-	public $hasAndBelongsToMany = array(
-		'Cart',
-		'Order'
+	public $hasMany = array(
+		//'Cart',
+		'OrderItem'
 	);
 }
 ?>
