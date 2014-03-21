@@ -1,15 +1,22 @@
 <div class="container">
 		<h1>Mina uppgifter</h1><br>
 
-		<?php echo $this->Form->create();
+		<?php echo $this->Form->create();?>
+		<div class="row">
+			<div class="col-md-5">
+			<?php echo $this->Form->input('Customer.name');   
+			echo $this->Form->input('Customer.email');   
+			echo $this->Form->input('Customer.address');?>
+			</div>  
+			<div class="col-md-5">                           
+			<?php echo $this->Form->input('Customer.zipcode');      
+			echo $this->Form->input('Customer.city');                             
+			echo $this->Form->input('Customer.country');?> 
+			
+			</div>  
+		</div>
 
-		echo $this->Form->input('Customer.name');   
-		echo $this->Form->input('Customer.email');   
-		echo $this->Form->input('Customer.address');                             
-		echo $this->Form->input('Customer.zipcode');      
-		echo $this->Form->input('Customer.city');                             
-		echo $this->Form->input('Customer.country'); 
-		echo $this->Form->end('Add');?>
+		<?php echo $this->Form->end('Skicka order');?>
 
 		<form role="form" id="AddInformation" method="post" action="/utique/orders/create_order">
 		<div class="row">
