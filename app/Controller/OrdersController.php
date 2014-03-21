@@ -24,8 +24,10 @@ class OrdersController extends AppController {
 		$this->Order->create();
 		$this->Order->save($data);
 
-		$h = $this->Item->find('list');
-		print_r($h);
+		/*$h = $this->Item->find('list');
+		print_r($h);*/
+		
+		$this->redirect(array('controller' => 'orders', 'action' => 'view'));
 	}
 }
 ?>
