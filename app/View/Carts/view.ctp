@@ -80,10 +80,6 @@
 					<?php else: ?>
 					<h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4>	
 
-				<?php endif; ?>
-					
-		
-		
-			
+				<?php endif; ?>		
 
 </div>
