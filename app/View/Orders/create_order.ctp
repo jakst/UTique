@@ -3,64 +3,28 @@
 
 		<?php echo $this->Form->create();?>
 		<div class="row">
-			<div class="col-md-5">
-			<?php echo $this->Form->input('Customer.name');   
+			<div class="col-md-6">
+			<?php echo $this->Form->input('Customer.name',array('label' => 'Namn'));   
 			echo $this->Form->input('Customer.email');   
-			echo $this->Form->input('Customer.address');?>
+			echo $this->Form->input('Customer.address',array('label' => 'Adress'));?>
 			</div>  
-			<div class="col-md-5">                           
-			<?php echo $this->Form->input('Customer.zipcode');      
-			echo $this->Form->input('Customer.city');                             
-			echo $this->Form->input('Customer.country');?> 
+			<div class="col-md-6">                           
+			<?php echo $this->Form->input('Customer.zipcode',array('label' => 'Postnummer'));      
+			echo $this->Form->input('Customer.city',array('label' => 'Stad'));                             
+			echo $this->Form->input('Customer.country',array('label' => 'Land'));?> 
 			
 			</div>  
 		</div>
 
-		<?php echo $this->Form->end('Skicka order');?>
-
-		<form role="form" id="AddInformation" method="post" action="/utique/orders/create_order">
+		<h1>Betalnings uppgifter</h1><br>
 		<div class="row">
-			
-			<div class="col-md-5">
-				<div class="form-group">
-					<label for="InputName">För- och efternamn</label>
-				    <input name="data[Customer][name]" type="name" class="form-control" id="InputName" placeholder="För- och efternamn">
-				</div>
-				  
-				<div class="form-group">
-					<label for="InputEmail">Email</label>
-				    <input type="email" class="form-control" id="InputEmail" placeholder="Email">
-				</div>
-				 
-				<div class="form-group">
-				    <label for="InputAddress">Adress</label>
-				    <input type="address" class="form-control" id="InputAddress" placeholder="Adress">
-				</div>
-
+			<div class="col-md-6">
+				<?php echo $this->Form->input('Payment.card_number',array('label' => 'Kortnummer'));                             
+				echo $this->Form->input('Payment.expiry_date',array('label' => 'Utgångsdatum'));?> 
 			</div>
-			<div class="col-md-5">
-				<div class="form-group">
-				    <label for="InputZipcode">Postnummer</label>
-				    <input type="zipcode" class="form-control" id="InputZipcode" placeholder="Postnummer">
-				</div>
+		</div>
 
-				<div class="form-group">
-				    <label for="InputCity">Stad</label>
-				    <input type="city" class="form-control" id="InputCity" placeholder="Stad">
-				</div>
+		<?php echo $this->Html->link('Gå tillbaka', array('controller' => 'carts', 'action' => 'view'), array('class' => 'btn btn-default btn-lg'));
 
-				<div class="form-group">
-				    <label for="InputCountry">Land</label>
-				    <input type="country" class="form-control" id="InputCountry" placeholder="Land">
-				</div>	
-			</div>
-			
-		</div>			
-		
-		<?php echo $this->Html->link('Gå tillbaka', array('controller' => 'carts', 'action' => 'view'), array('class' => 'btn btn-default btn-lg')); ?>
-			
-		<?php echo $this->Html->link('Skicka order', array('controller' => 'confirmations', 'action' => 'view'), array('class' => 'btn btn-success btn-lg')); ?>
-
-		</form>	
-
+		echo $this->Form->end('Skicka order');?>
 </div>

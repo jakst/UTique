@@ -17,7 +17,12 @@ class Customer extends AppModel {
                 'rule' => 'notEmpty'
             ),
             'zipcode' => array(
-                'rule' => 'notEmpty'
+                'numbers' => array(
+                    'rule' => 'alphaNumeric' 
+                ),
+                /*'fiveDigits' => array(
+                    'rule' => array('length', 8)
+                )*/
             ),
             'city' => array(
                 'rule' => 'notEmpty'
