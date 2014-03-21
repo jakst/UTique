@@ -4,6 +4,5 @@ class Item extends AppModel {
 		'Cart',
 		'Order'
 	);
-
 }
 ?>
