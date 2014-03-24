@@ -16,14 +16,11 @@ class Customer extends AppModel {
             'address' => array(
                 'rule' => 'notEmpty'
             ),
+ 
             'zipcode' => array(
-                'numbers' => array(
-                    'rule' => 'alphaNumeric' 
-                ),
-                /*'fiveDigits' => array(
-                    'rule' => array('length', 8)
-                )*/
-            ),
+              'rule' => array('between', 5,5),
+              'message' => 'Postnumret måste vara 5 siffror långt'
+             ),
             'city' => array(
                 'rule' => 'notEmpty'
             ),

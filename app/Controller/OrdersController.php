@@ -37,5 +37,8 @@ class OrdersController extends AppController {
 		print_r($h);*/
 
 	}
+	public function confirm_order(){
+	}
+
 }
 ?>
