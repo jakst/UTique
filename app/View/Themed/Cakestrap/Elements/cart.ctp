@@ -7,9 +7,9 @@
 		$total = 0;
 		
 		foreach ($cart as $id => $tee):
-			foreach ($tee['sizes'] as $size => $quantity):
-				$count += $quantity;
-				$total += $quantity * $tee['Tee']['price'];
+			foreach ($tee['sizes'] as $size => $orderItem):
+				$count += $orderItem['amount'];
+				$total += $orderItem['amount'] * $tee['Tee']['price'];
 			endforeach;
 		endforeach;
 	?>
@@ -19,12 +19,12 @@
 			<li>
 			<?php
 				//debug
-				/*print_r($cart);
-				echo '</li><li>';*/
+				print_r($cart);
+				echo '</li><li>';
 				//end debug
 				
 				foreach ($cart as $id => $tee):
-					foreach ($tee['sizes'] as $size => $quantity):
+					foreach ($tee['sizes'] as $size => $orderItem):
 			?>
 				<ul class="list-inline cart-item text-left">
 					<li>
@@ -38,9 +38,9 @@
 					</li>
 					<li>
 						<?php echo $this->Html->Link($tee['Tee']['name'], array('controller' => 'tees', 'action' => 'view', $id)); ?><br>
-						<?php echo $size.', '.$quantity; ?> st á <?php echo $tee['Tee']['price']; ?> kr
+						<?php echo $size.', '.$orderItem['amount']; ?> st á <?php echo $tee['Tee']['price']; ?> kr
 					</li>
-					<li class="cart-item-total"><?php echo $quantity * $tee['Tee']['price']; ?> kr</li>
+					<li class="cart-item-total"><?php echo $orderItem['amount'] * $tee['Tee']['price']; ?> kr</li>
 				</ul>
 			<?php 
 					endforeach; 

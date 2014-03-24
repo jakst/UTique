@@ -20,7 +20,7 @@
 					$cart = $this->Session->read('Cart');
 					
 					foreach ($cart as $id => $tee):
-						foreach ($tee['sizes'] as $size => $quantity): ?>
+						foreach ($tee['sizes'] as $size => $orderItem): ?>
 							<tr>
 								<td><?php
 
@@ -38,19 +38,19 @@
 								<td><?php print_r($size)?></td>
 								<td>
 									<div class="btn-group">
-										<?php echo $this->Html->link('-', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $quantity-1), array('class' => 'btn btn-default')); ?>
-										<a href="#" class="btn btn-default disabled"><?php echo $quantity; ?></a>
-										<?php echo $this->Html->link('+', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $quantity+1), array('class' => 'btn btn-default')); ?>
+										<?php echo $this->Html->link('-', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $orderItem['amount']-1), array('class' => 'btn btn-default')); ?>
+										<a href="#" class="btn btn-default disabled"><?php echo $orderItem['amount']; ?></a>
+										<?php echo $this->Html->link('+', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $orderItem['amount']+1), array('class' => 'btn btn-default')); ?>
 									</div>
 								</td>
 								<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
-								<td align="right"><?php echo $cart[$id]['Tee']['price']*$quantity?> kr</td>
+								<td align="right"><?php echo $cart[$id]['Tee']['price']*$orderItem['amount']?> kr</td>
 								<td style="width: 50px">
 									<?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
 								</td>
 							</tr>
 						<?php
-						$totalshopvalue = $totalshopvalue + $cart[$id]['Tee']['price']*$quantity;
+						$totalshopvalue = $totalshopvalue + $cart[$id]['Tee']['price']*$orderItem['amount'];
 						
 
 						endforeach; 

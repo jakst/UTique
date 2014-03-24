@@ -43,7 +43,7 @@ class CartsController extends AppController {
 			if (count($this->Session->read('Cart.'.$id.'.sizes')) < 1) {$this->Session->delete('Cart.'.$id);}
 			if (count($this->Session->read('Cart')) < 1) {$this->Session->delete('Cart');}
 		} else {
-			$this->Session->write('Cart.'.$id.'.sizes.'.$size, $count);
+			$this->Session->write('Cart.'.$id.'.sizes.'.$size.'.amount', $count);
 		}
 		
 		$this->redirect(array('controller' => 'carts', 'action' => 'view'));

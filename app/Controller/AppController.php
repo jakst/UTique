@@ -37,4 +37,10 @@ class AppController extends Controller {
 			'className' => 'BootstrapForm'
 		)
  	);
+	
+	function beforeFilter() { 
+		if (!$this->Session->check('Uuid')){
+			$this->Session->write('Uuid', String::uuid());
+		}
+	}
 }

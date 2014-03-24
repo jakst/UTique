@@ -56,10 +56,9 @@
 				<div class="form-group">
 					<label for="size"><h3>Välj storlek</h3></label>
 					<select class="form-control" id="size" name="size">
-						<option>S</option>
-						<option>M</option>
-						<option>L</option>
-						<option>XL</option>
+						<?php foreach ($tee['Item'] as $item): ?>
+						<option value="<?php echo $item['id'].'-'.$item['size']; ?>"><?php echo $item['size']; ?></option>
+						<?php endforeach; ?>
 					</select>
 				</div>
 			

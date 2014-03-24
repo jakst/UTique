@@ -62,7 +62,7 @@
 				</div><!--/.navbar-collapse -->
 			</div>
 		</div>
-			
+		
 		<?php echo $this->fetch('content'); ?>
 		
 		<!--<div class="well well-sm">

@@ -1,22 +1,7 @@
 <?php
 class TeesController extends AppController {
-    // public $helpers = array('Html', 'Form');
 
     public function index() {
-		// $data = array(
-			// 'Tee' => array(
-				// 'price' => 1,
-				// 'color' => 'pink',
-				// 'name' => 'Test Tee',
-				// 'description' => 'Derp',
-				// 'sex' => 'F'
-			// )
-		// );
-		
-		// $this->Tee->create();
-		// $this->Tee->save($data);
-        // $this->set('tees', $this->Tee->find('all'));
-		
 		$this->set('tees', $this->Tee->find('all'));
     }
 	
@@ -33,32 +18,41 @@ class TeesController extends AppController {
 		
 		$this->set('tee', $tee);
 	}	
-
-
+	
 	public function add_to_cart(){
 		$id = $this->request->data['id'];
-		$size = $this->request->data['size'];
+		$sizeId = $this->request->data['size'];
 		
-		if (!$id || !$size) {
+		if (!$id || !$sizeId) {
             throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
 		}
 
-		$tee = $this->Tee->findById($id);
+		$this->Tee->recursive = -1;
+		$tee = $this->Tee->find('all', array(
+			'contain' => false,
+			'conditions' => array('Tee.id' => $id),
+			'fields' => array('id', 'name', 'price', 'color', 'sex')
+		))['0'];
+		
+		$sId = explode('-', $sizeId)[0];
+		$size = explode('-', $sizeId)[1];
+		
 		if (!$tee){
 			throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
 		}
-
+		
 		$amount = 0;
+		
 		if ($this->Session->check('Cart.'.$id)){
 			if ($this->Session->check('Cart.'.$id.'.sizes.'.$size)){
-				$amount = $this->Session->read('Cart.'.$id.'.sizes.'.$size);
+				$amount = $this->Session->read('Cart.'.$id.'.sizes.'.$size.'.amount');
 			}
 		} else {
 			$this->Session->write('Cart.'.$id, $tee);
 		}
 
-		$this->Session->write('Cart.'.$id.'.sizes.'.$size, $amount+1);
-		
+		$orderItem = array('item_id' => $sId, 'amount' => $amount + 1);
+		$this->Session->write('Cart.'.$id.'.sizes.'.$size, $orderItem);
 		$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
 	}
 }
