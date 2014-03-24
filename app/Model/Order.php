@@ -4,6 +4,9 @@ class Order extends AppModel {
 		'OrderItem'
 	);
 
-	public $hasOne = 'Customer';
+	public $hasOne = array(
+		'Customer',
+		'Payment'
+	);
 }
 ?>
