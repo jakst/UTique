@@ -10,10 +10,11 @@ class Payment extends AppModel {
             ),
             'expiry_date' => array(
                 'rule'       => array('date', 'ym'),
-      			'message'    => 'Ange ett utgångsdatum i formatet YY-MM',
+      			'message'    => 'Ange ett korrekt utgångsdatum i formatet YY-MM',
      			
             )
 
         );
+
 }
 ?>

@@ -1,10 +1,8 @@
 <div class="container">
 		<h1>Mina uppgifter</h1><br>
 
+		<?php echo $this->Form->create();?>
 		
-		<?php echo $this->Form->create(null, array(
-    'url' => array('controller' => 'orders', 'action' => 'confirm_order')
-	));?>
 		<div class="row">
 			<div class="col-md-6">
 			<?php echo $this->Form->input('Customer.name',array('label' => 'Namn'));   
