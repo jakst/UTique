@@ -5,11 +5,16 @@ class Payment extends AppModel {
 
     public $validate = array(
             'card_number' => array(
-                'rule' => array('cc', 'all', false, null)
+                'rule' => array('cc', 'all', false, null),
+                'message' => 'Ange ett korrekt kortnummer'
             ),
             'expiry_date' => array(
-                'rule' => 'notEmpty'
+                'rule'       => array('date', 'ym'),
+      			'message'    => 'Ange ett korrekt utgångsdatum i formatet YY-MM',
+     			
             )
+
         );
+
 }
 ?>
