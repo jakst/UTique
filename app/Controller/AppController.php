@@ -31,16 +31,9 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	public $theme = "Cakestrap";
 	public $helpers = array(
 		'Form' => array(
 			'className' => 'BootstrapForm'
 		)
  	);
-	
-	function beforeFilter() { 
-		if (!$this->Session->check('Uuid')){
-			$this->Session->write('Uuid', String::uuid());
-		}
-	}
 }
