@@ -41,6 +41,9 @@
 						<?php echo $size.', '.$orderItem['amount']; ?> st á <?php echo $tee['Tee']['price']; ?> kr
 					</li>
 					<li class="cart-item-total"><?php echo $orderItem['amount'] * $tee['Tee']['price']; ?> kr</li>
+					<li>
+						<?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'app', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
+					</li>
 				</ul>
 			<?php 
 					endforeach; 

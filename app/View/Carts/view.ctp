@@ -46,7 +46,7 @@
 								<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
 								<td align="right"><?php echo $cart[$id]['Tee']['price']*$orderItem['amount']?> kr</td>
 								<td style="width: 50px">
-									<?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
+									<?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'app', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
 								</td>
 							</tr>
 						<?php

@@ -18,7 +18,7 @@
 				<thead>
 					<th></th>
 					<th><H4><center>Höjd</center></H4></th>
-					<th><H4><center>Bredd</center></H4></th>
+					<th><H4><center>Bröstbredd</center></H4></th>
 				</thead>
 
 				<tbody>
