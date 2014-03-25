@@ -119,9 +119,10 @@
 							<label class="checkbox-inline">
 								<input type="checkbox" id="inlineCheckbox3" value="large">XL
 							</label>
-						</li>
+						</li>						
 					</ul>
 				</div>
+				<input class="btn btn-default btn-block" type="submit" value="Filtrera">
 			</form>
 		</div>
 

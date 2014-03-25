@@ -1,9 +1,14 @@
 <?php
 class TeesController extends AppController {
 
-    public function index() {
-		$this->set('tees', $this->Tee->find('all'));
-    }
+	public function index() {
+		$tees = $this->Tee->find('all', array(
+        	'conditions' => array(
+        		'Tee.color' => 'Svart'
+        	)
+        ));
+		$this->set('tees', $tees);
+	}
 	
 	public function view($id = null) {
 	    if (!$id) {
