@@ -5,14 +5,14 @@
 		
 		<div class="row">
 			<div class="col-md-6">
-			<?php echo $this->Form->input('Customer.name',array('label' => 'Namn'));   
-			echo $this->Form->input('Customer.email');   
-			echo $this->Form->input('Customer.address',array('label' => 'Adress'));?>
+			<?php echo $this->Form->input('Customer.name',array('label' => 'Namn' , 'placeholder' => 'För- och efternamn'));   
+			echo $this->Form->input('Customer.email',array('placeholder' => 'E-mail'));   
+			echo $this->Form->input('Customer.address',array('label' => 'Adress','placeholder' => 'Gatuadress'));?>
 			</div>  
 			<div class="col-md-6">                           
-			<?php echo $this->Form->input('Customer.zipcode',array('label' => 'Postnummer'));      
-			echo $this->Form->input('Customer.city',array('label' => 'Stad'));                             
-			echo $this->Form->input('Customer.country',array('label' => 'Land'));?> 
+			<?php echo $this->Form->input('Customer.zipcode',array('label' => 'Postnummer','placeholder' => 'Postnummer'));      
+			echo $this->Form->input('Customer.city',array('label' => 'Stad','placeholder' => 'Stad'));                             
+			echo $this->Form->input('Customer.country',array('label' => 'Land','placeholder' => 'Land'));?> 
 			
 			</div>  
 		</div>
@@ -20,8 +20,8 @@
 		<h1>Betalnings uppgifter</h1><br>
 		<div class="row">
 			<div class="col-md-7">
-				<?php echo $this->Form->input('Payment.card_number',array('label' => 'Kortnummer'));                             
-				echo $this->Form->input('Payment.expiry_date',array('label' => 'Utgångsdatum'));?> 
+				<?php echo $this->Form->input('Payment.card_number',array('label' => 'Kortnummer','placeholder' => 'Kortnummer'));                             
+				echo $this->Form->input('Payment.expiry_date',array('label' => 'Utgångsdatum','placeholder' => 'YY-MM'));?> 
 			</div>
 		</div>
 		<div class="form-group">
