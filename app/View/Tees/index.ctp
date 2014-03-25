@@ -34,87 +34,95 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<div class="filter-box">
-				<h4>Modell</h4>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default">Alla</button>
-					<button type="button" class="btn btn-default">Dam</button>
-					<button type="button" class="btn btn-default">Herr</button>
-				</div>		
-			</div>
-			
-			<div class="filter-box">
-				<h4>Färg</h4>
-				<ul class="list-unstyled">
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="colorCheckBox1" value="black"> Svart
+			<form>
+				<div class="filter-box">
+					<h4>Modell</h4>
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-default active">
+							<input type="radio" name="options" id="option1" active> Alla
 						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="options" id="option2"> Dam
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="options" id="option3"> Herr
+						</label>
+					</div>	
+				</div>
+				
+				<div class="filter-box">
+					<h4>Färg</h4>
+					<ul class="list-unstyled">
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="colorCheckBox1" value="black"> Svart
+							</label>
+							</li>
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="colorCheckBox2" value="red">Röd
+							</label>
 						</li>
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="colorCheckBox2" value="red">Röd
-						</label>
-					</li>
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="colorCheckBox3" value="green">Grön
-						</label>
-					</li>
-				</ul>
-			</div>
-			
-			<div class="filter-box">
-				<h4>Pris</h4>
-				<ul class="list-unstyled">
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="inlineCheckbox1" value="small">0 - 99 kr
-						</label>
-					</li>
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="inlineCheckbox2" value="medium">100 - 199 kr
-						</label>
-					</li>
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="inlineCheckbox3" value="large">200 - 299 kr
-						</label>
-					</li>
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="inlineCheckbox3" value="large">&gt; 299 kr
-						</label>
-					</li>
-				</ul>
-			</div>
-			
-			<div class="filter-box">
-				<h4>Storlek</h4>
-				<ul class="list-unstyled">
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="inlineCheckbox1" value="small">Small
-						</label>
-					</li>
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="inlineCheckbox2" value="medium">Medium
-						</label>
-					</li>
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="inlineCheckbox3" value="large">Large
-						</label>
-					</li>
-					<li>
-						<label class="checkbox-inline">
-							<input type="checkbox" id="inlineCheckbox3" value="large">XL
-						</label>
-					</li>
-				</ul>
-			</div>
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="colorCheckBox3" value="green">Grön
+							</label>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="filter-box">
+					<h4>Pris</h4>
+					<ul class="list-unstyled">
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox1" value="small">0 - 99 kr
+							</label>
+						</li>
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox2" value="medium">100 - 199 kr
+							</label>
+						</li>
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox3" value="large">200 - 299 kr
+							</label>
+						</li>
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox3" value="large">&gt; 299 kr
+							</label>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="filter-box">
+					<h4>Storlek</h4>
+					<ul class="list-unstyled">
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox1" value="small">Small
+							</label>
+						</li>
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox2" value="medium">Medium
+							</label>
+						</li>
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox3" value="large">Large
+							</label>
+						</li>
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox3" value="large">XL
+							</label>
+						</li>
+					</ul>
+				</div>
+			</form>
 		</div>
 
 		<div id="product-grid" class="col-md-9">
