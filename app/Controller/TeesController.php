@@ -55,5 +55,22 @@ class TeesController extends AppController {
 		$this->Session->write('Cart.'.$id.'.sizes.'.$size, $orderItem);
 		$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
 	}
+	
+	public function reallocate() {
+		$tees = $this->Tee->find('all');
+		$this->Tee->Item->query('TRUNCATE items;');
+		
+		foreach ($tees as $tee) {
+			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XS');
+			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'S');
+			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'M');
+			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'L');
+			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XL');
+			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XXL');
+			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XXXL');
+		}
+		
+		if ($this->Tee->Item->saveMany($data)) {echo '<span style="color: red; font-size: 30px">YEEAAAHH!!!!</span>';}
+	}
 }
 ?>
