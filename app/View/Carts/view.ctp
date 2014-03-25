@@ -10,6 +10,8 @@
 						<th>Antal</th>
 						<th>Á-pris</th>
 						<th class="text-right">Summa</th>
+						<th></th>
+
 					</tr>
 				</thead>
 		
