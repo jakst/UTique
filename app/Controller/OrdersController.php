@@ -24,6 +24,7 @@ class OrdersController extends AppController {
 					unset($data['Customer']);
 					
 					if ($this->Order->saveAll($data)) {
+						$this->Session->delete('Cart');
 						return $this->redirect(array('action' => 'confirm_order'));
 					}
 				}
