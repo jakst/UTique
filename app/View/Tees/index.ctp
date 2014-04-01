@@ -39,13 +39,13 @@
 					<h4>Modell</h4>
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default active">
-							<input type="radio" name="options" id="option1" active> Alla
+							<input type="radio" name="options" id="all" active> Alla
 						</label>
 						<label class="btn btn-default">
-							<input type="radio" name="options" id="option2"> Dam
+							<input type="radio" name="options" id="female"> Dam
 						</label>
 						<label class="btn btn-default">
-							<input type="radio" name="options" id="option3"> Herr
+							<input type="radio" name="options" id="male"> Herr
 						</label>
 					</div>	
 				</div>
