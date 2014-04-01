@@ -13,6 +13,7 @@
 			<?php echo $this->Form->input('Customer.zipcode',array('label' => 'Postnummer','placeholder' => 'Postnummer'));      
 			echo $this->Form->input('Customer.city',array('label' => 'Stad','placeholder' => 'Stad'));                             
 			echo $this->Form->input('Customer.country',array('label' => 'Land','placeholder' => 'Land'));?> 
+
 			
 			</div>  
 		</div>
