@@ -2,11 +2,44 @@
 class TeesController extends AppController {
 
 	public function index() {
+		$gender = 'Alla';
+		$genderCondition = array();
+		$colorCondition = array();
+		$color = null;
+
+		if ($this->request->is('post')) {
+			$gender = $this->request->data['gender'];
+			$color = $this->request->data['color'];
+			print_r ($color);
+						
+			if($gender != 'Alla'){
+				$genderCondition['Tee.sex'] = $gender;
+			}
+			
+			if($color != null){
+			
+				foreach ($color as $value){
+					$colorCondition['OR'][]['Tee.color'] = $value;
+				}
+				unset ($value);
+			}
+			
+		}
+		
+		
 		$tees = $this->Tee->find('all', array(
-        	'conditions' => array(
-        		'Tee.color' => 'Svart'
-        	)
-        ));
+			'conditions' => array(
+				$genderCondition,
+				$colorCondition,
+				// $price,
+				// $size
+				/*'OR' => array(
+					array('Tee.color' => 'Svart'),
+					array('Tee.color' => 'Vit')
+				)*/
+			)
+		));
+		
 		$this->set('tees', $tees);
 	}
 	

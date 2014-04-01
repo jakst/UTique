@@ -34,38 +34,38 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<form>
+			<form role="form" id="selectgender" method="post" action="/utique/tees/index">
 				<div class="filter-box">
 					<h4>Modell</h4>
-					<div class="btn-group" data-toggle="buttons">
-						<label class="btn btn-default active">
-							<input type="radio" name="options" id="all" active> Alla
-						</label>
-						<label class="btn btn-default">
-							<input type="radio" name="options" id="female"> Dam
-						</label>
-						<label class="btn btn-default">
-							<input type="radio" name="options" id="male"> Herr
-						</label>
-					</div>	
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-default active">
+								<input type="radio" name="gender" value="Alla"> Alla
+							</label>
+							<label class="btn btn-default">
+								<input type="radio" name="gender" value="Dam"> Dam
+							</label>
+							<label class="btn btn-default">
+								<input type="radio" name="gender" value="Herr"> Herr
+							</label>
+						</div>		
 				</div>
-				
+						
 				<div class="filter-box">
 					<h4>Färg</h4>
 					<ul class="list-unstyled">
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="colorCheckBox1" value="black"> Svart
+								<input type="checkbox" name="color[]" id="colorCheckBox1" value="Svart"> Svart
 							</label>
 							</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="colorCheckBox2" value="red">Röd
+								<input type="checkbox" name="color[]" id="colorCheckBox2" value="Vit">Vit
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="colorCheckBox3" value="green">Grön
+								<input type="checkbox" name="color[]" id="colorCheckBox3" value="Blå">Blå
 							</label>
 						</li>
 					</ul>
