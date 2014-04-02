@@ -31,21 +31,15 @@ class TeesController extends AppController {
 		$colorCondition = array();
 		$priceCondition = array();
 		$sizeCondition = array();
-		$color = null;
-
-		
 
 		if ($this->request->is('post')) {
 			$filter = $this->request->data;
-			
-			
-						
+								
 			if($filter['gender'] != 'Alla'){
 				$genderCondition['Tee.sex'] = $filter['gender'];
 			}
 			
 			if($filter['color'] != null){
-			
 				foreach ($filter['color'] as $value){
 					$colorCondition['OR'][]['Tee.color'] = $filter['color'];
 				}
@@ -93,7 +87,13 @@ class TeesController extends AppController {
 			)
 		));
 		
+		// Här vill jag nu göra en array $colors som består av alla färger som finns i databasen
+		$colors = array("Vit", "Blå");
+		
+			
+		
 		$this->set('tees', $tees);
+		$this->set('colors', $colors);
 		$this->set('filter', $filter);
 	}
 	
