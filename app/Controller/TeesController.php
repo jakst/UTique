@@ -31,21 +31,15 @@ class TeesController extends AppController {
 		$colorCondition = array();
 		$priceCondition = array();
 		$sizeCondition = array();
-		$color = null;
-
-		
 
 		if ($this->request->is('post')) {
 			$filter = $this->request->data;
-			
-			
-						
+
 			if($filter['gender'] != 'Alla'){
 				$genderCondition['Tee.sex'] = $filter['gender'];
 			}
-			
+
 			if($filter['color'] != null){
-			
 				foreach ($filter['color'] as $value){
 					$colorCondition['OR'][]['Tee.color'] = $filter['color'];
 				}
@@ -69,16 +63,16 @@ class TeesController extends AppController {
 			}
 
 			// if($filter['size'] != null){
-			
+
 				// foreach ($filter['size'] as $value){
 					// $sizeCondition['OR'][]['Item.size'] = $filter['size'];
 				// }
 				// unset ($value);
 			// }
 
-			
+
 		}
-		
+
 		$this->Tee->recursive = 0;
 		$tees = $this->Tee->find('all', array(
 			'conditions' => array(
@@ -92,29 +86,35 @@ class TeesController extends AppController {
 				)*/
 			)
 		));
-		
+
+		// Här vill jag nu göra en array $colors som består av alla färger som finns i databasen
+		$colors = array("Vit", "Blå");
+
+
+
 		$this->set('tees', $tees);
+		$this->set('colors', $colors);
 		$this->set('filter', $filter);
 	}
-	
+
 	public function view($id = null) {
 	    if (!$id) {
             throw new NotFoundException(__('Gå och dö'));
         }
-		
+
 		$tee = $this->Tee->findById($id);
         
 		if (!$tee) {
             throw new NotFoundException(__('Gå och dö'));
         }
-		
+
 		$this->set('tee', $tee);
 	}	
-	
+
 	public function add_to_cart(){
 		$id = $this->request->data['id'];
 		$sizeId = $this->request->data['size'];
-		
+
 		if (!$id || !$sizeId) {
             throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
 		}
@@ -125,16 +125,16 @@ class TeesController extends AppController {
 			'conditions' => array('Tee.id' => $id),
 			'fields' => array('id', 'name', 'price', 'color', 'sex')
 		))['0'];
-		
+
 		$sId = explode('-', $sizeId)[0];
 		$size = explode('-', $sizeId)[1];
-		
+
 		if (!$tee){
 			throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
 		}
-		
+
 		$amount = 0;
-		
+
 		if ($this->Session->check('Cart.'.$id)){
 			if ($this->Session->check('Cart.'.$id.'.sizes.'.$size)){
 				$amount = $this->Session->read('Cart.'.$id.'.sizes.'.$size.'.amount');
@@ -147,11 +147,11 @@ class TeesController extends AppController {
 		$this->Session->write('Cart.'.$id.'.sizes.'.$size, $orderItem);
 		$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
 	}
-	
+
 	public function reallocate() {
 		$tees = $this->Tee->find('all');
 		$this->Tee->Item->query('TRUNCATE items;');
-		
+
 		foreach ($tees as $tee) {
 			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XS');
 			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'S');
@@ -161,7 +161,7 @@ class TeesController extends AppController {
 			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XXL');
 			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XXXL');
 		}
-		
+
 		if ($this->Tee->Item->saveMany($data)) {echo '<span style="color: red; font-size: 30px">YEEAAAHH!!!!</span>';}
 	}
 }

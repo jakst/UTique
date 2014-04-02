@@ -53,21 +53,13 @@
 				<div class="filter-box">
 					<h4>Färg</h4>
 					<ul class="list-unstyled">
-						<li>
-							<label class="checkbox-inline">
-								<input type="checkbox" name="color[Svart]" id="colorCheckBox1" value="Svart" <?php if(isset($filter['color']['Svart'])){echo 'checked="checked"';} ?>> Svart
-							</label>
+						<?php foreach ($colors as $color): ?>					
+							<li>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="color[<?php echo $color; ?>]" id="colorCheckBox1" value="<?php echo $color; ?>"; <?php if(isset($filter['color'][$color])){echo 'checked="checked"';} ?>> <?php echo $color; ?>
+								</label>
 							</li>
-						<li>
-							<label class="checkbox-inline">
-								<input type="checkbox" name="color[Vit]" id="colorCheckBox2" value="Vit" <?php if(isset($filter['color']['Vit'])){echo 'checked="checked"';} ?>>Vit
-							</label>
-						</li>
-						<li>
-							<label class="checkbox-inline">
-								<input type="checkbox" name="color[Blå]" id="colorCheckBox3" value="Blå" <?php if(isset($filter['color']['Blå'])){echo 'checked="checked"';} ?>>Blå
-							</label>
-						</li>
+						<?php endforeach;?> 
 					</ul>
 				</div>
 				
@@ -159,7 +151,7 @@
 								'class' => 'img-responsive',
 								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
 						)));
-						
+
 						echo $this->Html->link(
 							$tee['Tee']['name'],
 							array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
