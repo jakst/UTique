@@ -1,6 +1,7 @@
 <?php
 class Customer extends AppModel {
 
+    public $hasOne= 'User';
     public $hasMany= 'Order';
 
     public $validate = array(

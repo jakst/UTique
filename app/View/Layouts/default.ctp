@@ -1,4 +1,4 @@
-<?php echo $this->Html->docType('html5'); ?> 
+<?php echo $this->Html->docType('html5'); ?>
 <html>
 	<head>
 		<?php echo $this->Html->charset(); ?>
@@ -22,9 +22,9 @@
 				<div class="navbar-header">
 					<?php
 						echo $this->Html->image('logo.png', array(
-							'alt' => 'UTique - Home', 
-							'id' => 'logo', 
-							'width' => 160, 
+							'alt' => 'UTique - Home',
+							'id' => 'logo',
+							'width' => 160,
 							'height' => 160,
 							'url' => array('controller' => 'tees', 'action' => 'index', 'full_base' => true)
 						));
@@ -40,25 +40,11 @@
 				
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Logga in<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<form class="navbar-form" role="form">
-									<div class="form-group">
-										<input type="text" placeholder="Email" class="form-control nav-dropdown-form">
-									</div>
-									
-									<div class="form-group">								
-										<input type="password" placeholder="Password" class="form-control nav-dropdown-form">
-									</div>
-									
-									<button type="submit" class="btn btn-success nav-dropdown-form">Logga in</button>
-								</form>
-							</ul>
-						</li>
+						<?php echo $this->element('login'); ?>
 					</ul>
-					
-					<?php echo $this->element('cart'); ?>
+					<ul class="nav navbar-nav navbar-right">
+						<?php echo $this->element('cart'); ?>
+					</ul>
 				</div><!--/.navbar-collapse -->
 			</div>
 		</div>
@@ -102,7 +88,7 @@
 			</div>
 		</footer>
 		
-		<?php	
+		<?php
 			echo $this->Html->script(array('libs/jquery-1.10.2.min', 'libs/bootstrap.min'));
 			echo $this->fetch('script');
 		?>

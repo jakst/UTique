@@ -36,8 +36,26 @@ class AppController extends Controller {
 			'className' => 'BootstrapForm'
 		)
  	);
-
-
+	
+	public $components = array(
+		'Session',
+		'Auth' => array(
+			'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+			'logoutRedirect' => array('controller' => 'users', 'action' => 'index'),
+			'authError' => 'Du har inte åtkomst till den här sidan.',
+			'authorize' => array('Controller')
+		)
+	);
+	
+	public function isAuthorized($user) {
+		return true;
+	}
+	
+	public function beforeFilter() {
+		$this->Auth->allow('index', 'view');
+    $this->set('authUser', $this->Auth->user());
+	}
+  
 	public function update_cart_item($id, $size, $count) {
 		if ($count < 1){
 			$this->Session->delete('Cart.'.$id.'.sizes.'.$size);
