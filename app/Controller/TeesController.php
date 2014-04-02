@@ -2,27 +2,64 @@
 class TeesController extends AppController {
 
 	public function index() {
+		print_r($this->request->data);
+		$filter = array(
+			'gender' => 'Alla',
+			'color' => array(
+				'Svart' => 'Svart', 
+				'Vit' => 'Vit',
+				'Blå' => 'Blå'
+			),
+			'price' => array(
+				'intervall1' => 'intervall1',
+				'intervall2' => 'intervall2',
+				'intervall3' => 'intervall3',
+				'intervall4' => 'intervall4'	
+			),
+			'size' => array(
+				'xs' => 'xs',
+				's' => 's',
+				'm' => 'm',
+				'l' => 'l',
+				'xl' => 'xl',
+				'xxl' => 'xxl',
+				'xxxl' => 'xxxl'
+			)
+		);
 		$gender = 'Alla';
 		$genderCondition = array();
 		$colorCondition = array();
+		$priceCondition = array();
+		$sizeCondition = array();
 		$color = null;
 
+		print_r($gender);
+
 		if ($this->request->is('post')) {
-			$gender = $this->request->data['gender'];
-			$color = $this->request->data['color'];
+			$filter = $this->request->data;
+			
 			print_r ($color);
 						
-			if($gender != 'Alla'){
-				$genderCondition['Tee.sex'] = $gender;
+			if($filter['gender'] != 'Alla'){
+				$genderCondition['Tee.sex'] = $filter['gender'];
 			}
 			
-			if($color != null){
+			if($filter['color'] != null){
 			
-				foreach ($color as $value){
-					$colorCondition['OR'][]['Tee.color'] = $value;
+				foreach ($filter['color'] as $value){
+					$colorCondition['OR'][]['Tee.color'] = $filter['color'];
 				}
 				unset ($value);
 			}
+
+			if($filter['size'] != null){
+			
+				foreach ($filter['size'] as $value){
+					$priceCondition['OR'][]['Tee.size'] = $filter['size'];
+				}
+				unset ($value);
+			}
+
 			
 		}
 		
@@ -31,8 +68,8 @@ class TeesController extends AppController {
 			'conditions' => array(
 				$genderCondition,
 				$colorCondition,
-				// $price,
-				// $size
+				$priceCondition,
+				$sizeCondition
 				/*'OR' => array(
 					array('Tee.color' => 'Svart'),
 					array('Tee.color' => 'Vit')
@@ -41,6 +78,7 @@ class TeesController extends AppController {
 		));
 		
 		$this->set('tees', $tees);
+		$this->set('filter', $filter);
 	}
 	
 	public function view($id = null) {

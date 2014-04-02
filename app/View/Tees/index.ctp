@@ -38,14 +38,14 @@
 				<div class="filter-box">
 					<h4>Modell</h4>
 						<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-default active">
-								<input type="radio" name="gender" value="Alla"> Alla
+							<label class="btn btn-default <?php if($filter['gender']=='Alla'){echo 'active';} ?>">
+								<input type="radio" name="gender" value="Alla" <?php if($filter['gender']=='Alla'){echo 'checked="checked"';} ?>> Alla
 							</label>
-							<label class="btn btn-default">
-								<input type="radio" name="gender" value="Dam"> Dam
+							<label class="btn btn-default <?php if($filter['gender']=='Dam'){echo 'active';} ?>">
+								<input type="radio" name="gender" value="Dam" <?php if($filter['gender']=='Dam'){echo 'checked="checked"';} ?>> Dam
 							</label>
-							<label class="btn btn-default">
-								<input type="radio" name="gender" value="Herr"> Herr
+							<label class="btn btn-default <?php if($filter['gender']=='Herr'){echo 'active';} ?>">
+								<input type="radio" name="gender" value="Herr" <?php if($filter['gender']=='Herr'){echo 'checked="checked"';} ?>> Herr
 							</label>
 						</div>		
 				</div>
@@ -55,17 +55,17 @@
 					<ul class="list-unstyled">
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" name="color[]" id="colorCheckBox1" value="Svart"> Svart
+								<input type="checkbox" name="color[Svart]" id="colorCheckBox1" value="Svart" <?php if(isset($filter['color']['Svart'])){echo 'checked="checked"';} ?>> Svart
 							</label>
 							</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" name="color[]" id="colorCheckBox2" value="Vit">Vit
+								<input type="checkbox" name="color[Vit]" id="colorCheckBox2" value="Vit" <?php if(isset($filter['color']['Vit'])){echo 'checked="checked"';} ?>>Vit
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" name="color[]" id="colorCheckBox3" value="Blå">Blå
+								<input type="checkbox" name="color[Blå]" id="colorCheckBox3" value="Blå" <?php if(isset($filter['color']['Blå'])){echo 'checked="checked"';} ?>>Blå
 							</label>
 						</li>
 					</ul>
@@ -76,22 +76,22 @@
 					<ul class="list-unstyled">
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox1" value="small">0 - 99 kr
+								<input type="checkbox" name="price[intervall1]" id="inlineCheckbox1" value="intervall1">0 - 99 kr
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox2" value="medium">100 - 199 kr
+								<input type="checkbox" name="price[intervall2]" id="inlineCheckbox2" value="intervall2">100 - 199 kr
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox3" value="large">200 - 299 kr
+								<input type="checkbox" name="price[intervall3]" id="inlineCheckbox3" value="intervall3">200 - 299 kr
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox3" value="large">&gt; 299 kr
+								<input type="checkbox" name="price[intervall4]" id="inlineCheckbox3" value="intervall4">&gt; 299 kr
 							</label>
 						</li>
 					</ul>
@@ -100,6 +100,11 @@
 				<div class="filter-box">
 					<h4>Storlek</h4>
 					<ul class="list-unstyled">
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox3" value="large">XSmall
+							</label>
+						</li>	
 						<li>
 							<label class="checkbox-inline">
 								<input type="checkbox" id="inlineCheckbox1" value="small">Small
@@ -117,7 +122,17 @@
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox3" value="large">XL
+								<input type="checkbox" id="inlineCheckbox3" value="large">XLarge
+							</label>
+						</li>	
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox3" value="large">XXLarge
+							</label>
+						</li>	
+						<li>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox3" value="large">XXXLarge
 							</label>
 						</li>						
 					</ul>
