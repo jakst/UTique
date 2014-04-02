@@ -76,22 +76,22 @@
 					<ul class="list-unstyled">
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" name="price[intervall1]" id="inlineCheckbox1" value="intervall1">0 - 99 kr
+								<input type="checkbox" name="price[intervall1]" id="inlineCheckbox1" value="intervall1" <?php if(isset($filter['price']['intervall1'])){echo 'checked="checked"';} ?>>0 - 99 kr
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" name="price[intervall2]" id="inlineCheckbox2" value="intervall2">100 - 199 kr
+								<input type="checkbox" name="price[intervall2]" id="inlineCheckbox2" value="intervall2" <?php if(isset($filter['price']['intervall2'])){echo 'checked="checked"';} ?>>100 - 199 kr
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" name="price[intervall3]" id="inlineCheckbox3" value="intervall3">200 - 299 kr
+								<input type="checkbox" name="price[intervall3]" id="inlineCheckbox3" value="intervall3" <?php if(isset($filter['price']['intervall3'])){echo 'checked="checked"';} ?>>200 - 299 kr
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" name="price[intervall4]" id="inlineCheckbox3" value="intervall4">&gt; 299 kr
+								<input type="checkbox" name="price[intervall4]" id="inlineCheckbox3" value="intervall4" <?php if(isset($filter['price']['intervall4'])){echo 'checked="checked"';} ?>>&gt; 299 kr
 							</label>
 						</li>
 					</ul>

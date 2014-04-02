@@ -2,7 +2,7 @@
 class TeesController extends AppController {
 
 	public function index() {
-		print_r($this->request->data);
+		//print_r($this->request->data);
 		$filter = array(
 			'gender' => 'Alla',
 			'color' => array(
@@ -33,12 +33,12 @@ class TeesController extends AppController {
 		$sizeCondition = array();
 		$color = null;
 
-		print_r($gender);
+		
 
 		if ($this->request->is('post')) {
 			$filter = $this->request->data;
 			
-			print_r ($color);
+			
 						
 			if($filter['gender'] != 'Alla'){
 				$genderCondition['Tee.sex'] = $filter['gender'];
@@ -52,18 +52,26 @@ class TeesController extends AppController {
 				unset ($value);
 			}
 
-			if($filter['size'] != null){
-			
-				foreach ($filter['size'] as $value){
-					$priceCondition['OR'][]['Tee.size'] = $filter['size'];
+			if($filter['price'] != null){
+				print_r($filter);
+				if(isset($filter['price']['intervall1'])){
+					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(0,99);
 				}
-				unset ($value);
+				if(isset($filter['price']['intervall2'])){
+					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(100,199);
+				}
+				if(isset($filter['price']['intervall3'])){
+					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(200,299);
+				}
+				if(isset($filter['price']['intervall4'])){
+					$priceCondition['OR'][]['Tee.price >'] = 299;
+				}
 			}
 
 			
 		}
 		
-		
+		$this->Tee->recursive = 0;
 		$tees = $this->Tee->find('all', array(
 			'conditions' => array(
 				$genderCondition,
