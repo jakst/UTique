@@ -4,19 +4,14 @@
 		<?php echo $this->Html->charset(); ?>
 		<title><?php echo $title_for_layout; ?></title>
 		<?php
-			echo $this->Html->meta('icon','img/favicon.png',
-				array('type' => 'icon'));
+			echo $this->Html->meta('icon','img/favicon.png', array('type' => 'icon'));
 			echo $this->fetch('meta');
-			
-			
-			
 			echo $this->Html->css(array('bootstrap', 'style'));
 			echo $this->fetch('css');
 		?>
 	</head>
 	
 	<body>
-	
 		<div class="navbar navbar-inverse navbar-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -40,7 +35,7 @@
 				
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<?php echo $this->element('login'); ?>
+						<?php echo $this->element('login', array('dropdown' => true)); ?>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php echo $this->element('cart'); ?>
@@ -49,15 +44,24 @@
 			</div>
 		</div>
 		
-		<?php echo $this->fetch('content'); ?>
+		<div class="container"><?php echo $this->Session->flash(); ?></div>
 		
-		<div class="container">
+		<?php
+		echo $this->fetch('content');
+		
+		$sql = $this->element('sql_dump');
+		if (strlen($sql) > 0):
+		?>
+		
+		<div class="container" style="margin-top: 30px">
 			<div class="well well-sm">
 				<small>
-					<?php echo $this->element('sql_dump'); ?>
+					<?php echo $sql; ?>
 				</small>
-			</div><!-- /.well well-sm -->
+			</div>
 		</div>
+		
+		<?php endif; ?>
 		
 		<footer>
 			<div class="container">

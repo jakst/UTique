@@ -7,7 +7,7 @@ footer {
 }
 
 #putinbasket {
-	margin-top: 20px; 
+	margin-top: 20px;
 	padding-left: 0px;
 }
 
@@ -16,7 +16,7 @@ footer {
 }
 
 .cartbutton {
-	padding: 10px 30px; 
+	padding: 10px 30px;
 	font-size: 20px;
 }
 
@@ -30,19 +30,19 @@ footer {
 
 .navbar-top {
 	margin-top: 65px;
-	margin-bottom: 50px;
+	margin-bottom: 70px;
 }
 
 #logo{
-	display:block; 
-	position: absolute; 
-	left: 50%; 
-	margin-left: -80px; 
+	display:block;
+	position: absolute;
+	left: 50%;
+	margin-left: -80px;
 	margin-top: -55px;
 }
 
 .jumbotron {
-	margin-top: -50px;
+	margin-top: -70px;
 	padding-top: 0;
 	background-color: #fafafa;
 	box-shadow: 0 2px 4px rgba(0,0,0,.25);
@@ -65,9 +65,9 @@ footer {
 }
 
 .filter-box{
-	background: #fafafa; 
-	padding: 2px 20px 15px; 
-	margin: 0 0 20px; 
+	background: #fafafa;
+	padding: 2px 20px 15px;
+	margin: 0 0 20px;
 	box-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
@@ -76,7 +76,7 @@ footer {
 }
 
 #putinbasket {
-	margin-top: 20px; 
+	margin-top: 20px;
 	padding-left: 0px;
 }
 

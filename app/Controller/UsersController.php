@@ -2,13 +2,12 @@
 class UsersController extends AppController {
 	public function login() {
 		if ($this->request->is('post')) {
-			print_r($this->request->data);
-			if ($this->Auth->login($this->request->data)) {
-				$this->Auth->redirect();
+			
+			if ($this->Auth->login()) {
+				$this->set('loggedIn', $this->Auth->loggedIn());
 				$this->redirect($this->referer());
 			} else {
-			echo '<span style="font-size: 24px; color: red;">DERP!</span>';
-				$this->Session->setFlash('Det angivna anv�ndarnamnet eller l�senordet var felaktigt');
+				$this->Session->setFlash('Det angivna användarnamnet eller lösenordet är felaktigt! ', 'flash\error');
 			}
 		}
 	}
@@ -16,6 +15,12 @@ class UsersController extends AppController {
 	public function logout() {
 		$this->Auth->logout();
 		$this->redirect($this->referer());
+	}
+	
+	public function register() {
+		if ($this->request->is('post')) {
+			$this->User->save($this->request->data);
+		}
 	}
 }
 ?>

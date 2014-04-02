@@ -1,4 +1,6 @@
 <?php
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
+
 class User extends AppModel {
 	public $validate = array(
 		'username' => array(
@@ -10,7 +12,15 @@ class User extends AppModel {
 				'rule' => 'isUnique',
 				'message' => 'Användarnamnet är redan taget. Prova med ett annat användarnamn.'
 			)
-    ),
+		),
 	);
+	
+	public function beforeSave($options = array()) {
+		if (!empty($this->data['User']['password'])) {
+			$passwordHasher = new BlowfishPasswordHasher();
+			$this->data['User']['password'] = $passwordHasher->hash($this->data['User']['password']);
+		}
+		return true;
+	}
 }
 ?>
