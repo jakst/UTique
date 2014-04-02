@@ -7,16 +7,16 @@
 			echo $this->Html->meta('icon','img/favicon.png',
 				array('type' => 'icon'));
 			echo $this->fetch('meta');
-
 			
-
+			
+			
 			echo $this->Html->css(array('bootstrap', 'style'));
 			echo $this->fetch('css');
 		?>
 	</head>
 	
 	<body>
-
+	
 		<div class="navbar navbar-inverse navbar-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -51,11 +51,14 @@
 		
 		<?php echo $this->fetch('content'); ?>
 		
-		<!--<div class="well well-sm">
-			<small>
-				<?php //echo $this->element('sql_dump'); ?>
-			</small>
-		</div><!-- /.well well-sm -->
+		<div class="container">
+			<div class="well well-sm">
+				<small>
+					<?php echo $this->element('sql_dump'); ?>
+				</small>
+			</div><!-- /.well well-sm -->
+		</div>
+		
 		<footer>
 			<div class="container">
 				<div class="row">
