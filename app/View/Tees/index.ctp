@@ -102,37 +102,37 @@
 					<ul class="list-unstyled">
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox3" value="large">XSmall
+								<input type="checkbox" name="size[xs]" id="inlineCheckbox3" value="large" <?php if(isset($filter['size']['xs'])){echo 'checked="checked"';} ?>>XSmall
 							</label>
 						</li>	
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox1" value="small">Small
+								<input type="checkbox" name="size[s]" id="inlineCheckbox1" value="small" <?php if(isset($filter['size']['s'])){echo 'checked="checked"';} ?>>Small
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox2" value="medium">Medium
+								<input type="checkbox" name="size[m]" id="inlineCheckbox2" value="medium" <?php if(isset($filter['size']['m'])){echo 'checked="checked"';} ?>>Medium
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox3" value="large">Large
+								<input type="checkbox" name="size[l]" id="inlineCheckbox3" value="large" <?php if(isset($filter['size']['l'])){echo 'checked="checked"';} ?>>Large
 							</label>
 						</li>
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox3" value="large">XLarge
+								<input type="checkbox" name="size[xl]" id="inlineCheckbox3" value="large" <?php if(isset($filter['size']['xl'])){echo 'checked="checked"';} ?>>XLarge
 							</label>
 						</li>	
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox3" value="large">XXLarge
+								<input type="checkbox" name="size[xxl]" id="inlineCheckbox3" value="large" <?php if(isset($filter['size']['xxl'])){echo 'checked="checked"';} ?>>XXLarge
 							</label>
 						</li>	
 						<li>
 							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox3" value="large">XXXLarge
+								<input type="checkbox" name="size[xxxl]" id="inlineCheckbox3" value="large" <?php if(isset($filter['size']['xxxl'])){echo 'checked="checked"';} ?>>XXXLarge
 							</label>
 						</li>						
 					</ul>
