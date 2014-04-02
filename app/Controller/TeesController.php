@@ -68,13 +68,13 @@ class TeesController extends AppController {
 				}
 			}
 
-			if($filter['size'] != null){
+			// if($filter['size'] != null){
 			
-				foreach ($filter['size'] as $value){
-					$sizeCondition['OR'][]['Item.size'] = $filter['size'];
-				}
-				unset ($value);
-			}
+				// foreach ($filter['size'] as $value){
+					// $sizeCondition['OR'][]['Item.size'] = $filter['size'];
+				// }
+				// unset ($value);
+			// }
 
 			
 		}

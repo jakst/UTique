@@ -97,7 +97,7 @@
 					</ul>
 				</div>
 				
-				<div class="filter-box">
+<!-- 				<div class="filter-box">
 					<h4>Storlek</h4>
 					<ul class="list-unstyled">
 						<li>
@@ -136,7 +136,7 @@
 							</label>
 						</li>						
 					</ul>
-				</div>
+				</div> -->
 				<input class="btn btn-default btn-block" type="submit" value="Filtrera">
 			</form>
 		</div>
