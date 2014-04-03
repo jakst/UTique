@@ -97,7 +97,7 @@ class TeesController extends AppController {
 			unset($tmp[$r]);
 			$tmp = array_values($tmp);
 		endfor;
-			
+
 
 
 		$this->set('dailyTees', $dailyTees);
