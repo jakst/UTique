@@ -34,12 +34,13 @@ class OrdersController extends AppController {
 	public function confirm_order(){
 		$cart = $this->Session->read('Cart');
 		
-		foreach ($cart as $tee) {
-					foreach ($tee['sizes'][] as $inventoryItem) {
-						print_r($inventoryItem);
-						//$data['OrderItem'][] = $orderItem;
-					}
-				}
+
+		foreach ($cart as $id => $tee):
+			foreach ($tee['sizes'] as $size => $orderItem):
+				$size = $cart[$id]['Tee']['sizes'];
+				print_r($size);
+			endforeach;
+		endforeach;
 
 /*		Array ( [13] => Array ( 
 			[Tee] => Array ( 
