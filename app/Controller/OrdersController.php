@@ -24,7 +24,6 @@ class OrdersController extends AppController {
 					unset($data['Customer']);
 					
 					if ($this->Order->saveAll($data)) {
-						$this->Session->delete('Cart');
 						return $this->redirect(array('action' => 'confirm_order'));
 					}
 				}
@@ -33,7 +32,30 @@ class OrdersController extends AppController {
 	}
 	
 	public function confirm_order(){
+		$cart = $this->Session->read('Cart');
+		
+		foreach ($cart as $tee) {
+					foreach ($tee['sizes'][] as $inventoryItem) {
+						print_r($inventoryItem);
+						//$data['OrderItem'][] = $orderItem;
+					}
+				}
 
+/*		Array ( [13] => Array ( 
+			[Tee] => Array ( 
+				[id] => 13 
+				[name] => If you're happy and you know it... 
+				[price] => 189 
+				[color] => Blå 
+				[sex] => Dam ) 
+				[sizes] => Array ( 
+					[XS] => Array ( 
+						[item_id] => 85 
+						[amount] => 2 ) ) ) )*/
+						
+		// se till att lagersaldot ändras!
+		
+		$this->Session->delete('Cart');
 	}
 }
 ?>
