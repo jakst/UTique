@@ -3,29 +3,19 @@
 				<h1>UTique!</h1>
 				<h2>Dagens T-shirts</h2>
 				<div class="row">
+								
+					<?php foreach ($dailyTees as $tee): ?>
+					<div class="col-md-4">
 					<?php
-					$tmp = $tees;
-					for ($x = 0; $x <= 2; $x++):
-						mt_srand(date("Ymd")*3 + $x);
-						$r = mt_rand(0, count($tmp)-1);
-						$tee = $tmp[$r];
-
-						unset($tmp[$r]);
-						$tmp = array_values($tmp);
-  					?>
-  					<div class="col-md-4">
-  						<?php
-  						echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
-							array(
-								'alt' => $tee['Tee']['name'], 
-								'class' => 'img-responsive',
-								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
-						)));
-						?>
-					</div>
-  					<?php
- 					 endfor;
+					echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
+					array(
+						'alt' => $tee['Tee']['name'], 
+						'class' => 'img-responsive',
+						'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
+					)));
 					?>
+					</div>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>

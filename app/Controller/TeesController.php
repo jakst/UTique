@@ -90,8 +90,20 @@ class TeesController extends AppController {
 		// Här vill jag nu göra en array $colors som består av alla färger som finns i databasen
 		$colors = array("Vit", "Blå");
 
+		$tmp = $this->Tee->find('all');
+		$dailyTees = array();
+		for ($x = 0; $x <= 2; $x++):
+			mt_srand(date("Ymd")*3 + $x);
+			$r = mt_rand(0, count($tmp)-1);
+			$dailyTees[] = $tmp[$r];
+
+			unset($tmp[$r]);
+			$tmp = array_values($tmp);
+		endfor;
+			
 
 
+		$this->set('dailyTees', $dailyTees);
 		$this->set('tees', $tees);
 		$this->set('colors', $colors);
 		$this->set('filter', $filter);
