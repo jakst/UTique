@@ -1,5 +1,8 @@
 <?php
 class OrdersController extends AppController {
+
+	public $uses = array('Order','InventoryItem');
+
 	public function create_order(){
 		$data = $this->request->data;
 		
@@ -33,12 +36,19 @@ class OrdersController extends AppController {
 	
 	public function confirm_order(){
 		$cart = $this->Session->read('Cart');
-		
-
+		$inventory = ClassRegistry::init('InventoryItem');
+		$inventory->recursive = 0;
+		$data = $inventory->find('all', array( 
+			'fields' => array('color', 'color')
+		));
+		print_r($data);
 		foreach ($cart as $id => $tee):
-			foreach ($tee['sizes'] as $size => $orderItem):
-				$size = $cart[$id]['Tee']['sizes'];
-				print_r($size);
+			foreach ($tee['sizes'] as $size => $item):
+				$decrementby = $item['amount'];
+				$amountInInventory = $data[$item]['amount'];
+				
+				print_r($amountInInventory);
+				//hämta hur många som finns av det id i databasen, minska med antal köpta och uppdatera
 			endforeach;
 		endforeach;
 
