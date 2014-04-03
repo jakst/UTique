@@ -2,14 +2,15 @@
 class TeesController extends AppController {
 
 	public function index() {
-		//print_r($this->request->data);
+		$this->Tee->recursive = 0;
+		$colors = $this->Tee->find('list', array( 
+		'fields' => array('color', 'color')
+		));
+		$colors = array_unique($colors);
+
 		$filter = array(
 			'gender' => 'Alla',
-			'color' => array(
-				'Svart' => 'Svart', 
-				'Vit' => 'Vit',
-				'Blå' => 'Blå'
-			),
+			'color' => $colors,
 			'price' => array(
 				'intervall1' => 'intervall1',
 				'intervall2' => 'intervall2',
@@ -73,7 +74,6 @@ class TeesController extends AppController {
 
 		}
 
-		$this->Tee->recursive = 0;
 		$tees = $this->Tee->find('all', array(
 			'conditions' => array(
 				$genderCondition,
@@ -86,9 +86,6 @@ class TeesController extends AppController {
 				)*/
 			)
 		));
-
-		// Här vill jag nu göra en array $colors som består av alla färger som finns i databasen
-		$colors = array("Vit", "Blå");
 
 		$tmp = $this->Tee->find('all');
 		$dailyTees = array();
