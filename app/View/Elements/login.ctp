@@ -17,31 +17,23 @@
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Logga in<b class="caret"></b></a>
 	<ul class="dropdown-menu">
 		<li>
-		<form action="<?php echo $this->Html->url(array("controller" => "users", "action" => "login")); ?>" method="post" id="UserLoginForm" class="navbar-form" role="form">
-			<div class="form-group">
-				<input name="data[User][username]" type="text" placeholder="Användarnamn" id="UserUsername" class="form-control nav-dropdown-form">
-			</div>
-			
-			<div class="form-group">
-				<input name="data[User][password]" type="password" placeholder="Lösenord" id="UserPassword" class="form-control nav-dropdown-form">
-			</div>
-			
-			<button type="submit" class="btn btn-success nav-dropdown-form">Logga in</button>
-		</form>
+<?php
+	echo $this->Form->create('User', array('class' => 'navbar-form'));
+	echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Användarnamn', 'class' => 'form-control nav-dropdown-form'));
+	echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Lösenord', 'class' => 'form-control nav-dropdown-form'));
+	echo $this->Form->submit('Logga in', array('class' => 'btn btn-success nav-dropdown-form', 'after' => ' '.$this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register'))));
+	echo $this->Form->end();
+?>
 		</li>
 	</ul>
 </li>
 	<?php endif; ?>
 <?php else: ?>
-<form action="<?php echo $this->Html->url(array("controller" => "users", "action" => "login")); ?>" method="post" id="UserLoginForm" role="form">
-	<div class="form-group">
-		<input name="data[User][username]" type="text" placeholder="Användarnamn" id="UserUsername" class="form-control">
-	</div>
-	
-	<div class="form-group">
-		<input name="data[User][password]" type="password" placeholder="Lösenord" id="UserPassword" class="form-control">
-	</div>
-	
-	<button type="submit" class="btn btn-success">Logga in</button>
-</form>
+<?php
+	echo $this->Form->create('User');
+	echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Användarnamn'));
+	echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Lösenord'));
+	echo $this->Form->submit('Logga in', array('class' => 'btn btn-success', 'after' => ' '.$this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register'))));
+	echo $this->Form->end();
+?>
 <?php endif; ?>

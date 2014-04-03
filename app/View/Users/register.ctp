@@ -1,8 +1,12 @@
 <div class="container">
+	<div class="row">
+		<div class="col-sm-5" style="margin: 20px auto; float: none;">
 <?php
 	echo $this->Form->create('User');
-	echo $this->Form->input('username');
-	echo $this->Form->input('password');
-	echo $this->Form->end('Submit');
+	echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Användarnamn'));
+	echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Lösenord'));
+	echo $this->Form->end('Registrera dig');
 ?>
+		</div>
+	</div>
 </div>

@@ -1,33 +1,34 @@
 <div class="container">
-		<h1>Mina uppgifter</h1><br>
+		<h1>Mina uppgifter</h1>
 
 		<?php echo $this->Form->create();?>
 		
 		<div class="row">
 			<div class="col-md-6">
-			<?php echo $this->Form->input('Customer.name',array('label' => 'Namn' , 'placeholder' => 'För- och efternamn'));   
-			echo $this->Form->input('Customer.email',array('placeholder' => 'E-mail'));   
-			echo $this->Form->input('Customer.address',array('label' => 'Adress','placeholder' => 'Gatuadress'));?>
-			</div>  
-			<div class="col-md-6">                           
-			<?php echo $this->Form->input('Customer.zipcode',array('label' => 'Postnummer','placeholder' => 'Postnummer'));      
-			echo $this->Form->input('Customer.city',array('label' => 'Stad','placeholder' => 'Stad'));                             
-			echo $this->Form->input('Customer.country',array('label' => 'Land','placeholder' => 'Land'));?> 
-
-			
-			</div>  
-		</div>
-
-		<h1>Betalnings uppgifter</h1><br>
-		<div class="row">
-			<div class="col-md-7">
-				<?php echo $this->Form->input('Payment.card_number',array('label' => 'Kortnummer','placeholder' => 'Kortnummer'));                             
-				echo $this->Form->input('Payment.expiry_date',array('label' => 'Utgångsdatum','placeholder' => 'YY-MM'));?> 
+			<?php
+				echo $this->Form->input('Customer.name', array('label' => false, 'placeholder' => 'För- och efternamn'));
+				echo $this->Form->input('Customer.email', array('label' => false, 'placeholder' => 'E-mail'));
+				echo $this->Form->input('Customer.address', array('label' => false,'placeholder' => 'Gatuadress'));
+			?>
+			</div>
+			<div class="col-md-6">
+			<?php
+				echo $this->Form->input('Customer.zipcode', array('label' => false,'placeholder' => 'Postnummer'));
+				echo $this->Form->input('Customer.city', array('label' => false, 'placeholder' => 'Stad'));
+				echo $this->Form->input('Customer.country', array('label' => false, 'placeholder' => 'Land'));
+			?>
 			</div>
 		</div>
-		<div class="form-group">
-			<?php echo $this->Html->link('Gå tillbaka', array('controller' => 'carts', 'action' => 'view'), array('class' => 'btn btn-default btn-lg')); ?>
-			<input class="btn btn-success btn-lg" type="submit" value="Skicka order">
+
+		<div class="row">
+			<div class="col-md-6">
+				<h1>Betalningsuppgifter</h1>
+				<?php
+					echo $this->Form->input('Payment.card_number', array('label' => false, 'placeholder' => 'Kortnummer'));
+					echo $this->Form->input('Payment.expiry_date', array('label' => false,'placeholder' => 'Utgånsdatum: YY-MM'));
+					echo $this->Form->submit('Bekräfta köp', array('before' => $this->Html->link('Gå tillbaka', array('controller' => 'carts', 'action' => 'view'), array('class' => 'btn btn-default')).' '));
+				?>
+			</div>
 		</div>
-	</form>
+		<?php echo $this->Form->end(); ?>
 </div>

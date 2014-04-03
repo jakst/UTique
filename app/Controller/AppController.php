@@ -57,9 +57,7 @@ class AppController extends Controller {
 	}
 	
 	public function beforeFilter() {
-		$this->Auth->authorize = array('Controller');
-		$this->Auth->authenticate = array('Form' => array('passwordHasher' => 'Blowfish'));
-		$this->Auth->allow('index', 'view', 'register');
+		$this->Auth->allow();
 		$this->set('loggedIn', $this->Auth->loggedIn());
 		$this->set('currentUser', $this->Auth->user());
 	}
