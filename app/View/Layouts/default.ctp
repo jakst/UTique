@@ -44,13 +44,17 @@
 			</div>
 		</div>
 		
-		<div class="container"><?php echo $this->Session->flash(); ?></div>
-		
 		<?php
-		echo $this->fetch('content');
-		
-		$sql = $this->element('sql_dump');
-		if (strlen($sql) > 0):
+			$flash = $this->Session->flash();
+			
+			if (strlen($flash) > 0):
+				echo $flash;
+			endif;
+			
+			echo $this->fetch('content');
+			
+			$sql = $this->element('sql_dump');
+			if (strlen($sql) > 0):
 		?>
 		
 		<div class="container" style="margin-top: 30px">

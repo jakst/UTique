@@ -19,7 +19,12 @@ class UsersController extends AppController {
 	
 	public function register() {
 		if ($this->request->is('post')) {
-			$this->User->save($this->request->data);
+			$data = $this->request->data;
+			if ($this->User->save($data)) {
+				$this->Auth->login();
+				$this->Session->setFlash('Grattis '.$data['User']['username'].', ditt konto har skapats!', 'flash\success');
+				$this->redirect(array('controller' => 'tees'));
+			}
 		}
 	}
 }
