@@ -25,7 +25,7 @@
 				<h1>Betalningsuppgifter</h1>
 				<?php
 					echo $this->Form->input('Payment.card_number', array('label' => false, 'placeholder' => 'Kortnummer'));
-					echo $this->Form->input('Payment.expiry_date', array('label' => false,'placeholder' => 'Utgånsdatum: YY-MM'));
+					echo $this->Form->input('Payment.expiry_date', array('label' => false,'placeholder' => 'Utgångsdatum: YY-MM'));
 					echo $this->Form->submit('Bekräfta köp', array('before' => $this->Html->link('Gå tillbaka', array('controller' => 'carts', 'action' => 'view'), array('class' => 'btn btn-default')).' '));
 				?>
 			</div>
