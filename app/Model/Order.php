@@ -1,4 +1,6 @@
 <?php
+App::uses('CakeSession', 'Model/Datasource');
+
 class Order extends AppModel {
 	public $hasMany = array(
 		'OrderItem'
@@ -9,9 +11,8 @@ class Order extends AppModel {
 		'Payment'
 	);
 
-	public function beforeSave($options = Array){
-		//hämta hur många som finns av det id i databasen, minska med antal köpta och uppdatera
-		$cart = $this->Session->read('Cart');
+	public function beforeSave($options = array()){
+		$cart = CakeSession::read('Cart');
 
 		$inventory = ClassRegistry::init('InventoryItem');
 		$inventory->recursive = -1;
@@ -21,11 +22,17 @@ class Order extends AppModel {
 			foreach ($tee['sizes'] as $size => $item):
 				$item_id = $item['item_id'];
 				$data['InventoryItem'][$item_id]['amount'] -= $item['amount'];
-				$this->InventoryItem->save($data['InventoryItem'][$item_id]); 
 			endforeach;
 		endforeach;
 
-		//$this->Session->delete('Cart');
+		foreach ($cart as $id => $tee):
+			foreach ($tee['sizes'] as $size => $item):
+				$inventory->save($data['InventoryItem'][$item_id]); 
+			endforeach;
+		endforeach;
+		
+
+		$this->Session->delete('Cart');
 
 		return true; 
 	}

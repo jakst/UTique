@@ -1,8 +1,6 @@
 <?php
 class OrdersController extends AppController {
 
-	public $uses = array('Order','InventoryItem');
-
 	public function create_order(){
 		$data = $this->request->data;
 		if ($this->request->is('post')) {
@@ -26,7 +24,7 @@ class OrdersController extends AppController {
 					unset($data['Customer']);
 					
 					if ($this->Order->saveAll($data)) {
-						return $this->redirect(array('action' => 'confirm_order'));
+						$this->redirect(array('action' => 'confirm_order'));
 					}
 				}
 			}
