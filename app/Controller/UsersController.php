@@ -7,7 +7,7 @@ class UsersController extends AppController {
 				$this->set('loggedIn', $this->Auth->loggedIn());
 				$this->redirect($this->referer());
 			} else {
-				$this->Session->setFlash('Det angivna användarnamnet eller lösenordet är felaktigt! ', 'flash\error');
+				$this->Session->setFlash('Det angivna användarnamnet eller lösenordet är felaktigt! ', 'flash/error');
 			}
 		}
 	}
@@ -22,7 +22,7 @@ class UsersController extends AppController {
 			$data = $this->request->data;
 			if ($this->User->save($data)) {
 				$this->Auth->login();
-				$this->Session->setFlash('Grattis '.$data['User']['username'].', ditt konto har skapats!', 'flash\success');
+				$this->Session->setFlash('Grattis '.$data['User']['username'].', ditt konto har skapats!', 'flash/success');
 				$this->redirect(array('controller' => 'tees'));
 			}
 		}
