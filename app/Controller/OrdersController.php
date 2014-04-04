@@ -5,7 +5,6 @@ class OrdersController extends AppController {
 
 	public function create_order(){
 		$data = $this->request->data;
-		
 		if ($this->request->is('post')) {
 			if ($this->Session->check('Cart')) {
 				$cart = $this->Session->read('Cart');
@@ -35,20 +34,18 @@ class OrdersController extends AppController {
 	}
 	
 	public function confirm_order(){
+		//hämta hur många som finns av det id i databasen, minska med antal köpta och uppdatera
 		$cart = $this->Session->read('Cart');
+
 		$inventory = ClassRegistry::init('InventoryItem');
-		$inventory->recursive = 0;
-		$data = $inventory->find('all', array( 
-			'fields' => array('color', 'color')
-		));
-		print_r($data);
+		$inventory->recursive = -1;
+		$data['InventoryItem'] = Hash::combine($inventory->find('all'), '{n}.InventoryItem.id', '{n}.InventoryItem');
+
 		foreach ($cart as $id => $tee):
 			foreach ($tee['sizes'] as $size => $item):
-				$decrementby = $item['amount'];
-				$amountInInventory = $data[$item]['amount'];
-				
-				print_r($amountInInventory);
-				//hämta hur många som finns av det id i databasen, minska med antal köpta och uppdatera
+				$item_id = $item['item_id'];
+				$data['InventoryItem'][$item_id]['amount'] -= $item['amount'];
+				$this->InventoryItem->save($data['InventoryItem'][$item_id]); 
 			endforeach;
 		endforeach;
 
@@ -66,7 +63,7 @@ class OrdersController extends AppController {
 						
 		// se till att lagersaldot ändras!
 		
-		$this->Session->delete('Cart');
+	//	$this->Session->delete('Cart');
 	}
 }
 ?>
