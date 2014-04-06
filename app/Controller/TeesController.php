@@ -108,13 +108,24 @@ class TeesController extends AppController {
 
 	public function view($id = null) {
 	    if (!$id) {
-            throw new NotFoundException(__('Gå och dö'));
+            throw new NotFoundException(__('Tyvärr'));
         }
-
-		$tee = $this->Tee->findById($id);
+		
+		$inventory = ClassRegistry::init('InventoryItem');
+		$inventory->recursive = -1;
+		$data['InventoryItem'] = Hash::combine($inventory->find('all'), '{n}.InventoryItem.id', '{n}.InventoryItem');
+		
+		$tee = $this->Tee->findById($id);	
+		$tee['Item'] = Hash::combine($tee['Item'], '{n}.id', '{n}');
+		
+		foreach ($tee['Item'] as $item):	
+			if ($data['InventoryItem'][$item['id']]['amount'] == 0){
+				unset($tee['Item'][$item['id']]);
+			}
+		endforeach;
         
 		if (!$tee) {
-            throw new NotFoundException(__('Gå och dö'));
+            throw new NotFoundException(__('Tyvärr'));
         }
 
 		$this->set('tee', $tee);
