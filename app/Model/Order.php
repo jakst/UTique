@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 App::uses('CakeSession', 'Model/Datasource');
 
 class Order extends AppModel {
@@ -6,10 +6,8 @@ class Order extends AppModel {
 		'OrderItem'
 	);
 
-	public $hasOne = array(
-		'Customer',
-		'Payment'
-	);
+	public $hasOne = 'Payment';
+	public $belongsTo = 'Customer';
 
 	public function beforeSave($options = array()){
 		$cart = CakeSession::read('Cart');
@@ -38,7 +36,7 @@ class Order extends AppModel {
 	}
 
 	public function afterSave($created, $options = array()){
-		$this->Session->delete('Cart');
+		CakeSession::delete('Cart');
 	}
 
 }

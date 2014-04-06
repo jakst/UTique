@@ -14,10 +14,10 @@
 		
 		<?php foreach ($orders as $order): ?>
 			<tr>
-				<td><?php echo $this->Html->link($order['Order']['id'], array('controller' => 'orders', 'action' => 'view')); ?></td>
-				<td><?php echo $this->Html->link($this->Time->format($order['Order']['created'], '%Y-%m-%d'), array('controller' => 'orders', 'action' => 'view')); ?></td>
-				<td><?php echo $this->Html->link($order['Order']['status'], array('controller' => 'orders', 'action' => 'view')); ?></td>
-				<td class="text-right"><?php echo $this->Html->link($order['Order']['price'].' kr', array('controller' => 'orders', 'action' => 'view')); ?></td>
+				<td><?php echo $this->Html->link($order['Order']['id'], array('controller' => 'orders', 'action' => 'view', $order['Order']['id'])); ?></td>
+				<td><?php echo $this->Html->link($this->Time->format($order['Order']['created'], '%Y-%m-%d'), array('controller' => 'orders', 'action' => 'view', $order['Order']['id'])); ?></td>
+				<td><?php echo $this->Html->link($order['Order']['status'], array('controller' => 'orders', 'action' => 'view', $order['Order']['id'])); ?></td>
+				<td class="text-right"><?php echo $this->Html->link($order['Order']['price'].' kr', array('controller' => 'orders', 'action' => 'view', $order['Order']['id'])); ?></td>
 			</tr>
 		<?php endforeach; ?>
 		

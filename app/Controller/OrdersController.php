@@ -1,6 +1,11 @@
 <?php
 class OrdersController extends AppController {
-
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->deny('history', 'view');
+	}
+	
 	public function create_order(){
 	// kalla på checkInventoryStatus!
 		$data = $this->request->data;
@@ -19,7 +24,7 @@ class OrdersController extends AppController {
 						$data['Order']['price'] += $orderItem['amount']*$orderItem['price'];
 					}
 				}
-				pr(data);
+				
 				$this->Order->create();
 				if ($this->Order->Customer->save($data['Customer'])) {
 					$data['Order']['customer_id'] = $this->Order->Customer->id;
@@ -66,6 +71,21 @@ class OrdersController extends AppController {
 			)
 		);
 		$this->set('orders', $orders);
+	}
+	
+	public function view($id = null) {
+		if ($id) {
+			$order = $this->Order->findById($id);
+			$item = $this->Order->OrderItem->Item->findById(1);
+			
+			if ($order) {
+				$this->set('order', $order);
+			} else {
+            	throw new NotFoundException(__('Ordern existerar inte.'));
+			}
+		} else {
+            throw new NotFoundException(__('Ordern existerar inte.'));
+		}
 	}
 }
 ?>
