@@ -80,10 +80,11 @@
 					<div class="col-md-4"><h4>Information</h4>
 						<ul class="list-unstyled">
 							<li><a href="#">Lediga jobb</a></li>
+							<?php echo $this->Html->link('Måttinformation', array('controller' => 'pages', 'action' => 'aboutus')); ?>
 							<li><a href="#">Om Utique</a></li>
-							<li><a href="#">Leveransinformtion</a></li>
-							<li><a href="#">Storleksinformtion</a></li>
-							<li><a href="#">Betalinformtion</a></li>
+							<li><a href="#">Leveransinformation</a></li>
+							<li><a href="#">Måttinformation</a></li>
+							<li><a href="#">Betalinformation</a></li>
 						</ul>
 					</div>
 					
