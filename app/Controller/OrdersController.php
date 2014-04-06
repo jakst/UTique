@@ -2,6 +2,7 @@
 class OrdersController extends AppController {
 
 	public function create_order(){
+	// kalla på checkInventoryStatus! 
 		$data = $this->request->data;
 		if ($this->request->is('post')) {
 			if ($this->Session->check('Cart')) {
