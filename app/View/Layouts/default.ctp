@@ -83,7 +83,7 @@
 							<li><?php echo $this->Html->link('Om uTique', array('controller' => 'pages', 'action' => 'aboutus')); ?></li>
 							<li><?php echo $this->Html->link('Leveransinformation', array('controller' => 'pages', 'action' => 'deliveryinfo')); ?></li>
 							<li><?php echo $this->Html->link('Måttinformation', array('controller' => 'pages', 'action' => 'sizeinfo')); ?></li>
-							<li><?php echo $this->Html->link('Betalinformation', array('controller' => 'pages', 'action' => 'paymentinfo')); ?></li>
+							<li><?php echo $this->Html->link('Betalningsvillkor', array('controller' => 'pages', 'action' => 'paymentinfo')); ?></li>
 						</ul>
 					</div>
 					
