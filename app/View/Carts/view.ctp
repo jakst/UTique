@@ -76,7 +76,7 @@
 	
 				
 				<div align="right">
-					<?php echo $this->Html->link('Checka ut', array('controller' => 'orders', 'action' => 'create_order'), array('class' => 'btn btn-success btn-lg')); ?>
+					<?php echo $this->Html->link('Checka ut', array('controller' => 'inventoryItems', 'action' => 'check_inventory'), array('class' => 'btn btn-success btn-lg')); ?>
 				</div> 
 
 					<?php else: ?>
