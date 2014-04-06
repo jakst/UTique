@@ -7,7 +7,6 @@ class Order extends AppModel {
 	);
 
 	public $hasOne = array(
-		'Customer',
 		'Payment'
 	);
 
@@ -22,19 +21,19 @@ class Order extends AppModel {
 				$item_id = $item['item_id'];
 				$data['InventoryItem'][$item_id]['amount'] -= $item['amount'];
 				if($data['InventoryItem'][$item_id]['amount'] -= $item['amount'] < 0){
-					$this->lastErrorMessage = "Tyvärr finns det bara ".$data['InventoryItem'][$item_id]['amount']." kvar i lager av t-shirt ".$tee['Tee']['name']." i storlek ".$size.". Var god ändra din beställning.";
-					return false; 
+					$this->lastErrorMessage = "Tyvärr finns det bara ".$item['amount']." kvar i lager av t-shirt ".$tee['Tee']['name']." i storlek ".$size.". Var god ändra din beställning.";
+					return false;
 				}
 			endforeach;
 		endforeach;
-
+		
 		foreach ($cart as $id => $tee):
 			foreach ($tee['sizes'] as $size => $item):
-				$inventory->save($data['InventoryItem'][$item_id]); 
+				$inventory->save($data['InventoryItem'][$item_id]);
 			endforeach;
 		endforeach;
 
-		return true; 
+		return true;
 	}
 
 	public function afterSave($created, $options = array()){

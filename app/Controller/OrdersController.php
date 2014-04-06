@@ -9,8 +9,7 @@ class OrdersController extends AppController {
 				$cart = $this->Session->read('Cart');
 				
 				$data['Order'] = array(
-					'status' => 'oklar',
-					'datetime' => date('Y-m-d H:i:s'),
+					'status' => 'oklar'
 				);
 				
 				foreach ($cart as $tee) {
@@ -50,9 +49,21 @@ class OrdersController extends AppController {
 		// 	foreach ($tee['sizes'] as $size => $item):
 		// 		$item_id = $item['item_id'];
 		// 		$data['InventoryItem'][$item_id]['amount'] -= $item['amount'];
-		// 		$this->InventoryItem->save($data['InventoryItem'][$item_id]); 
+		// 		$this->InventoryItem->save($data['InventoryItem'][$item_id]);
 		// 	endforeach;
 		// endforeach;
+	}
+	
+	public function history(){
+		$customer = $this->Auth->user()['customer_id'];
+		
+		$this->Order->recursive = -1;
+		$orders = $this->Order->find('all', array(
+			'conditions' => array(
+				'customer_id' => $customer)
+			)
+		);
+		$this->set('orders', $orders);
 	}
 }
 ?>
