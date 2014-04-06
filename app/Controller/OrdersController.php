@@ -2,22 +2,24 @@
 class OrdersController extends AppController {
 
 	public function create_order(){
-	// kalla på checkInventoryStatus! 
+	// kalla på checkInventoryStatus!
 		$data = $this->request->data;
 		if ($this->request->is('post')) {
 			if ($this->Session->check('Cart')) {
 				$cart = $this->Session->read('Cart');
 				
 				$data['Order'] = array(
-					'status' => 'oklar'
+					'status' => 'oklar',
+					'price' => 0
 				);
 				
 				foreach ($cart as $tee) {
 					foreach ($tee['sizes'] as $orderItem) {
 						$data['OrderItem'][] = $orderItem;
+						$data['Order']['price'] += $orderItem['amount']*$orderItem['price'];
 					}
 				}
-				
+				pr(data);
 				$this->Order->create();
 				if ($this->Order->Customer->save($data['Customer'])) {
 					$data['Order']['customer_id'] = $this->Order->Customer->id;

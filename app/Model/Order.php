@@ -7,6 +7,7 @@ class Order extends AppModel {
 	);
 
 	public $hasOne = array(
+		'Customer',
 		'Payment'
 	);
 

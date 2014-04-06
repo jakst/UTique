@@ -3,7 +3,7 @@ class TeesController extends AppController {
 
 	public function index() {
 		$this->Tee->recursive = 0;
-		$colors = $this->Tee->find('list', array( 
+		$colors = $this->Tee->find('list', array(
 		'fields' => array('color', 'color')
 		));
 		$colors = array_unique($colors);
@@ -15,7 +15,7 @@ class TeesController extends AppController {
 				'intervall1' => 'intervall1',
 				'intervall2' => 'intervall2',
 				'intervall3' => 'intervall3',
-				'intervall4' => 'intervall4'	
+				'intervall4' => 'intervall4'
 			),
 			'size' => array(
 				'xs' => 'xs',
@@ -118,7 +118,7 @@ class TeesController extends AppController {
         }
 
 		$this->set('tee', $tee);
-	}	
+	}
 
 	public function add_to_cart(){
 		$id = $this->request->data['id'];
@@ -132,7 +132,7 @@ class TeesController extends AppController {
 		$tee = $this->Tee->find('all', array(
 			'contain' => false,
 			'conditions' => array('Tee.id' => $id),
-			'fields' => array('id', 'name', 'price', 'color', 'sex')
+			'fields' => array('id', 'name', 'price', 'discount', 'color', 'sex')
 		))['0'];
 
 		$sId = explode('-', $sizeId)[0];
@@ -151,27 +151,40 @@ class TeesController extends AppController {
 		} else {
 			$this->Session->write('Cart.'.$id, $tee);
 		}
-
-		$orderItem = array('item_id' => $sId, 'amount' => $amount + 1);
+		
+		$price = $tee['Tee']['price']*(100-$tee['Tee']['discount'])/100;
+		$orderItem = array('item_id' => $sId, 'amount' => $amount + 1, 'price' => $price);
 		$this->Session->write('Cart.'.$id.'.sizes.'.$size, $orderItem);
 		$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
 	}
 
 	public function reallocate() {
+		$this->Tee->query('TRUNCATE items;');
+		$this->Tee->query('TRUNCATE inventory_items;');
+		
 		$tees = $this->Tee->find('all');
-		$this->Tee->Item->query('TRUNCATE items;');
-
+		$sizes = array ('XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL');
+		
+		$items = "INSERT INTO items(id, tee_id, size) VALUES";
+		$inventory = "INSERT INTO inventory_items(item_id, amount) VALUES";
+		
+		$id = 1;
 		foreach ($tees as $tee) {
-			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XS');
-			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'S');
-			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'M');
-			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'L');
-			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XL');
-			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XXL');
-			$data[] = array('tee_id' => $tee['Tee']['id'], 'size' => 'XXXL');
+			$tee_id = $tee['Tee']['id'];
+			foreach ($sizes as $size) {
+				if ($id > 1) {
+					$items .= ',';
+					$inventory .= ', ';
+				}
+				
+				$items .= " ('{$id}', '{$tee_id}', '{$size}')";
+				$inventory .= " ('{$id}', '15')";
+				$id++;
+			}
 		}
-
-		if ($this->Tee->Item->saveMany($data)) {echo '<span style="color: red; font-size: 30px">YEEAAAHH!!!!</span>';}
+		
+		$this->Tee->query($items);
+		$this->Tee->query($inventory);
 	}
 }
 ?>
