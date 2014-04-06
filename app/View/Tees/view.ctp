@@ -23,6 +23,11 @@
 
 				<tbody>
 					<tr align="center">
+						<td>XS</td>
+						<td>66</td>
+						<td>45</td>
+					</tr>
+					<tr align="center">
 						<td>S</td>
 						<td>68</td>
 						<td>48</td>
@@ -41,6 +46,16 @@
 						<td>XL</td>
 						<td>74</td>
 						<td>57</td>
+					</tr>
+					<tr align="center">
+						<td>XXL</td>
+						<td>76</td>
+						<td>60</td>
+					</tr>
+					<tr align="center">
+						<td>XXXL</td>
+						<td>78</td>
+						<td>63</td>
 					</tr>
 				</tbody>
 			</table>
