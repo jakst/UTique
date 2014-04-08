@@ -28,6 +28,7 @@ class OrdersController extends AppController {
 				$this->Order->create();
 				if ($this->Order->Customer->save($data['Customer'])) {
 					$data['Order']['customer_id'] = $this->Order->Customer->id;
+					$this->Session->write('Customer', $data['Customer']);
 					unset($data['Customer']);
 					
 					if ($this->Order->saveAll($data)) {
