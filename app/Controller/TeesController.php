@@ -48,7 +48,6 @@ class TeesController extends AppController {
 			}
 
 			if($filter['price'] != null){
-				print_r($filter);
 				if(isset($filter['price']['intervall1'])){
 					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(0,99);
 				}
