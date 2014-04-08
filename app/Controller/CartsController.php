@@ -2,11 +2,9 @@
 class CartsController extends AppController {
 	
 	public function view() {
-	//$this->Session->setFlash($errorMessage, 'flash/error');
-	
-		// if($this->InventoryItem->lastErrorMessage) {
-			// $this->Session->setFlash($this->InventoryItem->lastErrorMessage, 'flash/error');
-		// }	
+		$shipping = 49;
+		$this->Session->set('Shipping', $shipping);
+		$this->set('shipping', $shipping);
 	}
 	
 	public function empty_cart() {

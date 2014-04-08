@@ -16,8 +16,8 @@
 				</thead>
 		
 				<tbody>
-					<?php 
-					$totalshopvalue = 0;
+					<?php
+					$total = 0;
 					$shippingcost = 0;
 					$cart = $this->Session->read('Cart');
 					
@@ -45,20 +45,19 @@
 										<?php echo $this->Html->link('+', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $orderItem['amount']+1), array('class' => 'btn btn-default')); ?>
 									</div>
 								</td>
-								<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
+								<td><?php echo $cart[$id]['Tee']['price']?> kr</td>
 								<td align="right"><?php echo $cart[$id]['Tee']['price']*$orderItem['amount']?> kr</td>
 								<td style="width: 50px">
 									<?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'app', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
 								</td>
 							</tr>
 						<?php
-						$totalshopvalue = $totalshopvalue + $cart[$id]['Tee']['price']*$orderItem['amount'];
+						$total += $cart[$id]['Tee']['price']*$orderItem['amount'];
 						
 
-						endforeach; 
+						endforeach;
 					endforeach;
-						
-					$shippingcost = 100; ?>
+					?>
 
 				</tbody>
 				<tfoot>
@@ -66,9 +65,9 @@
 						<td colspan="4">
 							<?php echo $this->Html->link('Töm varukorg', array('controller' => 'carts', 'action' => 'empty_cart'), array('class' => 'btn btn-default')); ?>
 						</td>
-						<td colspan="2" align="right">Varuvärde: <?php echo $totalshopvalue ?> kr<br>
-						Fraktkostnad: <?php echo $shippingcost ?> kr<br>
-						Totalkostnad: <?php echo $totalshopvalue+$shippingcost ?> kr
+						<td colspan="2" align="right">Varuvärde: <?php echo $total; ?> kr<br>
+						Fraktkostnad: <?php echo $shipping; ?> kr<br>
+						Totalkostnad: <?php echo $total  +$shipping; ?> kr
 						</td>
 					</tr>
 				</tfoot>
@@ -77,11 +76,11 @@
 				
 				<div align="right">
 					<?php echo $this->Html->link('Checka ut', array('controller' => 'inventoryItems', 'action' => 'check_inventory'), array('class' => 'btn btn-success btn-lg')); ?>
-				</div> 
+				</div>
 
 					<?php else: ?>
-					<h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4>	
+					<h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4>
 
-				<?php endif; ?>		
+				<?php endif; ?>
 
 </div>

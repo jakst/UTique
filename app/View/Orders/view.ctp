@@ -34,8 +34,8 @@
 			<tr>
 				<td colspan="6" class="text-right">
 					Ordersumma: <?php echo $order['Order']['price']; ?> kr<br />
-					Fraktkostnad: 169 kr<br />
-					<strong>Totalkostnad: 1111 kr</strong>
+					Fraktkostnad: <?php echo $order['Order']['shipping']; ?> kr<br />
+					<strong>Totalkostnad: <?php echo $order['Order']['price'] + $order['Order']['shipping']; ?> kr</strong>
 				</td>
 			</tr>
 		</tfoot>

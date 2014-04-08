@@ -15,7 +15,8 @@ class OrdersController extends AppController {
 				
 				$data['Order'] = array(
 					'status' => 'oklar',
-					'price' => 0
+					'price' => 0,
+					'shipping' => $this->Session->read('Shipping')
 				);
 				
 				foreach ($cart as $tee) {
