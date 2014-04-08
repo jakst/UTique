@@ -1,5 +1,7 @@
 <?php
 class OrderItem extends AppModel {
-	public $belongsTo = 'Order';
+	public $belongsTo = array(
+		'Order',
+		'Item';
 }
 ?>

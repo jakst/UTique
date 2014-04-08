@@ -1,5 +1,6 @@
 <?php
 class Item extends AppModel {
-	public $hasOne = 'OrderItem', 'InventoryItem';
+	public $hasOne = 'InventoryItem';
+	public $hasMany = 'OrderItem';
 }
 ?>
