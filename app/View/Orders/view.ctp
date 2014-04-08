@@ -21,6 +21,7 @@
 			<tr>
 				<td><?php echo $row['item_id']; ?></td>
 				<td><?php echo 'derp'; ?></td>
+				<td><?php echo 'derp'; ?></td>
 				<td><?php echo $row['amount']; ?></td>
 				<td><?php echo $row['price']; ?> kr</td>
 				<td class="text-right"><strong><?php echo $row['price']*$row['amount']; ?> kr</strong></td>
@@ -28,6 +29,16 @@
 		<?php endforeach; ?>
 		
 		</tbody>
+		
+		<tfoot>
+			<tr>
+				<td colspan="6" class="text-right">
+					Ordersumma: <?php echo $order['Order']['price']; ?> kr<br />
+					Fraktkostnad: 169 kr<br />
+					<strong>Totalkostnad: 1111 kr</strong>
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 	<?php endif; ?>
 </div>
