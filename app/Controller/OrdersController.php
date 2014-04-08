@@ -45,10 +45,9 @@ class OrdersController extends AppController {
 	}
 	
 	public function confirm_order(){
-		// $cart = $this->Session->read('Cart');
-		// $this->set('cart', $cart);
-		// $this->Session->delete('Cart');
-		
+		$cart = $this->Session->read('Cart');
+		$this->set('cart', $cart);
+		$this->Session->delete('Cart');
 	}
 	
 	public function history(){
