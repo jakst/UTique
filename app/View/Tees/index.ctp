@@ -1,3 +1,4 @@
+<title>uTique - stället för dig som vill sticka ut i mängden!</title>
 <div class="jumbotron">
 			<div class="container">
 				<h1>UTique!</h1>
@@ -135,6 +136,9 @@
 			?>
 				<div class="col-md-3">
 					<?php
+						if($tee['Tee']['discount']!=0){
+							echo $this->Html->image('sale.png');
+						}
 						echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
 							array(
 								'alt' => $tee['Tee']['name'], 
@@ -147,7 +151,12 @@
 							array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
 						));
 					?>
-					<br><?php echo $tee['Tee']['price']; ?> kr
+					<br><?php if($tee['Tee']['discount']!=0){
+						echo '<strike>'.$tee['Tee']['price'].' </strike>';
+						echo '<font color="red">'.floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100)).' kr</font>';
+					}else{
+						echo $tee['Tee']['price'].' kr';
+					}?>
 				</div>
 				
 			<?php

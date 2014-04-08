@@ -1,3 +1,4 @@
+<title>uTique - <?php echo $tee['Tee']['name']?></title>
 <div class="container">
 	<h1><?php echo $tee['Tee']['name'];	?></h1>
 	
@@ -14,7 +15,12 @@
 		</div>
 
 		<div class="col-md-6">
-			<div id="priceproduct"><?php echo $tee['Tee']['price'];	?> kr</div>
+			<div id="priceproduct">
+			<?php if($tee['Tee']['discount'] != 0){
+			echo floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100));
+			}else{
+			echo $tee['Tee']['price'];	
+			}?> kr</div>
 			
 			
 

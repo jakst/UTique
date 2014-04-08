@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<?php echo $this->Html->charset(); ?>
-		<title><?php echo $title_for_layout; ?></title>
+		
 		<?php
 			echo $this->Html->meta('icon','img/favicon.png', array('type' => 'icon'));
 			echo $this->fetch('meta');
