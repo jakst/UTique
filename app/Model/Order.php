@@ -36,7 +36,7 @@ class Order extends AppModel {
 	}
 
 	public function afterSave($created, $options = array()){
-		CakeSession::delete('Cart');
+		//CakeSession::delete('Cart');
 	}
 
 }
