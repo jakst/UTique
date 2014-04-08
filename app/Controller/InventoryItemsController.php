@@ -3,7 +3,7 @@ class InventoryItemsController extends AppController {
 	public function check_inventory(){
 			$cart = $this->Session->read('Cart');
 			$data['InventoryItem'] = Hash::combine($this->InventoryItem->find('all'), '{n}.InventoryItem.id', '{n}.InventoryItem');
-
+			pr($cart);
 			foreach ($cart as $id => $tee):
 				foreach ($tee['sizes'] as $size => $item):
 					$item_id = $item['item_id'];
