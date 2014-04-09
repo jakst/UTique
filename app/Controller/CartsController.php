@@ -3,7 +3,7 @@ class CartsController extends AppController {
 	
 	public function view() {
 		$shipping = 49;
-		$this->Session->set('Shipping', $shipping);
+		$this->Session->write('Shipping', $shipping);
 		$this->set('shipping', $shipping);
 	}
 	

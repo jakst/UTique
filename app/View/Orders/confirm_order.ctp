@@ -1,7 +1,7 @@
 <div class="container">
 	<?php $customer = $this->Session->read('Customer');?>
 		<h1>Tack <?php echo $customer['name']?> för att du handlat på UTique!</h1><br>
-		<h3>Din order har tagits emot. Om bara tre dagar kan du ha på dig din nya helt unika t-shirt! Nedan finner du en sammanställning av din order:</h3>	
+		<h3>Din order har tagits emot. Om bara tre dagar kan du ha på dig din nya helt unika t-shirt! Nedan finner du en sammanställning av din order:</h3>
 
 		<table class="table table-striped table-centered">
 				<thead>
@@ -17,10 +17,8 @@
 				</thead>
 		
 				<tbody>
-					<?php 
-					$totalshopvalue = 0;
-					$shippingcost = 0;
-					//$cart = $this->Session->read('Cart');
+					<?php
+					$total = 0;
 					
 					foreach ($cart as $id => $tee):
 						foreach ($tee['sizes'] as $size => $orderItem): ?>
@@ -42,34 +40,35 @@
 								<td>
 									<?php echo $orderItem['amount']; ?></a>
 								</td>
-								<td><?php echo $cart[$id]['Tee']['price']?> kr</td>  
+								<td><?php echo $cart[$id]['Tee']['price']?> kr</td>
 								<td align="right"><?php echo $cart[$id]['Tee']['price']*$orderItem['amount']?> kr</td>
 								<td style="width: 50px">
 								</td>
 							</tr>
 						<?php
-						$totalshopvalue = $totalshopvalue + $cart[$id]['Tee']['price']*$orderItem['amount'];
+						$total = $total + $cart[$id]['Tee']['price']*$orderItem['amount'];
 						
 
-						endforeach; 
+						endforeach;
 					endforeach;
 						
-					$shippingcost = 100; ?>
+					$shipping = $this->Session->read('Shipping');
+				?>
 
 				</tbody>
 				<tfoot>
 					<tr>
 						<td colspan="4">
 						</td>
-						<td colspan="2" align="right">Varuvärde: <?php echo $totalshopvalue ?> kr<br>
+						<td colspan="2" align="right">Varuvärde: <?php echo $total ?> kr<br>
 						Fraktkostnad: <?php echo $shippingcost ?> kr<br>
-						Totalkostnad: <?php echo $totalshopvalue+$shippingcost ?> kr
+						Totalkostnad: <?php echo $total+$shippingcost ?> kr
 						</td>
 					</tr>
 				</tfoot>
 			</table>
 			
-			<h3>Dina varor kommer inom kort levereras till:</h3>	
+			<h3>Dina varor kommer inom kort levereras till:</h3>
 			<?php echo $customer['name'];?><br>
 			<?php echo $customer['address'];?><br>
 			<?php echo $customer['zipcode']." "; echo $customer['city'];?><br>
