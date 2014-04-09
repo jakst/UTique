@@ -18,7 +18,7 @@
 				<tbody>
 					<?php
 					$total = 0;
-					$shippingcost = 0;
+					$shipping = $this->Session->read('Shipping');
 					$cart = $this->Session->read('Cart');
 					
 					foreach ($cart as $id => $tee):
@@ -67,7 +67,7 @@
 						</td>
 						<td colspan="2" align="right">Varuvärde: <?php echo $total; ?> kr<br>
 						Fraktkostnad: <?php echo $shipping; ?> kr<br>
-						<strong>Totalkostnad: <?php echo $total  +$shipping; ?> kr</strong>
+						<strong>Totalkostnad: <?php echo $total + $shipping; ?> kr</strong>
 						</td>
 					</tr>
 				</tfoot>

@@ -61,8 +61,8 @@
 						<td colspan="4">
 						</td>
 						<td colspan="2" align="right">Varuvärde: <?php echo $total ?> kr<br>
-						Fraktkostnad: <?php echo $shippingcost ?> kr<br>
-						Totalkostnad: <?php echo $total+$shippingcost ?> kr
+						Fraktkostnad: <?php echo $shipping ?> kr<br>
+						Totalkostnad: <?php echo $total + $shipping ?> kr
 						</td>
 					</tr>
 				</tfoot>
