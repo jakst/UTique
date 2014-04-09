@@ -135,24 +135,31 @@
 					endif;
 			?>
 				<div class="col-md-3">
+					<div>
+						<a href="">
 					<?php
-						if($tee['Tee']['discount']!=0){
-							echo $this->Html->image('sale.png');
-						}
+					//	if($tee['Tee']['discount']!=0){
+							echo $this->Html->image('sale.png',
+							array(
+								'class' => 'img-responsive',
+								'style' => 'position: absolute',	
+							));
+						//}
 						echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
 							array(
 								'alt' => $tee['Tee']['name'], 
 								'class' => 'img-responsive',
-								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
-						)));
-
-						echo $this->Html->link(
+								//'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id'])
+						)); ?>
+						</a>
+					</div>
+						<?php echo $this->Html->link(
 							$tee['Tee']['name'],
 							array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
 						));
 					?>
 					<br><?php if($tee['Tee']['discount']!=0){
-						echo '<strike>'.$tee['Tee']['price'].' </strike>';
+						echo '<strike>'.$tee['Tee']['price'].' kr </strike>';
 						echo '<font color="red">'.floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100)).' kr</font>';
 					}else{
 						echo $tee['Tee']['price'].' kr';

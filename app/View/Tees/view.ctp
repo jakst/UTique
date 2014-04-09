@@ -4,23 +4,26 @@
 	
 	<div class="row">
 		<div class="col-md-6" id="pictureproduct">
-			<?php
-				echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
-					array(
-						'alt' => $tee['Tee']['name'], 
-						'class' => 'img-responsive'
-					)
-				);
-			?>
+			<div id="tshirtpicture">
+				<?php
+					echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
+						array(
+							'alt' => $tee['Tee']['name'], 
+							'class' => 'img-responsive'
+						)
+					);
+				?>
+			</div>
 		</div>
 
 		<div class="col-md-6">
 			<div id="priceproduct">
 			<?php if($tee['Tee']['discount'] != 0){
-			echo floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100));
+				echo '<div id="salesprice">'.floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100)).' kr </div></div>';
+				echo '<div id="regularprice"> Ordinarie pris: '.$tee['Tee']['price'].' kr </div>';
 			}else{
-			echo $tee['Tee']['price'];	
-			}?> kr</div>
+			echo $tee['Tee']['price'].' kr </div>';	
+			}?>
 			
 			
 
