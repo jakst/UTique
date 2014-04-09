@@ -34,7 +34,7 @@
 			Hjärnan och planeraren. Lämnar carmel frappuccinospår efter sig. 
 		</div>
 		<div class="col-md-4" >
-			The best of the best.
+			Det kreativa geniet. Ses ständigt med en påse med chokladtäckta russin. 
 		</div>
 	</div>
 </div>
