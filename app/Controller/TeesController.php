@@ -79,10 +79,6 @@ class TeesController extends AppController {
 				$colorCondition,
 				$priceCondition,
 				$sizeCondition
-				/*'OR' => array(
-					array('Tee.color' => 'Svart'),
-					array('Tee.color' => 'Vit')
-				)*/
 			)
 		));
 
