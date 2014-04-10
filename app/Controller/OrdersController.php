@@ -53,7 +53,8 @@ class OrdersController extends AppController {
 	}
 	
 	public function history(){
-		$customer = $this->Auth->user()['customer_id'];
+		$user = $this->Auth->user();
+		$customer = $user['customer_id'];
 		
 		$this->Order->recursive = -1;
 		$orders = $this->Order->find('all', array(
