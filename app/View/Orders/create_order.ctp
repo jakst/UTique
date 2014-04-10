@@ -1,7 +1,18 @@
 <div class="container">
 		<h1>Mina uppgifter</h1>
-
-		<?php echo $this->Form->create();?>
+		<?php
+			if ($loggedIn):
+				$customer = ClassRegistry::init('Customer');
+				$customer->recursive = -1;
+				$customer = $customer->findById('2');
+				pr($customer);
+				$this->Html->link('Bekräfta order');
+		?>
+		<?php
+			else:
+			
+			echo $this->Form->create();
+		?>
 		
 		<div class="row">
 			<div class="col-md-6">
@@ -30,5 +41,9 @@
 				?>
 			</div>
 		</div>
-		<?php echo $this->Form->end(); ?>
+		
+		<?php
+			echo $this->Form->end();
+			endif;
+		?>
 </div>
