@@ -1,8 +1,8 @@
 <div class="container">
-	
-	<div class="row">
-		<h1>Om Utique</h1>
+	<h1>Om Utique</h1>
 		Utique grundades i Singapore år 2014 efter den otroligt höga efterfrågan på unika t-shirtar. Med en t-shirt från Utique slipper du dyka upp på festen i samma t-shirt som någon annan. 
+	<div class="row">
+		
 	<div class="row">
 		<div class="col-md-4" id="pictureborder" >
 			<?php echo $this->Html->image('Jakob.jpg', 							

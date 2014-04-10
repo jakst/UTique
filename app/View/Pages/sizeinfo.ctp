@@ -1,6 +1,6 @@
 ﻿<div class="container">
+<h1>Måttinformation</h1><br><br>
 	<div class="row">
-	<h1>Måttinformation</h1><br><br>
 		<div class="col-md-5">
 			<?php echo $this->Html->image('sizeguide.png');?>
 		</div>

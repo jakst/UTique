@@ -11,6 +11,10 @@ body {
 	font-family: Century gothic;
 }
 
+.container > h1{
+	text-transform: uppercase;
+}
+
 #putinbasket {
 	margin-top: 20px;
 	padding-left: 0px;
