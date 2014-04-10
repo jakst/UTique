@@ -79,10 +79,6 @@ class TeesController extends AppController {
 				$colorCondition,
 				$priceCondition,
 				$sizeCondition
-				/*'OR' => array(
-					array('Tee.color' => 'Svart'),
-					array('Tee.color' => 'Vit')
-				)*/
 			)
 		));
 
@@ -135,18 +131,15 @@ class TeesController extends AppController {
 		$sizeId = $this->request->data['size'];
 
 		if (!$id || !$sizeId) {
-            throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
+			throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
 		}
 
 		$this->Tee->recursive = -1;
-		$tee = $this->Tee->find('all', array(
-			'contain' => false,
-			'conditions' => array('Tee.id' => $id),
-			'fields' => array('id', 'name', 'price', 'discount', 'color', 'sex')
-		))['0'];
+		$tee = $this->Tee->findById($id);
 
-		$sId = explode('-', $sizeId)[0];
-		$size = explode('-', $sizeId)[1];
+		$expl = explode('-', $sizeId);
+		$sId = $expl[0];
+		$size = $expl[1];
 
 		if (!$tee){
 			throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));

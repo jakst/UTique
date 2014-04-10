@@ -10,7 +10,6 @@ class InventoryItemsController extends AppController {
 					$errorMessage = "Tyvärr finns det bara ".$data['InventoryItem'][$item_id]['amount']." kvar i lager av t-shirt ".$tee['Tee']['name']." i storlek ".$size.". Var god ändra din beställning.";
 					$this->Session->setFlash($errorMessage, 'flash/error');
 					$this->redirect(array('controller' => 'carts', 'action' => 'view'));
-					//$this->redirect(array('controller' => 'carts', 'action' => 'view', 'errorMessage' => $errorMessage));
 				}
 			endforeach;
 		endforeach;
