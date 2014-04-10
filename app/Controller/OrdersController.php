@@ -26,21 +26,28 @@ class OrdersController extends AppController {
 					}
 				}
 				
-				$this->Order->create();
-				if ($this->Order->Customer->save($data['Customer'])) {
+				$user = $this->Auth->user();
+				if (!empty($user['customer_id'])) {
+					$data['Order']['customer_id'] = $user['customer_id'];
+				} else if ($this->Order->Customer->save($data['Customer'])) {
 					$data['Order']['customer_id'] = $this->Order->Customer->id;
-					$this->Session->write('Customer', $data['Customer']);
-					unset($data['Customer']);
-					
-					if ($this->Order->saveAll($data)) {
-						$this->redirect(array('action' => 'confirm_order'));
-					} else {
-						if($this->Order->lastErrorMessage) {
-							$this->Session->setFlash($this->Order->lastErrorMessage, 'flash/error');
-						}
-
-						$this->redirect(array('controller' => 'carts', 'action' => 'view'));
+					if ($this->Auth->loggedIn()) {
+						$this->Session->write('Auth.User.customer_id', $this->Order->Customer->id);
 					}
+				}
+				
+				$this->Session->write('Customer', $data['Customer']);
+				unset($data['Customer']);
+				
+				$this->Order->create();
+				if ($this->Order->saveAll($data)) {
+					$this->redirect(array('action' => 'confirm_order'));
+				} else {
+					if($this->Order->lastErrorMessage) {
+						$this->Session->setFlash($this->Order->lastErrorMessage, 'flash/error');
+					}
+
+					$this->redirect(array('controller' => 'carts', 'action' => 'view'));
 				}
 			}
 		}
