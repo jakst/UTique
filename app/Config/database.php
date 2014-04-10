@@ -64,26 +64,14 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-<<<<<<< HEAD
-		'host' => 'sql3.freesqldatabase.com',
-		'login' => 'sql330561',
-		'password' => 'qT7%mP1*',
-		'database' => 'sql330561',
-=======
 		'host' => 'localhost',
 		'login' => 'root',
-<<<<<<< HEAD
 		'password' => 'mysql',
-		'database' => 'utique',
-=======
-		'password' => '',
 		'database' => 'utique',
 		// 'host' => 'sql3.freesqldatabase.com',
 		// 'login' => 'sql330561',
 		// 'password' => 'qT7%mP1*',
 		// 'database' => 'sql330561',
->>>>>>> FETCH_HEAD
->>>>>>> 54273f31ca19c8a6937f66f4e8547678d082dc4d
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);

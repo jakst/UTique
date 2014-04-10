@@ -84,6 +84,22 @@ footer {
 
 #priceproduct {
 	font-size: 90px;
+	padding-bottom: 0;
+}
+
+#salesprice {
+	color: red;	
+}
+
+#tshirtpicture {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+
+#regularprice {
+	font-size: 15px;
+	font-style: italic;
 }
 
 .checkout-product-img {
