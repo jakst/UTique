@@ -1,5 +1,5 @@
 <title>uTique - stället för dig som vill sticka ut i mängden!</title>
-<div class="jumbotron window">
+<div class="jumbotron window bordered-pictures">
 	<div class="container">
 		<h2>Dagens T-shirts</h2>
 		<div class="row">
@@ -125,7 +125,7 @@
 	</div>
 </div>
 
-<div id="product-grid" class="container window">
+<div id="product-grid" class="container window bordered-pictures">
 	<div class="row">		
 	<?php
 		$count = 0;
@@ -136,48 +136,50 @@
 			endif;
 	?>
 		<div class="col-md-3">
-			
-			<div id="salesteepicture">
-				
+			<div class="picture-wrapper">
 				<?php 
 					
-					if ($tee['Tee']['discount']!=0){
-					$itissale='position: absolute; z-index: -1';
-					}
-					else{
-						$itissale = '';
-					}
+					$sale = $tee['Tee']['discount'] > 0;
+					$saleStyle = $sale ? 'position: absolute; z-index: -1' : '';
+					
 					echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
-					array(
-						'alt' => $tee['Tee']['name'], 
-						'class' => 'img-responsive',
-						'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']),
-						'style' => $itissale
-
-
-				));?>
-
+						array(
+							'alt' => $tee['Tee']['name'], 
+							'class' => 'img-responsive',
+							'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']),
+							'style' => $saleStyle
+						)
+					);
 				
-				<?php if($tee['Tee']['discount']!=0){
+				if ($sale):
 					echo $this->Html->image('sale.png', 
 						array(
 							'class' => 'img-responsive', 
-							'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
-								)));
-				}?>
-				
+							'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id'])
+						)
+					);
+				endif;
+			?>
+			
 			</div>
-				<?php echo $this->Html->link(
+			
+			<?php
+				echo $this->Html->link(
 					$tee['Tee']['name'],
 					array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
 				));
 			?>
-			<br><?php if($tee['Tee']['discount']!=0){
-				echo '<strike>'.$tee['Tee']['price'].' kr </strike>';
-				echo '<font color="red">'.floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100)).' kr</font>';
-			}else{
+			
+			<br>
+			
+			<?php
+			if($sale) {
+				echo '<strike>'.$tee['Tee']['price'].' kr</strike> ';
+				echo '<span style="color: red;">'.floor($tee['Tee']['price']*((100 - $tee['Tee']['discount'])/100)).' kr</span>';
+			} else {
 				echo $tee['Tee']['price'].' kr';
-			}?>
+			}
+			?>
 		</div>
 		
 	<?php

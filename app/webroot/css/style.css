@@ -60,35 +60,17 @@ table.cake-sql-log th, table.cake-sql-log td {
 	margin-top: -55px;
 }
 
-.jumbotron {
-	margin-top: -70px;
-	padding-top: 20px;
-}
-
 .window {
 	background-color: rgba(255, 255, 255 , 0.97);
 	box-shadow: 0 2px 4px rgba(0,0,0,.25);
 	padding: 20px;
 }
 
-.window > h1 {
-	margin-top: 0;
-}
-
-
-.jumbotron img {border: 5px solid #eaeaea;}
-
-#pictureborder img {border: 5px solid #eaeaea;}
-
-
-#salesteepicture {
-	position: relative;
-	border: 5px solid #eaeaea;
-}
-
-.nav-dropdown-form{
-	margin: 3px 0;
-}
+.jumbotron {margin-top: -70px;}
+.window > h1 {margin-top: 0;}
+.bordered-pictures img{border: 5px solid #eaeaea;}
+.picture-wrapper {position: relative;}
+.nav-dropdown-form{margin: 3px 0;}
 
 .cart-item{
 	width: 380px;
