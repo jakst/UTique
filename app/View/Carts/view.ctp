@@ -1,5 +1,4 @@
-
-<div class="container">
+<div class="container window">
 		<h1>Varukorg</h1>
 			<?php if ($this->Session->check('Cart')): ?>
 			<table class="table table-striped table-centered">

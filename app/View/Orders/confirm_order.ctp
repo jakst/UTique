@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container window">
 	<?php $customer = $this->Session->read('Customer');?>
 		<h1>Tack <?php echo $customer['name']?> för att du handlat på UTique!</h1><br>
 		<h3>Din order har tagits emot. Om bara tre dagar kan du ha på dig din nya helt unika t-shirt! Nedan finner du en sammanställning av din order:</h3>

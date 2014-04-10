@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container window">
 	<h1>Om Utique</h1>
 		Utique grundades i Singapore år 2014 efter den otroligt höga efterfrågan på unika t-shirtar. Med en t-shirt från Utique slipper du dyka upp på festen i samma t-shirt som någon annan. 
 	<div class="row">

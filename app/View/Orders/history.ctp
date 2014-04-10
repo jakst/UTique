@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container window">
 	<h1>Orderhistorik</h1>
 	<table class="table table-striped">
 		<thead>

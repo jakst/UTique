@@ -11,8 +11,9 @@ body {
 	font-family: Century gothic;
 }
 
-.container > h1{
+h1, h2, h3, h4 {
 	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 #putinbasket {
@@ -58,14 +59,16 @@ body {
 .jumbotron {
 	margin-top: -70px;
 	padding-top: 20px;
-	background-color: #fafafa;
-	box-shadow: 0 2px 4px rgba(0,0,0,.25);
-	background-color: rgba(255, 255, 255 , 0.95);
-
 }
 
-.jumbotron > .container > h2{
-	text-transform: uppercase;
+.window {
+	background-color: rgba(255, 255, 255 , 0.97);
+	box-shadow: 0 2px 4px rgba(0,0,0,.25);
+	padding: 20px;
+}
+
+.window > h1 {
+	margin-top: 0;
 }
 
 
@@ -93,25 +96,8 @@ body {
 	font-weight: bold;
 }
 
-.filter-box{
-	background: #fafafa;
-	padding: 2px 20px 15px;
-	margin: 0 0 20px;
-	box-shadow: 0 2px 4px rgba(0,0,0,.25);
-}
-
-.filter-box > h4{
-text-transform: uppercase;
-letter-spacing: 1px;
-}
-
 #product-grid > .row {
 	margin: 15px 0;
-}
-
-#product-grid {
-	box-shadow: 0 2px 4px rgba(0,0,0,.25);
-	background-color: rgba(255, 255, 255 , 0.95);
 }
 
 #product-grid > div.row > div{

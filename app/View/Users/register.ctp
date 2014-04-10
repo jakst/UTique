@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container window">
 	<div class="row">
 		<div class="col-sm-5" style="margin: 20px auto; float: none;">
+		<h1>Registrera dig</h1>
 <?php
 	echo $this->Form->create('User');
 	echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Användarnamn'));

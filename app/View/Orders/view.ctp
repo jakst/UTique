@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container window">
 	<?php if (!$order['OrderItem']): ?>
 	Ordern innehåller inga varor.
 	<?php else: ?>

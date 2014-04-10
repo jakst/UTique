@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container window">
 		<h1>Mina uppgifter</h1>
 		<?php
 			if ($loggedIn):
