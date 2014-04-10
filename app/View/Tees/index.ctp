@@ -171,7 +171,7 @@
 						));
 					?>
 					<br><?php if($tee['Tee']['discount']!=0){
-						echo '<strike>'.$tee['Tee']['price'].' </strike>';
+						echo '<strike>'.$tee['Tee']['price'].' kr </strike>';
 						echo '<font color="red">'.floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100)).' kr</font>';
 					}else{
 						echo $tee['Tee']['price'].' kr';
