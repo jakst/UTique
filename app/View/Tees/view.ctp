@@ -15,12 +15,16 @@
 		</div>
 
 		<div class="col-md-6">
-			<div id="priceproduct">
+			
+
 			<?php if($tee['Tee']['discount'] != 0){
-			echo floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100));
+			?><div class="productprice" id="saleprice">
+			<?php echo floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100)).' kr</div>';
+			echo 'Ordinarie pris: '.$tee['Tee']['price'].' kr';
 			}else{
-			echo $tee['Tee']['price'];	
-			}?> kr</div>
+			?><div class="productprice">
+			<?php echo $tee['Tee']['price'].' kr</div>';	
+			}?>
 			
 			
 

@@ -11,8 +11,13 @@ footer {
 	padding-left: 0px;
 }
 
-#priceproduct {
+.productprice {
 	font-size: 90px;
+	margin-bottom: -20px
+}
+
+#saleprice {
+	color: red;
 }
 
 .cartbutton {
@@ -52,11 +57,6 @@ footer {
 
 #pictureborder img {border: 5px solid #eaeaea;}
 
-/*#salespicture {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-}*/
 
 #salesteepicture {
 	position: relative;
