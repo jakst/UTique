@@ -1,7 +1,6 @@
 <title>uTique - stället för dig som vill sticka ut i mängden!</title>
 <div class="jumbotron">
 			<div class="container">
-				<h1>UTique!</h1>
 				<h2>Dagens T-shirts</h2>
 				<div class="row">
 								
@@ -124,7 +123,7 @@
 			</form>
 		</div>
 
-		<div id="product-grid" class="col-md-9">
+		<div id="product-grid" class="col-md-9" >
 			<div class="row">		
 			<?php
 				$count = 0;
