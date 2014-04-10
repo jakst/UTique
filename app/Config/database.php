@@ -66,8 +66,17 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
+<<<<<<< HEAD
 		'password' => 'mysql',
 		'database' => 'utique',
+=======
+		'password' => '',
+		'database' => 'utique',
+		// 'host' => 'sql3.freesqldatabase.com',
+		// 'login' => 'sql330561',
+		// 'password' => 'qT7%mP1*',
+		// 'database' => 'sql330561',
+>>>>>>> FETCH_HEAD
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
