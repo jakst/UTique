@@ -54,7 +54,6 @@
 						<?php
 						$total += $cart[$id]['Tee']['price']*$orderItem['amount'];
 						
-
 						endforeach;
 					endforeach;
 					?>
