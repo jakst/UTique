@@ -2,11 +2,8 @@
 App::uses('CakeSession', 'Model/Datasource');
 
 class Order extends AppModel {
-	public $hasMany = array(
-		'OrderItem'
-	);
-
 	public $hasOne = 'Payment';
+	public $hasMany = 'OrderItem';
 	public $belongsTo = 'Customer';
 
 	public function beforeSave($options = array()){
@@ -32,6 +29,7 @@ class Order extends AppModel {
 			endforeach;
 		endforeach;
 
+		$this->data['Order']['status'] = 'Bekräftad';
 		return true;
 	}
 

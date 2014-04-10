@@ -57,12 +57,8 @@
 			if (strlen($sql) > 0):
 		?>
 		
-		<div class="container" style="margin-top: 30px">
-			<div class="well well-sm">
-				<small>
-					<?php echo $sql; ?>
-				</small>
-			</div>
+		<div class="container window" style="margin-top: 30px">
+			<?php echo $sql; ?>
 		</div>
 		
 		<?php endif; ?>

@@ -14,7 +14,7 @@ class OrdersController extends AppController {
 				$cart = $this->Session->read('Cart');
 				
 				$data['Order'] = array(
-					'status' => 'oklar',
+					'status' => 'Oklar',
 					'price' => 0,
 					'shipping' => $this->Session->read('Shipping')
 				);
