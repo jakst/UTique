@@ -52,6 +52,16 @@ footer {
 
 #pictureborder img {border: 5px solid #eaeaea;}
 
+/*#salespicture {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}*/
+
+#salesteepicture {
+	position: relative;
+}
+
 .nav-dropdown-form{
 	margin: 3px 0;
 }

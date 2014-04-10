@@ -135,18 +135,38 @@
 					endif;
 			?>
 				<div class="col-md-3">
-					<?php
-						if($tee['Tee']['discount']!=0){
-							echo $this->Html->image('sale.png');
-						}
-						echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
+					
+					<div id="salesteepicture">
+						
+						<?php 
+							
+							if ($tee['Tee']['discount']!=0){
+							$itissale='position: absolute; z-index: -1';
+							}
+							else{
+								$itissale = '';
+							}
+							echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
 							array(
 								'alt' => $tee['Tee']['name'], 
 								'class' => 'img-responsive',
-								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
-						)));
+								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']),
+								'style' => $itissale
 
-						echo $this->Html->link(
+
+						));?>
+
+						
+						<?php if($tee['Tee']['discount']!=0){
+							echo $this->Html->image('sale.png', 
+								array(
+									'class' => 'img-responsive', 
+									'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
+										)));
+						}?>
+						
+					</div>
+						<?php echo $this->Html->link(
 							$tee['Tee']['name'],
 							array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
 						));
