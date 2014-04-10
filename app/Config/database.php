@@ -66,7 +66,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'mysql',
+		'password' => '',
 		'database' => 'utique',
 		// 'host' => 'sql3.freesqldatabase.com',
 		// 'login' => 'sql330561',
