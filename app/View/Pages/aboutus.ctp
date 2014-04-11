@@ -1,10 +1,10 @@
 <div class="container window">
 	<h1>Om Utique</h1>
-	<p>Utique grundades i Singapore år 2014 efter den otroligt höga efterfrågan på unika t-shirtar. Med en t-shirt från Utique slipper du dyka upp på festen i samma t-shirt som någon annan.</p>
+	<p>Utique grundades i Singapore år 2014 efter den otroligt höga efterfrågan på unika t-shirtar. Med en t-shirt från Utique slipper du dyka upp på festen i samma t-shirt som någon annan. Vi som jobbar på Utique är:</p>
 		
 	<div class="row bordered-pictures">
 		<div class="col-md-4 ">
-			<?php echo $this->Html->image('Jakob.jpg', 							
+			<?php echo $this->Html->image('Jakob.png', 							
 				array(
 					'alt' => 'Jakob Ståhl', 
 					'class' => 'img-responsive'));?>
@@ -12,7 +12,7 @@
 			<p>Jakob är programmeringstalangen på Utique. Han kodar bäst med en McChicken i handen.</p>
 		</div>
 		<div class="col-md-4">
-			<?php echo $this->Html->image('Sofie.jpg',
+			<?php echo $this->Html->image('Sofie.png',
 				array(
 					'alt' => 'Sofie Nilsson', 
 					'class' => 'img-responsive'));?>
@@ -20,7 +20,7 @@
 			<p>Hjärnan och planeraren. Lämnar caramel-frappuccinospår efter sig.</p>
 		</div>
 		<div class="col-md-4">
-			<?php echo $this->Html->image('Sofie.jpg',
+			<?php echo $this->Html->image('ylva.png',
 				array(
 					'alt' => 'Ylva Johansson', 
 					'class' => 'img-responsive'));?>

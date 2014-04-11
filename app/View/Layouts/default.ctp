@@ -80,11 +80,11 @@
 					
 					<div class="col-md-4"><h4>Information</h4>
 						<ul class="list-unstyled">
-							<li><?php echo $this->Html->link('Lediga jobb', array('controller' => 'pages', 'action' => 'availablejobs')); ?></li>
-							<li><?php echo $this->Html->link('Om uTique', array('controller' => 'pages', 'action' => 'aboutus')); ?></li>
+							<li><?php echo $this->Html->link('Om uTique', array('controller' => 'pages', 'action' => 'aboutus')); ?></li>							
 							<li><?php echo $this->Html->link('Leveransinformation', array('controller' => 'pages', 'action' => 'deliveryinfo')); ?></li>
 							<li><?php echo $this->Html->link('Måttinformation', array('controller' => 'pages', 'action' => 'sizeinfo')); ?></li>
 							<li><?php echo $this->Html->link('Betalningsvillkor', array('controller' => 'pages', 'action' => 'paymentinfo')); ?></li>
+							<li><?php echo $this->Html->link('Lediga jobb', array('controller' => 'pages', 'action' => 'availablejobs')); ?></li>
 						</ul>
 					</div>
 					
