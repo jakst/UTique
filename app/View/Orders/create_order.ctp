@@ -1,7 +1,7 @@
 <div class="container window">
 	<h1>Slutför ditt köp</h1>
 	Vill du bli medlem och därmed få möjlighet att följa din order? <?php echo $this->Html->link('Registrera dig här.', array('controller' => 'users', 'action' => 'register'));?><br> 
-	Redan medlem? <?php echo $this->Html->link('Logga in här', array('controller' => 'users', 'action' => 'login'));?> för att förenkla köpet.
+	Har du redan handlat hos oss? <?php echo $this->Html->link('Logga in här', array('controller' => 'users', 'action' => 'login'));?> för att förenkla köpet.
 	<h2>Dina leveransuppgifter</h1>
 	<?php echo $this->Form->create(); ?>
 	<?php
