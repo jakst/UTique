@@ -15,6 +15,7 @@
 		<div class="navbar navbar-inverse navbar-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
+
 					<?php
 						echo $this->Html->image('logo.png', array(
 							'alt' => 'UTique - Home',
@@ -36,6 +37,10 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<?php echo $this->element('login', array('dropdown' => true)); ?>
+					</ul>
+					<ul class="nav navbar-nav">
+						<li><?php echo $this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register')?>
+						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php echo $this->element('cart'); ?>
