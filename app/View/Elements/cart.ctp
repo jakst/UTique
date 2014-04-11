@@ -8,7 +8,7 @@ if ($this->Session->check('Cart')):
 	foreach ($cart as $id => $tee):
 		foreach ($tee['sizes'] as $size => $orderItem):
 			$count += $orderItem['amount'];
-			$total += $orderItem['amount'] * $tee['Tee']['price'];
+			$total += $orderItem['amount'] * $orderItem['price'];
 		endforeach;
 	endforeach;
 ?>
@@ -16,11 +16,7 @@ if ($this->Session->check('Cart')):
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $count == 1 ? '1 artikel' : $count.' artiklar' ; ?><strong> <?php echo $total; ?> kr</strong> <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b></a>
 	<ul class="dropdown-menu text-center">
 		<li>
-		<?php
-			//debug
-			/*echo '</li><li>';*/
-			//end debug
-			
+		<?php			
 			foreach ($cart as $id => $tee):
 				foreach ($tee['sizes'] as $size => $orderItem):
 		?>
@@ -36,9 +32,9 @@ if ($this->Session->check('Cart')):
 				</li>
 				<li>
 					<?php echo $this->Html->Link($tee['Tee']['name'], array('controller' => 'tees', 'action' => 'view', $id)); ?><br>
-					<?php echo $size.', '.$orderItem['amount']; ?> st á <?php echo $tee['Tee']['price']; ?> kr<?php echo ' '.$this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'app', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
+					<?php echo $size.', '.$orderItem['amount']; ?> st á <?php echo $orderItem['price']; ?> kr<?php echo ' '.$this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'app', 'action' => 'update_cart_item', $id, $size, 0), array('escape' => false)); ?>
 				</li>
-				<li class="cart-item-total"><?php echo $orderItem['amount'] * $tee['Tee']['price']; ?> kr</li>
+				<li class="cart-item-total"><?php echo $orderItem['amount'] * $orderItem['price']; ?> kr</li>
 
 			</ul>
 		<?php

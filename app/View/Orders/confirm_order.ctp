@@ -1,5 +1,4 @@
 <div class="container window">
-	<?php $customer = $this->Session->read('Customer');?>
 		<h1>Orderbekräftelse</h1>
 		<h3>Tack <?php echo $customer['name']?> för din order!</h3><br>
 		Din order har tagits emot. Om bara tre dagar kan du ha på dig din nya helt unika t-shirt! Nedan finner du en sammanställning av din order:

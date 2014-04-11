@@ -2,12 +2,21 @@
 class InventoryItemsController extends AppController {
 	public function check_inventory(){
 		$cart = $this->Session->read('Cart');
-		$data['InventoryItem'] = Hash::combine($this->InventoryItem->find('all'), '{n}.InventoryItem.id', '{n}.InventoryItem');
+		$this->InventoryItem->recursive = -1;
+		$inventoryItems = $this->InventoryItem->find('all');
+		$data['InventoryItem'] = Hash::combine($inventoryItems, '{n}.InventoryItem.id', '{n}.InventoryItem');
+
+		$items = array();
+		foreach ($data['InventoryItem'] as $item) {
+			$tee = $item['tee_id'];
+			$size = $item['size'];
+			$items[$tee][$size] = $item;
+		}
+		
 		foreach ($cart as $id => $tee):
 			foreach ($tee['sizes'] as $size => $item):
-				$item_id = $item['item_id'];
-				if(($data['InventoryItem'][$item_id]['amount'] - $item['amount']) < 0){
-					$errorMessage = "Tyvärr finns det bara ".$data['InventoryItem'][$item_id]['amount']." kvar i lager av t-shirt ".$tee['Tee']['name']." i storlek ".$size.". Var god ändra din beställning.";
+				if($items[$id][$size]['amount'] - $item['amount'] < 0){
+					$errorMessage = "Tyvärr finns det bara ".$items[$id][$size]['amount']." st. kvar i lager av t-shirt <em>".$tee['Tee']['name']."</em> i storlek ".$size.". Var god ändra din beställning.";
 					$this->Session->setFlash($errorMessage, 'flash/error');
 					$this->redirect(array('controller' => 'carts', 'action' => 'view'));
 				}

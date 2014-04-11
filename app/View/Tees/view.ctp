@@ -15,16 +15,13 @@
 		</div>
 
 		<div class="col-md-6">
-			
-
-			<?php if($tee['Tee']['discount'] != 0){
-			?><div class="productprice" id="saleprice">
-			<?php echo floor($tee['Tee']['price']*((100-$tee['Tee']['discount'])/100)).' kr</div>';
-			echo 'Ordinarie pris: '.$tee['Tee']['price'].' kr';
-			}else{
-			?><div class="productprice">
-			<?php echo $tee['Tee']['price'].' kr</div>';	
-			}?>
+			<?php if ($tee['Tee']['discount'] != 0): ?>
+			<div class="productprice" id="saleprice">
+				<?php echo floor($tee['Tee']['price']*((100 - $tee['Tee']['discount'])/100)); ?> kr
+			</div>
+			Ordinarie pris: <?php echo $tee['Tee']['price']; ?> kr
+			<?php else: ?>
+			<div class="productprice"><?php echo $tee['Tee']['price']; ?> kr</div><?php endif; ?>
 			
 			
 
@@ -33,8 +30,8 @@
 				<div class="form-group">
 					<label for="size"><h3>Välj storlek:</h3></label>
 					<select class="form-control" id="size" name="size">
-						<?php foreach ($tee['Item'] as $item): ?>
-						<option value="<?php echo $item['id'].'-'.$item['size']; ?>"><?php echo $item['size']; ?></option>
+						<?php foreach ($tee['Size'] as $size): ?>
+						<option value="<?php echo $size; ?>"><?php echo $size; ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>

@@ -1,14 +1,14 @@
 <div class="container window">
+	<h1>Ordernummer: <?php echo $order['Order']['id']; ?></h1>
 	<?php if (!$order['OrderItem']): ?>
 	Ordern innehåller inga varor.
 	<?php else: ?>
-	<?php pr($order); ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>Artikelnummer</th>
-				<th>Storlek</th>
 				<th>Namn</th>
+				<th>Storlek</th>
 				<th>Antal</th>
 				<th>Á pris</th>
 				<th class="text-right">Totalt</th>
@@ -19,9 +19,9 @@
 		
 		<?php foreach ($order['OrderItem'] as $row): ?>
 			<tr>
-				<td><?php echo $row['item_id']; ?></td>
-				<td><?php echo 'derp'; ?></td>
-				<td><?php echo 'derp'; ?></td>
+				<td><?php echo $this->Html->link($row['tee_id'], array('controller' => 'Tee', 'action' => 'view', $row['tee_id'])); ?></td>
+				<td><?php echo $this->Html->link($row['Tee']['name'], array('controller' => 'Tee', 'action' => 'view', $row['tee_id'])); ?></td>
+				<td><?php echo $row['size']; ?></td>
 				<td><?php echo $row['amount']; ?></td>
 				<td><?php echo $row['price']; ?> kr</td>
 				<td class="text-right"><strong><?php echo $row['price']*$row['amount']; ?> kr</strong></td>

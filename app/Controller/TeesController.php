@@ -2,7 +2,7 @@
 class TeesController extends AppController {
 
 	public function index() {
-		$this->Tee->recursive = 0;
+		$this->Tee->recursive = -1;
 		$colors = $this->Tee->find('list', array(
 		'fields' => array('color', 'color')
 		));
@@ -93,8 +93,6 @@ class TeesController extends AppController {
 			$tmp = array_values($tmp);
 		endfor;
 
-
-
 		$this->set('dailyTees', $dailyTees);
 		$this->set('tees', $tees);
 		$this->set('colors', $colors);
@@ -106,40 +104,36 @@ class TeesController extends AppController {
             throw new NotFoundException(__('Tyvärr'));
         }
 		
-		$inventory = ClassRegistry::init('InventoryItem');
-		$inventory->recursive = -1;
-		$data['InventoryItem'] = Hash::combine($inventory->find('all'), '{n}.InventoryItem.id', '{n}.InventoryItem');
-		
-		$tee = $this->Tee->findById($id);	
-		$tee['Item'] = Hash::combine($tee['Item'], '{n}.id', '{n}');
-		
-		foreach ($tee['Item'] as $item):	
-			if ($data['InventoryItem'][$item['id']]['amount'] == 0){
-				unset($tee['Item'][$item['id']]);
-			}
-		endforeach;
-        
+		$this->Tee->recursive = -1;
+		$tee = $this->Tee->findById($id);
 		if (!$tee) {
             throw new NotFoundException(__('Tyvärr'));
         }
-
+		
+		$inventory = ClassRegistry::init('InventoryItem');
+		$inventory->recursive = -1;
+		$inventoryItems = $inventory->find('list', array(
+			'conditions' => array(
+				'InventoryItem.tee_id' => $id,
+				'InventoryItem.amount >' => 0
+			),
+			'fields' => array('size')
+		));
+		
+		$tee['Size'] = $inventoryItems;
 		$this->set('tee', $tee);
 	}
 
 	public function add_to_cart(){
 		$id = $this->request->data['id'];
-		$sizeId = $this->request->data['size'];
+		$size = $this->request->data['size'];
 
-		if (!$id || !$sizeId) {
+		if (!$id || !$size) {
 			throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
 		}
 
 		$this->Tee->recursive = -1;
 		$tee = $this->Tee->findById($id);
-
-		$expl = explode('-', $sizeId);
-		$sId = $expl[0];
-		$size = $expl[1];
 
 		if (!$tee){
 			throw new NotFoundException(__('Kunde inte lägga till varan i varukorgen'));
@@ -155,38 +149,32 @@ class TeesController extends AppController {
 			$this->Session->write('Cart.'.$id, $tee);
 		}
 		
-		$price = $tee['Tee']['price']*(100-$tee['Tee']['discount'])/100;
-		$orderItem = array('item_id' => $sId, 'amount' => $amount + 1, 'price' => $price);
+		$price = floor($tee['Tee']['price']*(100 - $tee['Tee']['discount'])/100);
+		$orderItem = array('tee_id' => $id, 'size' => $size, 'amount' => $amount + 1, 'price' => $price);
 		$this->Session->write('Cart.'.$id.'.sizes.'.$size, $orderItem);
 		$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
 	}
 
 	public function reallocate() {
-		$this->Tee->query('TRUNCATE items;');
 		$this->Tee->query('TRUNCATE inventory_items;');
 		
 		$tees = $this->Tee->find('all');
 		$sizes = array ('XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL');
 		
-		$items = "INSERT INTO items(id, tee_id, size) VALUES";
-		$inventory = "INSERT INTO inventory_items(item_id, amount) VALUES";
-		
-		$id = 1;
+		$inventory = "INSERT INTO inventory_items(tee_id, size, amount) VALUES";
+		$i = 0;
 		foreach ($tees as $tee) {
-			$tee_id = $tee['Tee']['id'];
+			$id = $tee['Tee']['id'];
 			foreach ($sizes as $size) {
-				if ($id > 1) {
-					$items .= ',';
+				if ($i > 0) {
 					$inventory .= ', ';
 				}
 				
-				$items .= " ('{$id}', '{$tee_id}', '{$size}')";
-				$inventory .= " ('{$id}', '15')";
-				$id++;
+				$inventory .= " ('{$id}', '{$size}', '15')";
+				$i++;
 			}
 		}
 		
-		$this->Tee->query($items);
 		$this->Tee->query($inventory);
 	}
 }

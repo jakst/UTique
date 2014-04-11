@@ -28,15 +28,18 @@ class OrdersController extends AppController {
 				
 				$user = $this->Auth->user();
 				if (!empty($user['customer_id'])) {
+					$customer = $this->Order->Customer->findById($user['customer_id']);
+					$this->Session->write('Customer', $customer['Customer']);
 					$data['Order']['customer_id'] = $user['customer_id'];
 				} else if ($this->Order->Customer->save($data['Customer'])) {
+					$this->Session->write('Customer', $data['Customer']);
 					$data['Order']['customer_id'] = $this->Order->Customer->id;
+					$this->Session->write('Customer', $data['Customer']);
 					if ($this->Auth->loggedIn()) {
 						$this->Session->write('Auth.User.customer_id', $this->Order->Customer->id);
 					}
 				}
 				
-				$this->Session->write('Customer', $data['Customer']);
 				unset($data['Customer']);
 				
 				$this->Order->create();
@@ -54,9 +57,10 @@ class OrdersController extends AppController {
 	}
 	
 	public function confirm_order(){
-		$cart = $this->Session->read('Cart');
-		$this->set('cart', $cart);
+		$this->set('cart', $this->Session->read('Cart'));
+		$this->set('customer', $this->Session->read('Customer'));
 		$this->Session->delete('Cart');
+		$this->Session->delete('Customer');
 	}
 	
 	public function history(){
@@ -74,8 +78,9 @@ class OrdersController extends AppController {
 	
 	public function view($id = null) {
 		if ($id) {
+			$this->Order->Behaviors->load('Containable');
+			$this->Order->contain('OrderItem.Tee');
 			$order = $this->Order->findById($id);
-			$item = $this->Order->OrderItem->Item->findById(1);
 			
 			if ($order) {
 				$this->set('order', $order);
