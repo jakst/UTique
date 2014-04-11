@@ -39,7 +39,7 @@
 						<?php echo $this->element('login', array('dropdown' => true)); ?>
 					</ul>
 					<ul class="nav navbar-nav">
-						<li><?php echo $this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register')?>
+						<li><?php echo $this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register'));?>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

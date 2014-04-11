@@ -21,7 +21,7 @@
 	echo $this->Form->create('User', array('action' => 'login', 'class' => 'navbar-form'));
 	echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Användarnamn', 'class' => 'form-control nav-dropdown-form'));
 	echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Lösenord', 'class' => 'form-control nav-dropdown-form'));
-	echo $this->Form->submit('Logga in', array('class' => 'btn btn-success nav-dropdown-form', 'after' => ' '.$this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register'))));
+	echo $this->Form->submit('Logga in', array('class' => 'btn btn-success nav-dropdown-form'));
 	echo $this->Form->end();
 ?>
 		</li>
