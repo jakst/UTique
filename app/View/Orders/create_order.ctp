@@ -1,5 +1,8 @@
 <div class="container window">
-	<h1>Dina leveransuppgifter</h1>
+	<h1>Slutför ditt köp</h1>
+	Vill du bli medlem och därmed få möjlighet att följa din order? <?php echo $this->Html->link('Registrera dig här.', array('controller' => 'users', 'action' => 'register'));?><br> 
+	Redan medlem? <?php echo $this->Html->link('Logga in här', array('controller' => 'users', 'action' => 'login'));?> för att förenkla köpet.
+	<h2>Dina leveransuppgifter</h1>
 	<?php echo $this->Form->create(); ?>
 	<?php
 		if ($loggedIn && !empty($currentUser['customer_id'])):
@@ -31,7 +34,7 @@
 	
 	<div class="row">
 		<div class="col-md-6">
-			<h1>Betalningsuppgifter</h1>
+			<h2>Betalningsuppgifter</h1>
 			<?php
 				echo $this->Form->input('Payment.card_number', array('label' => false, 'placeholder' => 'Kortnummer'));
 				echo $this->Form->input('Payment.expiry_date', array('label' => false,'placeholder' => 'Utgångsdatum: YY-MM'));
