@@ -5,14 +5,14 @@ class Order extends AppModel {
 	public $hasOne = 'Payment';
 	public $hasMany = 'OrderItem';
 	public $belongsTo = 'Customer';
-
+	
 	public function beforeSave($options = array()){
 		$cart = CakeSession::read('Cart');
 		$inventory = ClassRegistry::init('InventoryItem');
 		$inventory->recursive = -1;
 		$inventoryItems = $inventory->find('all');
 		$data['InventoryItem'] = Hash::combine($inventoryItems, '{n}.InventoryItem.id', '{n}.InventoryItem');
-
+		
 		$items = array();
 		foreach ($data['InventoryItem'] as $item) {
 			$tee = $item['tee_id'];

@@ -7,6 +7,9 @@ class OrdersController extends AppController {
 	}
 	
 	public function create_order(){
+	if (($this->referer() != Router::url(array('controller' => 'carts', 'action' => 'view'), true) && $this->referer() != Router::url(array('controller' => 'orders', 'action' => 'create_order'), true)) || !$this->Session->check('Cart')) {
+		$this->redirect(array('controller' => 'tees'));
+	}
 	// kalla på checkInventoryStatus!
 		$data = $this->request->data;
 		if ($this->request->is('post')) {
@@ -57,6 +60,9 @@ class OrdersController extends AppController {
 	}
 	
 	public function confirm_order(){
+		if ($this->referer() != Router::url(array('controller' => 'orders', 'action' => 'create_order'), true) || !$this->Session->check('Cart')) {
+			$this->redirect(array('controller' => 'tees'));
+		}
 		$this->set('cart', $this->Session->read('Cart'));
 		$this->set('customer', $this->Session->read('Customer'));
 		$this->Session->delete('Cart');
@@ -78,17 +84,21 @@ class OrdersController extends AppController {
 	
 	public function view($id = null) {
 		if ($id) {
+			$user = $this->Auth->user();
 			$this->Order->Behaviors->load('Containable');
 			$this->Order->contain('OrderItem.Tee');
-			$order = $this->Order->findById($id);
+			$order = $this->Order->find('first', array('conditions' => array(
+				'id' => $id,
+				'customer_id' => $user['customer_id']
+			)));
 			
 			if ($order) {
 				$this->set('order', $order);
 			} else {
-            	throw new NotFoundException(__('Ordern existerar inte.'));
+            	throw new NotFoundException(__('Ordern existerar inte'));
 			}
 		} else {
-            throw new NotFoundException(__('Ordern existerar inte.'));
+            throw new NotFoundException(__('Ordern existerar inte'));
 		}
 	}
 }

@@ -1,11 +1,18 @@
 <?php
 class UsersController extends AppController {
+	public function index() {
+		$customer = $this->User->Customer->find('all');
+		$this->set('customer', $customer);
+	}
+	
 	public function login() {
+		$this->set('referer', $this->referer());
 		if ($this->request->is('post')) {
-			
 			if ($this->Auth->login()) {
 				$this->set('loggedIn', $this->Auth->loggedIn());
-				$this->redirect($this->referer());
+				$this->set('currentUser', $this->Auth->user());
+				
+				$this->redirect($this->request->data['User']['referer']);
 			} else {
 				$this->Session->setFlash('Det angivna användarnamnet eller lösenordet är felaktigt! ', 'flash/error');
 			}

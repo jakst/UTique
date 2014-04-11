@@ -12,7 +12,7 @@
 						<th></th>
 					</tr>
 				</thead>
-		
+				
 				<tbody>
 					<?php
 					$total = 0;

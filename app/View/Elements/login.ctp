@@ -31,6 +31,7 @@
 <?php else: ?>
 <?php
 	echo $this->Form->create('User');
+	echo $this->Form->input('referer', array('type' => 'hidden', 'value' => $referer));
 	echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Användarnamn'));
 	echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Lösenord'));
 	echo $this->Form->submit('Logga in', array('class' => 'btn btn-success', 'after' => ' '.$this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register'))));
