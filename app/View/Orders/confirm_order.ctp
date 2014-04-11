@@ -1,7 +1,8 @@
 <div class="container window">
 	<?php $customer = $this->Session->read('Customer');?>
-		<h1>Tack <?php echo $customer['name']?> för att du handlat på UTique!</h1><br>
-		<h3>Din order har tagits emot. Om bara tre dagar kan du ha på dig din nya helt unika t-shirt! Nedan finner du en sammanställning av din order:</h3>
+		<h1>Orderbekräftelse</h1>
+		<h3>Tack <?php echo $customer['name']?> för din order!</h3><br>
+		Din order har tagits emot. Om bara tre dagar kan du ha på dig din nya helt unika t-shirt! Nedan finner du en sammanställning av din order:
 
 		<table class="table table-striped table-centered">
 				<thead>
@@ -68,7 +69,7 @@
 				</tfoot>
 			</table>
 			
-			<h3>Dina varor kommer inom kort levereras till:</h3>
+			<h3>Leveransadress:</h3>
 			<?php echo $customer['name'];?><br>
 			<?php echo $customer['address'];?><br>
 			<?php echo $customer['zipcode']." "; echo $customer['city'];?><br>
