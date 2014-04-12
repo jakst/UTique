@@ -1,31 +1,31 @@
-	<title>uTique - stället för dig som vill sticka ut i mängden!</title>
-	<div class="jumbotron window bordered-pictures">
-		<div class="container">
-			<h2>Dagens T-shirts</h2>
-			<div class="row">
-							
-				<?php foreach ($dailyTees as $tee): ?>
-				<div class="col-md-4">
-				<?php
-				echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
-				array(
-					'alt' => $tee['Tee']['name'], 
-					'class' => 'img-responsive',
-					'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
-				)));
-				?>
-				</div>
-				<?php endforeach; ?>
+<title>uTique - stället för dig som vill sticka ut i mängden!</title>
+<div class="jumbotron window bordered-pictures">
+	<div class="container">
+		<h2>Dagens T-shirts</h2>
+		<div class="row">
+						
+			<?php foreach ($dailyTees as $tee): ?>
+			<div class="col-md-4">
+			<?php
+			echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
+			array(
+				'alt' => $tee['Tee']['name'], 
+				'class' => 'img-responsive',
+				'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
+			)));
+			?>
 			</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
-	
-	<!-- File: /app/View/Posts/index.ctp -->
-	
-	<div id="product-grid" class="container window bordered-pictures">
-			<div class="row" style="margin-top: -15px"> 
-						<div class="row collapse" id="viewdetails">
-			<form role="form" id="selectgender" method="post" action="/utique/tees/index">
+</div>
+
+<!-- File: /app/View/Posts/index.ctp -->
+
+<div id="product-grid" class="container window bordered-pictures">
+	<div class="row" style="margin-top: -15px"> 
+		<div class="row collapse" id="viewdetails">
+			<?php echo $this->Form->create(null, array('url' => array('controller' => 'tees', 'action' => 'index'))); ?>
 				<div class="col-md-4">
 					<h4>Modell</h4>
 					<div class="btn-group" data-toggle="buttons">
@@ -40,7 +40,7 @@
 						</label>
 					</div>
 				</div>
-				
+	
 				<div class="col-md-4">
 					<h4>Färg</h4>
 					<ul class="list-unstyled">
@@ -53,6 +53,7 @@
 						<?php endforeach;?> 
 					</ul>
 				</div>
+				
 				<div class="col-md-4">
 					<h4>Pris</h4>
 					<ul class="list-unstyled">
@@ -84,7 +85,7 @@
 		
 		<h4><a class="collapse-btn collapsed" data-toggle="collapse" data-target="#viewdetails"></a></h4>
 	</div>
-	
+
 	<div class="row">		
 	<?php
 		$count = 0;
@@ -121,7 +122,7 @@
 			?>
 			
 			</div>
-			
+		
 			<?php
 				echo $this->Html->link(
 					$tee['Tee']['name'],
@@ -140,11 +141,12 @@
 			}
 			?>
 		</div>
-		
+	
 	<?php
 		$count++;
 		endforeach;
 		unset($tee);
 	?>
+	
 	</div>				
 </div>
