@@ -1,5 +1,8 @@
 <div class="container window">
 	<h1>Orderhistorik</h1>
+	<?php if (empty($orders)): ?>
+	<p style="font-size: 20px;">Du har ingen orderhistorik</p>
+	<?php else: ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -11,7 +14,6 @@
 		</thead>
 		
 		<tbody>
-		
 		<?php foreach ($orders as $order): ?>
 			<tr>
 				<td><?php echo $this->Html->link($order['Order']['id'], array('controller' => 'orders', 'action' => 'view', $order['Order']['id'])); ?></td>
@@ -23,4 +25,5 @@
 		
 		</tbody>
 	</table>
+	<?php endif; ?>
 </div>

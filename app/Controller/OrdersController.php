@@ -7,12 +7,20 @@ class OrdersController extends AppController {
 	}
 	
 	public function create_order(){
-	if (($this->referer() != Router::url(array('controller' => 'carts', 'action' => 'view'), true) && $this->referer() != Router::url(array('controller' => 'orders', 'action' => 'create_order'), true)) || !$this->Session->check('Cart')) {
-		$this->redirect(array('controller' => 'tees'));
-	}
-	// kalla på checkInventoryStatus!
-		$data = $this->request->data;
-		if ($this->request->is('post')) {
+		if (($this->referer() != Router::url(array('controller' => 'carts', 'action' => 'view'), true) && $this->referer() != Router::url(array('controller' => 'orders', 'action' => 'create_order'), true)) || !$this->Session->check('Cart')) {
+			$this->redirect(array('controller' => 'tees'));
+		}
+		
+		
+		$user = $this->Auth->user();
+		if ($this->Auth->loggedIn() && !empty($user['customer_id']) && empty($this->request->data['Customer']['load'])) {
+			$this->Order->Customer->recursive = -1;
+			$customer = $this->Order->Customer->findById($user['customer_id']);
+			$this->request->data['Customer'] = $customer['Customer'];
+		}
+		
+		if($this->request->is('post')) {
+			$data = $this->request->data;
 			if ($this->Session->check('Cart')) {
 				$cart = $this->Session->read('Cart');
 				
@@ -29,17 +37,15 @@ class OrdersController extends AppController {
 					}
 				}
 				
-				$user = $this->Auth->user();
-				if (!empty($user['customer_id'])) {
-					$customer = $this->Order->Customer->findById($user['customer_id']);
-					$this->Session->write('Customer', $customer['Customer']);
-					$data['Order']['customer_id'] = $user['customer_id'];
-				} else if ($this->Order->Customer->save($data['Customer'])) {
+				if ($this->Order->Customer->save($data['Customer'])) {
+					$id = $this->Order->Customer->id;
 					$this->Session->write('Customer', $data['Customer']);
-					$data['Order']['customer_id'] = $this->Order->Customer->id;
-					$this->Session->write('Customer', $data['Customer']);
+					$data['Order']['customer_id'] = $id;
+					
 					if ($this->Auth->loggedIn()) {
-						$this->Session->write('Auth.User.customer_id', $this->Order->Customer->id);
+						$this->Session->write('Auth.User.customer_id', $id);
+						$user['customer_id'] = $id;
+						$this->Order->Customer->User->save($user);
 					}
 				}
 				

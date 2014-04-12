@@ -38,9 +38,7 @@
 					<ul class="nav navbar-nav">
 						<?php echo $this->element('login', array('dropdown' => true)); ?>
 					</ul>
-					<ul class="nav navbar-nav">
-						<li><?php echo $this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register'));?>
-						</li>
+						
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php echo $this->element('cart'); ?>

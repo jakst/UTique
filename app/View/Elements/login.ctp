@@ -27,6 +27,9 @@
 		</li>
 	</ul>
 </li>
+<li>
+<?php echo $this->Html->link('Registrera dig', array('controller' => 'users', 'action' => 'register'));?>
+</li>
 	<?php endif; ?>
 <?php else: ?>
 <?php

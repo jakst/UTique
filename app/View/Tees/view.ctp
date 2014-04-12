@@ -23,9 +23,9 @@
 			<?php else: ?>
 			<div class="productprice"><?php echo $tee['Tee']['price']; ?> kr</div><?php endif; ?>
 			
-			
-
-			<form role="form" id="AddItemInCartForm" method="post" action="/utique/tees/add_to_cart">
+			<?php echo $this->Form->create(null, array(
+    'url' => array('controller' => 'tees', 'action' => 'add_to_cart')
+)); ?>
 				<input type="hidden" name="id" value="<?php echo $tee['Tee']['id']; ?>">
 				<div class="form-group">
 					<label for="size"><h3>Välj storlek:</h3></label>

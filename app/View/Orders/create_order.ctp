@@ -1,21 +1,19 @@
 <div class="container window">
 	<h1>Slutför ditt köp</h1>
+	
+	<?php if (!$loggedIn): ?>
 	Vill du bli medlem och därmed få möjlighet att följa din order? <?php echo $this->Html->link('Registrera dig här.', array('controller' => 'users', 'action' => 'register'));?><br> 
 	Har du redan handlat hos oss? <?php echo $this->Html->link('Logga in här', array('controller' => 'users', 'action' => 'login'));?> för att förenkla köpet.
-	<h2>Dina leveransuppgifter</h1>
-	<?php echo $this->Form->create(); ?>
-	<?php
-		if ($loggedIn && !empty($currentUser['customer_id'])):
-			$customer = ClassRegistry::init('Customer');
-			$customer->recursive = -1;
-			$customer = $customer->findById('2');
-			pr($customer);
-	?>
-	<?php else: ?>
+	<?php endif; ?>
 	
+	<?php echo $this->Form->create(); ?>
+	
+	<h2>Dina leveransuppgifter</h1>
 	<div class="row">
 		<div class="col-md-6">
 		<?php
+			echo $this->Form->input('Customer.load', array('type' => 'hidden', 'value' => 'true', 'default' => 'true'));
+			echo $this->Form->input('Customer.id', array('type' => 'hidden'));
 			echo $this->Form->input('Customer.name', array('label' => false, 'placeholder' => 'För- och efternamn'));
 			echo $this->Form->input('Customer.email', array('label' => false, 'placeholder' => 'E-mail'));
 			echo $this->Form->input('Customer.address', array('label' => false,'placeholder' => 'Gatuadress'));
@@ -29,8 +27,6 @@
 		?>
 		</div>
 	</div>
-	
-	<?php endif; ?>
 	
 	<div class="row">
 		<div class="col-md-6">
