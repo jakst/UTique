@@ -1,11 +1,11 @@
 <title>uTique - stället för dig som vill sticka ut i mängden!</title>
-<div class="jumbotron window bordered-pictures">
+<div class="jumbotron unpadded-window bordered-pictures">
 	<div class="container">
 		<h2>Dagens T-shirts</h2>
 		<div class="row">
 						
 			<?php foreach ($dailyTees as $tee): ?>
-			<div class="col-md-4">
+			<div class="col-xs-4">
 				<div class="picture-wrapper">
 					<?php
 						$sale = $tee['Tee']['discount'] > 0;
@@ -128,7 +128,7 @@
 				echo '</div><div class="row">';
 			endif;
 	?>
-		<div class="col-md-3">
+		<div class="col-xs-6 col-md-3">
 			<div class="picture-wrapper">
 				<?php 
 					
@@ -173,6 +173,7 @@
 			}
 			?>
 		</div>
+		<?php if (($count+1) % 2 == 0 && $count > 0): ?><div class="clearfix visible-xs"></div><?php endif; ?>
 	
 	<?php
 		$count++;
