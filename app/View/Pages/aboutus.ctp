@@ -4,9 +4,9 @@
 		
 	<div class="row bordered-pictures">
 		<div class="col-md-4 ">
-			<?php echo $this->Html->image('Jakob.png', 							
+			<?php echo $this->Html->image('jakob.png', 							
 				array(
-					'alt' => 'jakob Ståhl', 
+					'alt' => 'Jakob Ståhl', 
 					'class' => 'img-responsive'));?>
 			<h3>Jakob Ståhl</h3>
 			<p>Jakob är programmeringstalangen på Utique. Han kodar bäst med en McChicken i handen.</p>
