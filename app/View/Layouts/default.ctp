@@ -9,6 +9,7 @@
 			echo $this->fetch('meta');
 			echo $this->Html->css(array('bootstrap', 'style'));
 			echo $this->fetch('css');
+			echo $this->Js->writeBuffer(array('cache' => TRUE));
 		?>
 	</head>
 	

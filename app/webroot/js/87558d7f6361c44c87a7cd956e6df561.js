@@ -1,0 +1,2 @@
+$(document).ready(function () {$("#submit-1359771869").bind("click", function (event) {$.ajax({beforeSend:function (XMLHttpRequest) {<a href="/utique/carts/view" class="btn btn-default">Gå tillbaka</a> }, data:$("#submit-1359771869").closest("form").serialize(), type:"post", url:"\/utique\/orders\/create_order"});
+return false;});});
