@@ -4,7 +4,7 @@
 		
 	<div class="row bordered-pictures">
 		<div class="col-md-4 ">
-			<?php echo $this->Html->image('jakob.png', 							
+			<?php echo $this->Html->image('jakob.jpg', 							
 				array(
 					'alt' => 'Jakob Ståhl', 
 					'class' => 'img-responsive'));?>
@@ -12,7 +12,7 @@
 			<p>Jakob är programmeringstalangen på Utique. Han kodar bäst med en McChicken i handen.</p>
 		</div>
 		<div class="col-md-4">
-			<?php echo $this->Html->image('sofie.png',
+			<?php echo $this->Html->image('sofie.jpg',
 				array(
 					'alt' => 'Sofie Nilsson', 
 					'class' => 'img-responsive'));?>
@@ -20,7 +20,7 @@
 			<p>Hjärnan och planeraren. Lämnar caramel-frappuccinospår efter sig.</p>
 		</div>
 		<div class="col-md-4">
-			<?php echo $this->Html->image('ylva.png',
+			<?php echo $this->Html->image('ylva.jpg',
 				array(
 					'alt' => 'Ylva Johansson', 
 					'class' => 'img-responsive'));?>
