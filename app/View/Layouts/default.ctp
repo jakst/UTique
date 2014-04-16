@@ -100,6 +100,7 @@
 		
 		<?php
 			echo $this->Html->script(array('libs/jquery-1.10.2.min', 'libs/bootstrap.min'));
+			echo $this->Js->writeBuffer();
 			echo $this->fetch('script');
 		?>
 	</body>
