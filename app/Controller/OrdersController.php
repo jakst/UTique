@@ -47,20 +47,17 @@ class OrdersController extends AppController {
 						$user['customer_id'] = $id;
 						$this->Order->Customer->User->save($user);
 					}
-				}
-				
-				unset($data['Customer']);
-				
-				$this->Order->create();
-				if ($this->Order->saveAll($data)) {
-					$this->redirect(array('action' => 'confirm_order'));
-				} else {
-					if($this->Order->lastErrorMessage) {
+					
+					unset($data['Customer']);
+					
+					$this->Order->create();
+					if ($this->Order->saveAll($data)) {
+						$this->redirect(array('action' => 'confirm_order'));
+					} else if ($this->Order->lastErrorMessage){
 						$this->Session->setFlash($this->Order->lastErrorMessage, 'flash/error');
+						$this->redirect(array('controller' => 'carts', 'action' => 'view'));
 					}
-
-					$this->redirect(array('controller' => 'carts', 'action' => 'view'));
-				}
+				}			
 			}
 		}
 	}
