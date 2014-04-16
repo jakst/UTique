@@ -6,13 +6,13 @@
 		<div class="col-md-4 ">
 			<?php echo $this->Html->image('Jakob.png', 							
 				array(
-					'alt' => 'Jakob Ståhl', 
+					'alt' => 'jakob Ståhl', 
 					'class' => 'img-responsive'));?>
 			<h3>Jakob Ståhl</h3>
 			<p>Jakob är programmeringstalangen på Utique. Han kodar bäst med en McChicken i handen.</p>
 		</div>
 		<div class="col-md-4">
-			<?php echo $this->Html->image('Sofie.png',
+			<?php echo $this->Html->image('sofie.png',
 				array(
 					'alt' => 'Sofie Nilsson', 
 					'class' => 'img-responsive'));?>
