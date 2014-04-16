@@ -6,14 +6,47 @@
 						
 			<?php foreach ($dailyTees as $tee): ?>
 			<div class="col-md-4">
-			<?php
-			echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
-			array(
-				'alt' => $tee['Tee']['name'], 
-				'class' => 'img-responsive',
-				'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
-			)));
-			?>
+				<div class="picture-wrapper">
+					<?php
+						$sale = $tee['Tee']['discount'] > 0;
+						$saleStyle = $sale ? 'position: absolute; z-index: -1' : '';
+						
+						echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
+							array(
+								'alt' => $tee['Tee']['name'], 
+								'class' => 'img-responsive',
+								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']),
+								'style' => $saleStyle
+							)
+						);
+					
+						if ($sale):
+							echo $this->Html->image('sale.png',
+								array(
+									'class' => 'img-responsive', 
+									'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id'])
+								)
+							);
+						endif;
+					?>
+				</div>
+				<?php
+					echo $this->Html->link(
+						$tee['Tee']['name'],
+						array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
+					));
+				?>
+				
+				<br>
+				
+				<?php
+					if($sale) {
+						echo '<strike>'.$tee['Tee']['price'].' kr</strike> ';
+						echo '<span style="color: red;">'.floor($tee['Tee']['price']*((100 - $tee['Tee']['discount'])/100)).' kr</span>';
+					} else {
+						echo $tee['Tee']['price'].' kr';
+					}
+				?>
 			</div>
 			<?php endforeach; ?>
 		</div>
@@ -111,16 +144,15 @@
 						)
 					);
 				
-				if ($sale):
-					echo $this->Html->image('sale.png', 
-						array(
-							'class' => 'img-responsive', 
-							'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id'])
-						)
-					);
-				endif;
-			?>
-			
+					if ($sale):
+						echo $this->Html->image('sale.png',
+							array(
+								'class' => 'img-responsive', 
+								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id'])
+							)
+						);
+					endif;
+				?>
 			</div>
 		
 			<?php

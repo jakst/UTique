@@ -94,7 +94,7 @@ table.cake-sql-log th, table.cake-sql-log td {
 	margin: 15px 0;
 }
 
-#product-grid > div.row > div{
+#product-grid > div.row > div, .jumbotron > div.container > div.row > div {
 	z-index: 1;
 }
 
