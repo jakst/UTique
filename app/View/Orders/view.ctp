@@ -19,8 +19,8 @@
 		
 		<?php foreach ($order['OrderItem'] as $row): ?>
 			<tr>
-				<td><?php echo $this->Html->link($row['tee_id'], array('controller' => 'Tee', 'action' => 'view', $row['tee_id'])); ?></td>
-				<td><?php echo $this->Html->link($row['Tee']['name'], array('controller' => 'Tee', 'action' => 'view', $row['tee_id'])); ?></td>
+				<td><?php echo $this->Html->link($row['tee_id'], array('controller' => 'tees', 'action' => 'view', $row['tee_id'])); ?></td>
+				<td><?php echo $this->Html->link($row['Tee']['name'], array('controller' => 'tees', 'action' => 'view', $row['tee_id'])); ?></td>
 				<td><?php echo $row['size']; ?></td>
 				<td><?php echo $row['amount']; ?></td>
 				<td><?php echo $row['price']; ?> kr</td>
