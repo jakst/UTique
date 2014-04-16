@@ -6,22 +6,26 @@ class UsersController extends AppController {
 	}
 	
 	public function login() {
-		$this->Auth->authenticate = 'Blowfish';
-		$this->set('referer', $this->referer());
-		if ($this->request->is('post')) {
-			if ($this->Auth->login()) {
-				$this->set('loggedIn', $this->Auth->loggedIn());
-				$this->set('currentUser', $this->Auth->user());
-				
-				$referer = $this->referer();
-				if (!empty($this->request->data['User']['referer'])) {
-					$referer = $this->request->data['User']['referer'];
+		if (!$this->Auth->loggedIn()) {
+			$this->Auth->authenticate = 'Blowfish';
+			$this->set('referer', $this->referer());
+			if ($this->request->is('post')) {
+				if ($this->Auth->login()) {
+					$this->set('loggedIn', $this->Auth->loggedIn());
+					$this->set('currentUser', $this->Auth->user());
+					
+					$referer = $this->referer();
+					if (!empty($this->request->data['User']['referer'])) {
+						$referer = $this->request->data['User']['referer'];
+					}
+					
+					$this->redirect($referer);
+				} else {
+					$this->Session->setFlash('Det angivna användarnamnet eller lösenordet är felaktigt! ', 'flash/error');
 				}
-				
-				$this->redirect($referer);
-			} else {
-				$this->Session->setFlash('Det angivna användarnamnet eller lösenordet är felaktigt! ', 'flash/error');
 			}
+		} else {
+			$this->redirect(array('controller' => 'tees'));
 		}
 	}
 	
@@ -31,15 +35,19 @@ class UsersController extends AppController {
 	}
 	
 	public function register() {
-		if ($this->request->is('post')) {
-			$data = $this->request->data;
-			if ($this->User->save($data)) {
-				$this->Auth->login();
-				$this->set('loggedIn', $this->Auth->loggedIn());
-				$this->set('currentUser', $this->Auth->user());
-				$this->Session->setFlash('Grattis '.$data['User']['username'].', ditt konto har skapats!', 'flash/success');
-				$this->redirect(array('controller' => 'tees'));
+		if (!$this->Auth->loggedIn()) {
+			if ($this->request->is('post')) {
+				$data = $this->request->data;
+				if ($this->User->save($data)) {
+					$this->Auth->login();
+					$this->set('loggedIn', $this->Auth->loggedIn());
+					$this->set('currentUser', $this->Auth->user());
+					$this->Session->setFlash('Grattis '.$data['User']['username'].', ditt konto har skapats!', 'flash/success');
+					$this->redirect(array('controller' => 'tees'));
+				}
 			}
+		} else {
+			$this->redirect(array('controller' => 'tees'));
 		}
 	}
 }
