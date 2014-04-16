@@ -30,13 +30,13 @@
 					<h4>Modell</h4>
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default <?php if($filter['gender']=='Alla'){echo 'active';} ?>">
-							<input type="radio" name="gender" value="Alla" <?php if($filter['gender']=='Alla'){echo 'checked="checked"';} ?>> Alla
+							<input type="radio" name="gender" value="Alla"<?php if($filter['gender']=='Alla'){echo ' checked="checked"';} ?>>Alla
 						</label>
 						<label class="btn btn-default <?php if($filter['gender']=='Dam'){echo 'active';} ?>">
-							<input type="radio" name="gender" value="Dam" <?php if($filter['gender']=='Dam'){echo 'checked="checked"';} ?>> Dam
+							<input type="radio" name="gender" value="Dam"<?php if($filter['gender']=='Dam'){echo ' checked="checked"';} ?>>Dam
 						</label>
 						<label class="btn btn-default <?php if($filter['gender']=='Herr'){echo 'active';} ?>">
-							<input type="radio" name="gender" value="Herr" <?php if($filter['gender']=='Herr'){echo 'checked="checked"';} ?>> Herr
+							<input type="radio" name="gender" value="Herr"<?php if($filter['gender']=='Herr'){echo ' checked="checked"';} ?>>Herr
 						</label>
 					</div>
 				</div>
