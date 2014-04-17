@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Application level Controller
  *
@@ -31,11 +31,13 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+
 	public $helpers = array(
 		'Form' => array(
 			'className' => 'BootstrapForm'
 		),
-		'Js'
+		'Js' => array('JQuery')
  	);
 	
 	public $components = array(
@@ -50,7 +52,8 @@ class AppController extends Controller {
 					'passwordHasher' => 'blowFish'
 				)
 			)
-		)
+		),
+		'RequestHandler'
 	);
 	
 	public function isAuthorized($user) {
@@ -63,15 +66,24 @@ class AppController extends Controller {
 		$this->set('currentUser', $this->Auth->user());
 	}
   
-	public function update_cart_item($id, $size, $count) {
-		if ($count < 1){
-			$this->Session->delete('Cart.'.$id.'.sizes.'.$size);
-			if (count($this->Session->read('Cart.'.$id.'.sizes')) < 1) {$this->Session->delete('Cart.'.$id);}
-			if (count($this->Session->read('Cart')) < 1) {$this->Session->delete('Cart');}
-		} else {
-			$this->Session->write('Cart.'.$id.'.sizes.'.$size.'.amount', $count);
-		}
-		$this->redirect( $this->referer() );
+	public function update_cart_item() {
+	// $id, $size, $count ADD IN () har plockat bort dem för tillfället
+	
+
+		$idajax = $this->request->data('id');
+		pr($this->request->data);
+		echo $idajax;
+
+	// Detta är den fungerande uppdateringen:
+		// if ($count < 1){
+			// $this->Session->delete('Cart.'.$id.'.sizes.'.$size);
+			// if (count($this->Session->read('Cart.'.$id.'.sizes')) < 1) {$this->Session->delete('Cart.'.$id);}
+			// if (count($this->Session->read('Cart')) < 1) {$this->Session->delete('Cart');}
+		// } else {
+			// $this->Session->write('Cart.'.$id.'.sizes.'.$size.'.amount', $count);
+		// }
+		
+		//$this->redirect($this->referer());
 	}
 
 }

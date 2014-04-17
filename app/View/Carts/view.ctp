@@ -1,3 +1,5 @@
+<?php echo $this->Html->script('updatecart', FALSE);?>
+
 <div class="container window">
 		<h1>Varukorg</h1>
 			<?php if ($this->Session->check('Cart')): ?>
@@ -37,9 +39,9 @@
 								<td><?php print_r($size)?></td>
 								<td>
 									<div class="btn-group">
-										<?php echo $this->Html->link('-', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $orderItem['amount'] - 1), array('class' => 'btn btn-default')); ?>
+										<?php echo $this->Js->link('-', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $orderItem['amount'] - 1), array('class' => 'btn btn-default update-item')); ?>
 										<a href="#" class="btn btn-default disabled"><?php echo $orderItem['amount']; ?></a>
-										<?php echo $this->Html->link('+', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $orderItem['amount'] + 1), array('class' => 'btn btn-default')); ?>
+										<?php echo $this->Js->link('+', array('controller' => 'carts', 'action' => 'update_cart_item', $id, $size, $orderItem['amount'] + 1), array('class' => 'btn btn-default update-item')); ?>
 									</div>
 								</td>
 								<td><?php echo $orderItem['price']; ?> kr</td>
@@ -54,6 +56,7 @@
 						endforeach;
 					endforeach;
 					?>
+					
 
 				</tbody>
 				<tfoot>
