@@ -1,4 +1,4 @@
-﻿<div class="container window">
+<div class="container window">
 	<h1>Betalningsvillkor</h1>
 	
 	<h2>Rabatt</h2>

@@ -1,4 +1,4 @@
-﻿<div class="container window">
+<div class="container window">
 <h1>Måttinformation</h1><br><br>
 	<div class="row">
 		<div class="col-md-5">
