@@ -18,8 +18,8 @@ class Customer extends AppModel {
 			'message' => 'Vänligen ange din adress'
 		),
 		'zipcode' => array(
-		  'rule' => array('between', 5,5),
-		  'message' => 'Postnumret måste vara 5 siffror långt'
+		  'rule'    => '/^[1-9][0-9]{4}$/i',
+		  'message' => 'Ogiltigt postnummer'
 		 ),
 		'city' => array(
 			'rule' => 'notEmpty',

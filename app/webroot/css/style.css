@@ -20,8 +20,13 @@ h1, h2, h3, h4 {
 	content: 'Filtrera på modell, färg eller pris \25BC';
 
 }
+
 .collapse-btn:before {
 	content: 'Dölj filter \25B2';
+}
+
+.error-message {
+	color: red;
 }
 
 #putinbasket {
