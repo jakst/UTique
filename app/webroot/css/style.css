@@ -101,7 +101,7 @@ table.cake-sql-log th, table.cake-sql-log td {
 }
 
 #product-grid > .row {
-	margin: 15px 0;
+	margin-bottom: 15px;
 }
 
 #product-grid > div.row > div, .jumbotron > div.container > div.row > div {

@@ -1,10 +1,13 @@
 <?php
 class TeesController extends AppController {
 
-	public function index() {
+	public $helpers = array('Js' => array('Jquery'));
+	public $components = array('RequestHandler');
+	
+	function _teeFilter() {
 		$this->Tee->recursive = -1;
 		$colors = $this->Tee->find('list', array(
-		'fields' => array('color', 'color')
+			'fields' => array('color', 'color')
 		));
 		$colors = array_unique($colors);
 
@@ -16,15 +19,6 @@ class TeesController extends AppController {
 				'intervall2' => 'intervall2',
 				'intervall3' => 'intervall3',
 				'intervall4' => 'intervall4'
-			),
-			'size' => array(
-				'xs' => 'xs',
-				's' => 's',
-				'm' => 'm',
-				'l' => 'l',
-				'xl' => 'xl',
-				'xxl' => 'xxl',
-				'xxxl' => 'xxxl'
 			)
 		);
 		$gender = 'Alla';
@@ -61,16 +55,6 @@ class TeesController extends AppController {
 					$priceCondition['OR'][]['Tee.price >'] = 299;
 				}
 			}
-
-			// if($filter['size'] != null){
-
-				// foreach ($filter['size'] as $value){
-					// $sizeCondition['OR'][]['Item.size'] = $filter['size'];
-				// }
-				// unset ($value);
-			// }
-
-
 		}
 
 		$tees = $this->Tee->find('all', array(
@@ -81,7 +65,16 @@ class TeesController extends AppController {
 				$sizeCondition
 			)
 		));
-
+		
+		$this->set('tees', $tees);
+		$this->set('colors', $colors);
+		$this->set('filter', $filter);
+	}
+	
+	public function index() {
+		$this->_teeFilter();
+		
+		$this->Tee->recursive = -1;
 		$tmp = $this->Tee->find('all');
 		$dailyTees = array();
 		for ($x = 0; $x <= 2; $x++):
@@ -94,9 +87,6 @@ class TeesController extends AppController {
 		endfor;
 
 		$this->set('dailyTees', $dailyTees);
-		$this->set('tees', $tees);
-		$this->set('colors', $colors);
-		$this->set('filter', $filter);
 	}
 
 	public function view($id = null) {
@@ -176,6 +166,10 @@ class TeesController extends AppController {
 		}
 		
 		$this->Tee->query($inventory);
+	}
+	
+	public function filter() {
+		$this->_teeFilter();
 	}
 }
 ?>

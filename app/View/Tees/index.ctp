@@ -1,3 +1,4 @@
+<?php echo $this->Html->script('filter', FALSE); ?>
 <title>uTique - stället för dig som vill sticka ut i mängden!</title>
 <div class="jumbotron unpadded-window bordered-pictures">
 	<div class="container">
@@ -55,9 +56,9 @@
 
 <!-- File: /app/View/Posts/index.ctp -->
 
-<div id="product-grid" class="container window bordered-pictures">
-	<div class="row" style="margin-top: -15px"> 
-		<div class="row collapse" id="viewdetails">
+<div class="container window">
+	<div class="row"> 
+		<div class="collapse" id="viewdetails">
 			<?php echo $this->Form->create(null, array('url' => array('controller' => 'tees', 'action' => 'index'))); ?>
 				<div class="col-md-4">
 					<h4>Modell</h4>
@@ -115,71 +116,10 @@
 				</div>
 			</form>
 		</div>
-		
-		<h4><a class="collapse-btn collapsed" data-toggle="collapse" data-target="#viewdetails"></a></h4>
 	</div>
+	<h4><a class="collapse-btn collapsed" data-toggle="collapse" data-target="#viewdetails"></a></h4>
 
-	<div class="row">		
-	<?php
-		$count = 0;
-		shuffle($tees);
-		foreach ($tees as $tee):
-			if ($count % 4 == 0 && $count > 0):
-				echo '</div><div class="row">';
-			endif;
-	?>
-		<div class="col-xs-6 col-md-3">
-			<div class="picture-wrapper">
-				<?php 
-					
-					$sale = $tee['Tee']['discount'] > 0;
-					$saleStyle = $sale ? 'position: absolute; z-index: -1' : '';
-					
-					echo $this->Html->image('tees/'.$tee['Tee']['id'].'.jpg', 
-						array(
-							'alt' => $tee['Tee']['name'], 
-							'class' => 'img-responsive',
-							'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']),
-							'style' => $saleStyle
-						)
-					);
-				
-					if ($sale):
-						echo $this->Html->image('sale.png',
-							array(
-								'class' => 'img-responsive', 
-								'url' => array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id'])
-							)
-						);
-					endif;
-				?>
-			</div>
-		
-			<?php
-				echo $this->Html->link(
-					$tee['Tee']['name'],
-					array('controller' => 'tees', 'action' => 'view', $tee['Tee']['id']
-				));
-			?>
-			
-			<br>
-			
-			<?php
-			if($sale) {
-				echo '<strike>'.$tee['Tee']['price'].' kr</strike> ';
-				echo '<span style="color: red;">'.floor($tee['Tee']['price']*((100 - $tee['Tee']['discount'])/100)).' kr</span>';
-			} else {
-				echo $tee['Tee']['price'].' kr';
-			}
-			?>
-		</div>
-		<?php if (($count+1) % 2 == 0 && $count > 0): ?><div class="clearfix visible-xs"></div><?php endif; ?>
-	
-	<?php
-		$count++;
-		endforeach;
-		unset($tee);
-	?>
-	
-	</div>				
+	<div id="product-grid" class="bordered-pictures">
+		<?php echo $this->element('product-grid'); ?>
+	</div>
 </div>

@@ -4,8 +4,6 @@ class OrdersController extends AppController {
 	public $helpers = array('Js' => array('Jquery'));
 	public $components = array('RequestHandler');
 	
-	
- 	
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->deny('history', 'view');
@@ -116,17 +114,16 @@ class OrdersController extends AppController {
 			$this->request->data['Customer'][$this->request['data']['field']] = $this->request['data']['value'];
 			$this->request->data['Payment'][$this->request['data']['field']] = $this->request['data']['value'];
 			
-			if ($this->Order->Customer->validates($this->Order->Customer->set($this->request->data)) && $this->Order->Payment->validates($this->Order->Payment->set($this->request->data))){
+			if ($this->Order->Customer->validates($this->Order->Customer->set($this->request->data)) && $this->Order->Payment->validates($this->Order->Payment->set($this->request->data))) {
 				$this->autoRender = false;
-			} else{
+			} else {
 				$error = $this->validateErrors($this->Order);
 				
 				if($this->Order->Customer->validates($this->Order->Customer->set($this->request->data))==false){
 					$this->set('error', $this->Order->Customer->validationErrors[$this->request['data']['field']][0]);
-				}else{
+				} else {
 					$this->set('error', $this->Order->Payment->validationErrors[$this->request['data']['field']][0]); 
 				}
-				
 			}		
 		}
 	}	

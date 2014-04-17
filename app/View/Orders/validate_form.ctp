@@ -1,2 +1,1 @@
-<?php if (isset($error)){
-	echo $error; }?>
+<?php if (isset($error)) {echo $error;} ?>

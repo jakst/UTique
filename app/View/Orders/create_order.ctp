@@ -1,4 +1,4 @@
-<?php echo $this->Html->script('validation', FALSE);?>
+<?php echo $this->Html->script('validation', FALSE); ?>
 
 <div class="container window">
 	<h1>Slutför ditt köp</h1>
