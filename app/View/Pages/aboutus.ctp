@@ -1,3 +1,4 @@
+<?php $this->set('title_for_layout', 'Om Utique'); ?>
 <div class="container window">
 	<h1>Om Utique</h1>
 	<p>Utique grundades i Singapore år 2014 efter den otroligt höga efterfrågan på unika t-shirtar. Med en t-shirt från Utique slipper du dyka upp på festen i samma t-shirt som någon annan. Vi som jobbar på Utique är:</p>

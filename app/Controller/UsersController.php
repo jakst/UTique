@@ -8,6 +8,7 @@ class UsersController extends AppController {
 	}
 	
 	public function login() {
+		$this->set('title_for_layout', 'Logga in');
 		if (!$this->Auth->loggedIn()) {
 			$this->Auth->authenticate = 'Blowfish';
 			$this->set('referer', $this->referer());
@@ -37,6 +38,7 @@ class UsersController extends AppController {
 	}
 	
 	public function register() {
+		$this->set('title_for_layout', 'Registrering');
 		if (!$this->Auth->loggedIn()) {
 			if ($this->request->is('post')) {
 				$data = $this->request->data;

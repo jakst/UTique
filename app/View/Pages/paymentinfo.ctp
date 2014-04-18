@@ -1,3 +1,4 @@
+<?php $this->set('title_for_layout', 'Betalningsvillkor'); ?>
 <div class="container window">
 	<h1>Betalningsvillkor</h1>
 	

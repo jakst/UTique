@@ -1,3 +1,4 @@
+<?php $this->set('title_for_layout', 'Måttinformation'); ?>
 <div class="container window">
 <h1>Måttinformation</h1><br><br>
 	<div class="row">
