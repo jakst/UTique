@@ -1,13 +1,12 @@
 ﻿$(document).ready(initiate);
 
 function update(table){
-	$('#checkouttable').html(table);
+	$('#checkouttable').html($.trim(table));
 	initiate();
 }
 
 function updatenavbarcart(cart){
-	$('#navbarcart').html(cart);
-	initiate();
+	$('#navbarcart').html($.trim(cart));
 }
 
 function initiate(){
