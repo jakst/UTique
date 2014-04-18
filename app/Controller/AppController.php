@@ -66,24 +66,22 @@ class AppController extends Controller {
 		$this->set('currentUser', $this->Auth->user());
 	}
   
-	public function update_cart_item() {
-	// $id, $size, $count ADD IN () har plockat bort dem för tillfället
-	
+	public function update_cart_item($id, $size, $count) {
 
-		$idajax = $this->request->data('id');
-		$this->set('derp',$this->request->data);
-		
 
-	// Detta är den fungerande uppdateringen:
-		// if ($count < 1){
-			// $this->Session->delete('Cart.'.$id.'.sizes.'.$size);
-			// if (count($this->Session->read('Cart.'.$id.'.sizes')) < 1) {$this->Session->delete('Cart.'.$id);}
-			// if (count($this->Session->read('Cart')) < 1) {$this->Session->delete('Cart');}
-		// } else {
-			// $this->Session->write('Cart.'.$id.'.sizes.'.$size.'.amount', $count);
-		// }
+		 if ($count < 1){
+			 $this->Session->delete('Cart.'.$id.'.sizes.'.$size);
+			 if (count($this->Session->read('Cart.'.$id.'.sizes')) < 1) {$this->Session->delete('Cart.'.$id);}
+			 if (count($this->Session->read('Cart')) < 1) {$this->Session->delete('Cart');}
+		 } else {
+			 $this->Session->write('Cart.'.$id.'.sizes.'.$size.'.amount', $count);
+		 }
+		if(!$this->request->isAjax()){
+			$this->redirect($this->referer());
+		}
 		
-		//$this->redirect($this->referer());
 	}
+	public function update_navbar(){
 
+	}
 }

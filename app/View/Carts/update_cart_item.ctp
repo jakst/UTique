@@ -1,3 +1,1 @@
-﻿<div class="container window">
-HALLÅ!
-</div>
+﻿<?php echo $this->element('checkout'); ?>

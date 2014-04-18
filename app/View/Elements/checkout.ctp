@@ -1,7 +1,3 @@
-<?php echo $this->Html->script('updatecart', FALSE);?>
-
-<div class="container window">
-		<h1>Varukorg</h1>
 			<?php if ($this->Session->check('Cart')): ?>
 			<table class="table table-striped table-centered">
 				<thead>
@@ -81,5 +77,3 @@
 					<h4>Du är värd en fin t-shirt! Lägg något i varukorgen!</h4>
 
 				<?php endif; ?>
-
-</div>

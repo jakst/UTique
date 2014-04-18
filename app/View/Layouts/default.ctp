@@ -42,7 +42,7 @@
 					</ul>
 						
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav navbar-right" id="navbarcart">
 						<?php echo $this->element('cart'); ?>
 					</ul>
 				</div><!--/.navbar-collapse -->
