@@ -1,0 +1,2 @@
+$(document).ready(function () {$("#submit-1779468280").bind("click", function (event) {$.ajax({data:$("#submit-1779468280").closest("form").serialize(), type:"post", url:"\/utique\/users\/register"});
+return false;});});

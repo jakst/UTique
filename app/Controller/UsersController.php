@@ -57,9 +57,9 @@ class UsersController extends AppController {
 			
 			$this->request->data['User'][$this->request['data']['field']] = $this->request['data']['value'];
 			
-			if ($this->User->validates($this->User->set($this->request->data)) {
+			if ($this->User->validates($this->User->set($this->request->data))) {
 				$this->autoRender = false;
-			} else {
+			 } else {
 				$error = $this->validateErrors($this->Order);
 				$this->set('error', $this->User->validationErrors[$this->request['data']['field']][0]); 	
 			}		
