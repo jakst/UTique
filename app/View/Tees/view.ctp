@@ -38,7 +38,8 @@
 			
 			<h3>Beskrivning:</h3>
 			<p><?php echo $tee['Tee']['description'];?> Se även <?php echo $this->Html->link('måttinformation', array('controller' => 'pages', 'action' => 'sizeinfo'));?>.</p>
-			<?php echo $this->Js->submit('Lägg till i varukorg', array('class' => 'btn btn-primary btn-lg')); ?>
+			<button type="submit" class="btn btn-primary btn-lg">Lägg till i varukorg</button>
+			<?php echo $this->Html->link('Gå till kassan <span class="glyphicon glyphicon-shopping-cart"></span>', array('controller' => 'carts', 'action' => 'view'), array('class' => 'btn btn-default btn-lg', 'escape' => false)); ?>
 			</form>
 		</div>
 	</div>
