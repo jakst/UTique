@@ -100,6 +100,10 @@ table.cake-sql-log th, table.cake-sql-log td {
 	font-weight: bold;
 }
 
+#product-grid {
+	text-align: center;
+}
+
 #product-grid > .row {
 	margin-bottom: 15px;
 }

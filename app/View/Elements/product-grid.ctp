@@ -1,3 +1,6 @@
+<?php if (count($tees) <= 0): ?>
+<span style="font-size: 30px;text-center">Det finns inga tröjor med de valda preferenserna</span>
+<?php else: ?>
 <div class="row">		
 <?php
 	$count = 0;
@@ -60,3 +63,4 @@
 	unset($tee);
 ?>
 </div>
+<?php endif; ?>
