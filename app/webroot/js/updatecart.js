@@ -3,11 +3,13 @@
 		c.stopPropagation();
 	
 		var href = $(this).attr('href');
-		var hrefsplit = href.split("/")
+		var hrefsplit = href.split("/");
 		
 		var id = hrefsplit[hrefsplit.length-3];
 		var size = hrefsplit[hrefsplit.length-2];
 		var amount = hrefsplit[hrefsplit.length-1];
+
+		alert (id);
 		
 		// Ett alternativ till den postmetoden här nedanför?
 		// $.ajax({

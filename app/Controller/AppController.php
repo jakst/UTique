@@ -71,8 +71,8 @@ class AppController extends Controller {
 	
 
 		$idajax = $this->request->data('id');
-		pr($this->request->data);
-		echo $idajax;
+		$this->set('derp',$this->request->data);
+		
 
 	// Detta är den fungerande uppdateringen:
 		// if ($count < 1){
