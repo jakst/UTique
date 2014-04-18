@@ -3,7 +3,7 @@
 	<head>
 		<?php echo $this->Html->charset(); ?>
 		<meta name="viewport" content="width = device-width, initial-scale = 1">
-		
+		<title><?php echo $title_for_layout; ?></title>
 		<?php
 			echo $this->Html->meta('icon','img/favicon.png', array('type' => 'icon'));
 			echo $this->fetch('meta');

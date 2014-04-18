@@ -1,4 +1,3 @@
-<title>uTique - <?php echo $tee['Tee']['name']?></title>
 <div class="container window">
 	<h1><?php echo $tee['Tee']['name'];	?></h1>
 	

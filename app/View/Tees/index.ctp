@@ -1,5 +1,4 @@
 <?php echo $this->Html->script('filter', FALSE); ?>
-<title>uTique - stället för dig som vill sticka ut i mängden!</title>
 <div class="jumbotron unpadded-window bordered-pictures">
 	<div class="container">
 		<h2>Dagens T-shirts</h2>
