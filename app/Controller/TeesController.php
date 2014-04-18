@@ -9,8 +9,8 @@ class TeesController extends AppController {
 		$colors = $this->Tee->find('list', array(
 			'fields' => array('color', 'color')
 		));
+		
 		$colors = array_unique($colors);
-
 		$filter = array(
 			'gender' => 'Alla',
 			'color' => $colors,
@@ -21,12 +21,15 @@ class TeesController extends AppController {
 				'intervall4' => 'intervall4'
 			)
 		);
+		
 		$gender = 'Alla';
 		$genderCondition = array();
 		$colorCondition = array();
 		$priceCondition = array();
 		$sizeCondition = array();
-
+		
+		$this->set('post', $this->request->is('post'));
+		
 		if ($this->request->is('post')) {
 			$filter = $this->request->data;
 
@@ -34,22 +37,22 @@ class TeesController extends AppController {
 				$genderCondition['Tee.sex'] = $filter['gender'];
 			}
 
-			if($filter['color'] != null){
+			if(!empty($filter['color'])){
 				foreach ($filter['color'] as $value){
 					$colorCondition['OR'][]['Tee.color'] = $filter['color'];
 				}
 				unset ($value);
 			}
 
-			if($filter['price'] != null){
+			if(!empty($filter['price'])){
 				if(isset($filter['price']['intervall1'])){
-					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(0,99);
+					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(0, 99);
 				}
 				if(isset($filter['price']['intervall2'])){
-					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(100,199);
+					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(100, 199);
 				}
 				if(isset($filter['price']['intervall3'])){
-					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(200,299);
+					$priceCondition['OR'][]['Tee.price BETWEEN ? AND ?'] = array(200, 299);
 				}
 				if(isset($filter['price']['intervall4'])){
 					$priceCondition['OR'][]['Tee.price >'] = 299;
