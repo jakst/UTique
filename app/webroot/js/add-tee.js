@@ -15,8 +15,4 @@ function updateCart(view) {
 	$('<div id="add" style="font-size: 20px; ">Varan lades till i varukorgen</div>').hide().appendTo('form#TeeViewForm').fadeIn('slow', function(){
 		$(this).fadeOut('slow', function(){$(this).remove();});
 	});
-	
-	/*$('#add').fadeIn('slow', function() {
-		$('#add').fadeOut('slow');           
-	});*/
 }
