@@ -53,14 +53,15 @@ class UsersController extends AppController {
 		}
 	}
 	public function validate_user() {
-		if($this->request->isAjax()){
-			
+		if($this->request->isAjax()){		
 			$this->request->data['User'][$this->request['data']['field']] = $this->request['data']['value'];
 			
+			$this->User->validator()->remove('password', 'Matching');
+				
 			if ($this->User->validates($this->User->set($this->request->data))) {
 				$this->autoRender = false;
 			 } else {
-				$error = $this->validateErrors($this->Order);
+				$error = $this->validateErrors($this->User);
 				$this->set('error', $this->User->validationErrors[$this->request['data']['field']][0]); 	
 			}		
 		}
