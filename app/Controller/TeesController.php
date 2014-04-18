@@ -169,7 +169,11 @@ class TeesController extends AppController {
 	}
 	
 	public function filter() {
-		$this->_teeFilter();
+		if($this->request->isAjax()){
+			$this->_teeFilter();
+		} else {
+			$this->redirect(array('controller' => 'tees', 'action' => 'index'));
+		}
 	}
 }
 ?>
