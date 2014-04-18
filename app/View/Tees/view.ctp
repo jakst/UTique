@@ -12,7 +12,7 @@
 				);
 			?>
 		</div>
-
+		
 		<div class="col-md-6">
 			<?php if ($tee['Tee']['discount'] != 0): ?>
 			<div class="productprice" id="saleprice">
