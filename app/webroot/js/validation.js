@@ -114,6 +114,26 @@ $(document).ready(function(){
 			handleCardnumberValidation
 		);
 	});
+
+	$('#username').blur(function(){
+		alert ('Hej');
+		$.post(
+			'validate_user',
+			{field: $('#username').attr('id'), value: $('#username').val()},
+			handleUsernameValidation
+		);
+	});
+	
+	function handleUsernameValidation(error){
+		if (error.length > 0) {
+			if ($('#username-notEmpty').length == 0){
+				$('#username').after('<div id ="username-notEmpty" class="error-message">' + error + "</div>")
+			}
+		} else{
+			$('#username-notEmpty').remove();
+		}
+	}
+
 	
 	function handleCardnumberValidation(error){
 		if (error.length > 0) {

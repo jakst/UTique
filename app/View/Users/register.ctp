@@ -1,13 +1,14 @@
+<?php echo $this->Html->script('validation', FALSE);?>
 <div class="container window">
 	<div class="row">
 		<div class="col-sm-5" style="margin: 20px auto; float: none;">
 		<h1>Registrera dig</h1>
 <?php
 	echo $this->Form->create('User');
-	echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Användarnamn'));
-	echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Lösenord'));
+	echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Användarnamn', 'id' => 'username'));
+	echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Lösenord', 'id' => 'password' ));
 	echo $this->Form->input('password_confirmation', array('label' => false, 'placeholder' => 'Upprepa lösenord', 'type' => 'password'));
-	echo $this->Form->end('Registrera dig');
+	echo $this->Js->submit('Registrera dig');
 ?>
 		</div>
 	</div>

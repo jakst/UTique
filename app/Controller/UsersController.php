@@ -1,5 +1,7 @@
 <?php
 class UsersController extends AppController {
+	public $helpers = array('Js' => array('Jquery'));
+	public $components = array('RequestHandler');
 	public function index() {
 		$customer = $this->User->Customer->find('all');
 		$this->set('customer', $customer);
@@ -50,5 +52,18 @@ class UsersController extends AppController {
 			$this->redirect(array('controller' => 'tees'));
 		}
 	}
+	public function validate_user() {
+		if($this->request->isAjax()){
+			
+			$this->request->data['User'][$this->request['data']['field']] = $this->request['data']['value'];
+			
+			if ($this->User->validates($this->User->set($this->request->data)) {
+				$this->autoRender = false;
+			} else {
+				$error = $this->validateErrors($this->Order);
+				$this->set('error', $this->User->validationErrors[$this->request['data']['field']][0]); 	
+			}		
+		}
+	}	
 }
 ?>
