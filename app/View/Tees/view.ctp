@@ -1,3 +1,4 @@
+<?php echo $this->Html->script('add-tee', FALSE);?>
 <title>uTique - <?php echo $tee['Tee']['name']?></title>
 <div class="container window">
 	<h1><?php echo $tee['Tee']['name'];	?></h1>
@@ -38,7 +39,7 @@
 			
 			<h3>Beskrivning:</h3>
 			<p><?php echo $tee['Tee']['description'];?> Se även <?php echo $this->Html->link('måttinformation', array('controller' => 'pages', 'action' => 'sizeinfo'));?>.</p>
-			<button type="submit" class="btn btn-success btn-lg btn-block">Lägg till i varukorg</button>
+			<?php echo $this->Js->submit('Lägg till i varukorg', array('class' => 'btn btn-primary btn-lg')); ?>
 			</form>
 		</div>
 	</div>
