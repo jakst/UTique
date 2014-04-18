@@ -142,7 +142,10 @@ class TeesController extends AppController {
 		$price = floor($tee['Tee']['price']*(100 - $tee['Tee']['discount'])/100);
 		$orderItem = array('tee_id' => $id, 'size' => $size, 'amount' => $amount + 1, 'price' => $price);
 		$this->Session->write('Cart.'.$id.'.sizes.'.$size, $orderItem);
-		$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
+		
+		if (!$this->request->isAjax()) {
+			$this->redirect(array('controller' => 'tees', 'action' => 'view', $id));
+		}
 	}
 
 	public function reallocate() {
