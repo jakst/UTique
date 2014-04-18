@@ -72,6 +72,7 @@ class TeesController extends AppController {
 	}
 	
 	public function index() {
+		$this->set('title_for_layout', 'Utique - Stället för dig som vill sticka ut ur mängden');
 		$this->_teeFilter();
 		
 		$this->Tee->recursive = -1;
@@ -96,6 +97,7 @@ class TeesController extends AppController {
 		
 		$this->Tee->recursive = -1;
 		$tee = $this->Tee->findById($id);
+		$this->set('title_for_layout', $tee['Tee']['name']);
 		if (!$tee) {
             throw new NotFoundException(__('Tyvärr'));
         }

@@ -10,6 +10,7 @@ class OrdersController extends AppController {
 	}
 	
 	public function create_order(){
+		$this->set('title_for_layout', 'Orderuppgifter');
 		if (($this->referer() != Router::url(array('controller' => 'carts', 'action' => 'view'), true) && $this->referer() != Router::url(array('controller' => 'orders', 'action' => 'create_order'), true)) || !$this->Session->check('Cart')) {
 			$this->redirect(array('controller' => 'tees'));
 		}
@@ -66,6 +67,7 @@ class OrdersController extends AppController {
 	}
 	
 	public function confirm_order(){
+		$this->set('title_for_layout', 'Orderbekräftelse');
 		if ($this->referer() != Router::url(array('controller' => 'orders', 'action' => 'create_order'), true) || !$this->Session->check('Cart')) {
 			$this->redirect(array('controller' => 'tees'));
 		}
@@ -76,6 +78,7 @@ class OrdersController extends AppController {
 	}
 	
 	public function history(){
+		$this->set('title_for_layout', 'Orderhistorik');
 		$user = $this->Auth->user();
 		$customer = $user['customer_id'];
 		
