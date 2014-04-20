@@ -37,7 +37,7 @@ class AppController extends Controller {
 		'Form' => array(
 			'className' => 'BootstrapForm'
 		),
-		'Js' => array('JQuery')
+		'Js' => array('Jquery')
  	);
 	
 	public $components = array(
